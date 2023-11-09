@@ -1,0 +1,109 @@
+.heading {
+  font-family: Epilogue;
+  font-style: normal;
+  line-height: 33px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.015em;
+  color: #000000;
+  text-shadow: 2px 0 black;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+
+
+.mat-tab-styling ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+  height: 4px;
+  background-color: #01529E;
+}
+
+.mat-tab-styling ::ng-deep .mat-tab-list .mat-tab-label {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #414141;
+}
+
+.mat-tab-styling ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
+  color: #01529E;
+}
+
+.mat-tab-styling ::ng-deep .mat-tab-body-wrapper {
+  margin-top: 23px;
+}
+
+.margin-styling {
+  margin-left: -3.4rem;
+}
+
+.fund-value-image{
+  background-image: url('../../../../assets/images/wallet.svg');
+  background-size: cover;
+}
+
+.total-return-image{
+  background-image: url('../../../../assets/images/returns.svg');
+  background-size: cover;
+}
+
+.active-sip-image{
+  background-image: url('../../../../assets/images/Active SIP.svg');
+  background-size: cover;
+
+}
+
+.active-funds-image{
+  background-image: url('../../../../assets/images/money.svg');
+  background-size: cover;
+}
+.profile-card-image{
+  background-image: url('../../../../assets/images/def.svg');
+  background-size: cover;
+  height: 60px;
+  width: 60px;
+}
+::ng-deep.mat-tab-label-active{
+  opacity: 1.0!important;
+}
+:host ::ng-deep .mobile-select-options .mat-select-value{
+  color: #01529E !important;
+}
+
+.profile-card-button-advisor{
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #01529E;
+  background: rgba(1, 82, 158, 0.15);
+  border: 1px solid #01529E;
+  border-radius: 7px;
+  padding:8px 6px 8px 6px;
+  cursor: default !important;
+}
+
+.button-styling-gen-advice{
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150% !important;
+  display: flex !important;
+  align-items: center;
+  text-align: center !important;
+  color: #FFFFFF;
+  background: #01529E;
+  border-radius: 8px !important;
+  padding: 8px 9px !important;
+
+}
+

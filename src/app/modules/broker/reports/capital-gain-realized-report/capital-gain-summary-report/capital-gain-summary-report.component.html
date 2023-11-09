@@ -1,0 +1,153 @@
+<div>
+  <h3 style="display: inline-block">Capital Gain Reports</h3>
+  <span style="float:right">
+    <img src="assets/images/download_excel.svg" (click)="exportAsCSV()" matTooltip="Download as Excel">
+    <img src="assets/images/download_pdf.svg" alt="" (click)="generatePDF()" matTooltip="Download as pdf">
+    <img src="assets/images/send_email.svg" alt="" matTooltip="Mail view" (click)="sendMail()" />
+
+  </span>
+</div>
+<div class="overlay" [ngClass]="{'hide-in-ui': !showHiddenElementsInUI}">
+
+  <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value" diameter="50">
+  </mat-progress-spinner>
+  <h3 class="pdf-generate-title">{{ mailReport ? 'Sending Mail...' : 'Generating PDF...' }}</h3>
+
+</div>
+<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" id="pdfOrder">
+  <div class="template-design" [ngClass]="{'hide-in-ui': !showHiddenElementsInUI}">
+    <div class="template-background">
+      <div class="background-inborder">
+        <img class="logo" src="assets/images/logo mark.svg" alt="" />
+      </div>
+    </div>
+
+    <div class="template-content">
+      <div class="logo-div">
+        <img class="logo" src="assets/images/clovek-logo.svg" alt="" />
+      </div>
+
+      <h3 class="heading">Capital Gain Summary Report</h3>
+      <h5 class="report-date">For FY {{this.transactionStartDate.slice(2,4)}}-{{this.transactionEndDate.slice(2,4)}}
+      </h5>
+
+      <table>
+        <tbody>
+          <tr>
+            <td class="index-heading">NSE Nifty</td>
+            <td class="index-heading">BSE Sensex</td>
+          </tr>
+          <tr>
+            <td class="index-data">{{ this.NSEValue.NSE }}</td>
+
+            <td class="index-data">23902.44</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="details">
+        <table class="rm-table">
+          <tbody>
+            <tr>
+              <th class="rm-head">Relationship Manager</th>
+            </tr>
+            <tr>
+              <td class="detail-head">Name</td>
+              <td class="detail-head">Mobile No.</td>
+            </tr>
+            <tr>
+              <td class="detail-data">
+                {{ this.clientandRMDetails.rmName }}
+              </td>
+              <td class="detail-data">
+                {{ this.clientandRMDetails.rmPhone }}
+              </td>
+            </tr>
+            <tr>
+              <td class="detail-head">Email ID</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="detail-data">
+                {{ this.clientandRMDetails.rmEmail }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="client-table">
+          <tbody>
+            <tr>
+              <th class="rm-head">Client Details</th>
+            </tr>
+            <tr>
+              <td class="detail-head">Name</td>
+              <td class="detail-head">Mobile No.</td>
+            </tr>
+            <tr>
+              <td class="detail-data">
+                {{ this.clientandRMDetails.clientName }}
+              </td>
+              <td class="detail-data">
+                {{ this.clientandRMDetails.clientPhone }}
+              </td>
+            </tr>
+            <tr>
+              <td class="detail-head">Email ID</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="detail-data">
+                {{ this.clientandRMDetails.clientEmail }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <table mat-table id="excel-table1" [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="scheme">
+      <th mat-header-cell *matHeaderCellDef>Scheme (Category)</th>
+      <td mat-cell *matCellDef="let element">{{ element.schemeName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="purchaseValueTotal">
+      <th mat-header-cell *matHeaderCellDef>Purchase Value (₹)</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.purchaseValueTotal.toFixed(2) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acquisitionValueTotal">
+      <th mat-header-cell *matHeaderCellDef>Acquisition Value (₹)</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.acquisitionValueTotal.toFixed(2)}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="redemptionValueTotal">
+      <th mat-header-cell *matHeaderCellDef>Redemption Value (₹)</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.redemptionValueTotal.toFixed(2) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="shortTermCapitalGainTotal">
+      <th mat-header-cell *matHeaderCellDef>Short Term Capital Gain</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.shortTermCapitalGainTotal.toFixed(2) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="longTermCapitalGainTotal">
+      <th mat-header-cell *matHeaderCellDef>Long Term Capital Gain</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.longTermCapitalGainTotal.toFixed(2) }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef=" displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

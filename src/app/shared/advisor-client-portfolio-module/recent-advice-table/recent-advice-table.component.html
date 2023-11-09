@@ -1,0 +1,147 @@
+<div *ngIf="this.StoreData==false" class="overlay">
+  <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value" diameter="50"
+    *ngIf="this.StoreData==false"></mat-progress-spinner>
+</div>
+
+<div class="row" *ngIf="this.mobile">
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+    <h2 class="mobile-mat-card-heading">{{selectedButtonValue}}</h2>
+  </div>
+</div>
+
+<mat-card class="card mb-4">
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+        <mat-card-title class="mobile-mat-card-title">Advise ID</mat-card-title>
+        <mat-card-subtitle class="mobile-mat-card-subtitle">{{this.viewDetail.adviceId}}</mat-card-subtitle>
+      </div>
+      <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+        <mat-card-title class="mobile-mat-card-title">Date</mat-card-title>
+        <mat-card-subtitle class="mobile-mat-card-subtitle">{{this.viewDetail.adviceDate|date:'dd/MM/yyyy'}}</mat-card-subtitle>
+      </div>
+      <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+        <mat-card-title class="mobile-mat-card-title">Advice Status</mat-card-title>
+        <mat-card-subtitle class="mobile-mat-card-subtitle">
+          <mat-select [disabled]="this.viewDetail.adviceStatus==='Executed'"
+            [ngClass]="{'adviced-status': this.viewDetail.adviceStatus==='Adviced','executed-status':this.viewDetail.adviceStatus==='Executed'}"
+            [(ngModel)]="this.viewDetail.adviceStatus">
+            <mat-option *ngFor="let status of statusOptions" [value]="status">
+              {{status}}
+            </mat-option>
+          </mat-select>
+        </mat-card-subtitle>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+
+<div *ngIf="this.mobile==false" [ngClass]="{'body':mobile==false}" class="table-styling">
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData(sort)" class="w-100">
+
+    <!-- Fund Name Column -->
+    <ng-container matColumnDef="fundName">
+      <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header>Fund Name</th>
+      <td class="table-data-styling" mat-cell *matCellDef="let element">
+        <a (click)="routePortfolio(element.clientName)" class="client-id">{{element.fund_name}}</a>
+      </td>
+    </ng-container>
+
+    <!-- NAV Column -->
+    <ng-container matColumnDef="nav">
+      <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header> Current NAV(₹)</th>
+      <td class="table-data-styling" mat-cell *matCellDef="let element">
+        {{element.nav}}
+      </td>
+    </ng-container>
+
+    <!-- Unit Column -->
+    <ng-container matColumnDef="unit">
+      <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header>Unit</th>
+      <td class="table-data-styling" mat-cell *matCellDef="let element">
+        {{element.fundUnit}}
+      </td>
+    </ng-container>
+
+
+
+    <!--Status Column -->
+    <ng-container matColumnDef="status">
+      <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td class="table-data-styling" class="cell-status" mat-cell *matCellDef="let element">
+        <mat-chip *ngIf="element.status=='Sold';else bought" id="sold" selected>
+          {{element.status}}
+        </mat-chip>
+        <ng-template #bought>
+          <mat-chip *ngIf="element.status=='Bought'" id="bought" selected>
+            {{element.status}}</mat-chip>
+        </ng-template>
+      </td>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- No Records Table -->
+  <div *ngIf="!dataSource.data.length" class="no_record center-align">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <img src="../../../../assets/images/cross-icon.svg">
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        No records found!
+      </div>
+
+    </div>
+  </div>
+
+  <!--TODO: Paginator -->
+  <!-- <mat-paginator *ngIf="dataSource.data.length" [ngClass]="{'position-fix': mobile}" #paginator
+        [pageIndex]="tablePageIndex" [pageSize]="10" showFirstLastButtons
+        (page)="pageEvent=getClientList($event)" [length]="tableLength">
+    </mat-paginator> -->
+</div>
+
+<!-- Mobile View -->
+
+<div *ngIf="this.mobile">
+  <div class="row mt-4 mb-4">
+    <mat-divider class="mat-divider"></mat-divider>
+  </div>
+
+  <mat-card *ngFor="let element of recentAdviceList" class="mb-3">
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-card-title class="mobile-mat-card-title">Fund Name</mat-card-title>
+        <mat-card-subtitle class="mobile-mat-card-subtitle mobile-client-id-color">{{element.fund_name}}
+        </mat-card-subtitle>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-card-title class="mobile-mat-card-title">NAV (₹)</mat-card-title>
+        <mat-card-subtitle class="mobile-mat-card-subtitle"> {{element.nav}}</mat-card-subtitle>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-card-title class="mobile-mat-card-title">Unit</mat-card-title>
+        <mat-card-subtitle class="mobile-mat-card-subtitle">{{element.fundUnit}}</mat-card-subtitle>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-card-title class="mobile-mat-card-title">Status</mat-card-title>
+        <mat-card-subtitle class="mobile-mat-card-subtitle">
+          <mat-chip *ngIf="element.status=='Sold';else bought" id="sold" selected>
+            {{element.status}}
+          </mat-chip>
+          <ng-template #bought>
+            <mat-chip *ngIf="element.status=='Bought'" id="bought" selected>
+              {{element.status}}</mat-chip>
+          </ng-template>
+        </mat-card-subtitle>
+      </div>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="row right-styling">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <button type="button" class="close" (click)="onClose()" aria-label="Close">
+        <img src='../../../../../assets/images/close.svg'>
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="data.modalType=='purchase-transaction'|| data.modalType=='sip-transaction'|| data.modalType=='swp-transaction'|| data.modalType=='stp-transaction'|| data.modalType=='additional-transaction' || data.modalType=='switch-out-transaction' || data.modalType=='broker-advisory' || data.modalType=='report-generation'"
+    class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center ml-1 mt-4">
+    <img src="../../../assets/images/trans_success.svg">
+  </div>
+
+  <div *ngIf="data.modalType=='no-data-found-modal'"
+  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center ml-1 mt-4">
+  <img class="no-data-icon-image" src="../../../assets/images/no-data-icon.png">
+  </div>
+
+  <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center ml-1 mt-4">
+    <p
+      [ngClass]="{'invite-modal-heading': data.modalType=='Invite Broker Modal',
+      'inactivity-error-heading':data.modalType=='Inactivity Error Modal',
+      'transaction-heading':data.modalType=='purchase-transaction' || data.modalType=='sip-transaction' || data.modalType=='switch-out-transaction' || data.modalType=='swp-transaction' || data.modalType=='stp-transaction' || data.modalType=='additional-transaction' || data.modalType=='broker-advisory' || data.modalType=='no-data-found-modal' || data.modalType=='report-generation'}">
+      {{data.headingValue}}</p>
+  </div>
+
+  <div *ngIf="data.modalType=='Invite Broker Modal'"
+    class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center ml-1 mt-4">
+    <img class="invite-width" src="../../../assets/images/rocket.gif">
+  </div>
+
+  <div *ngIf="data.modalType=='Inactivity Error Modal'"
+    class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center ml-1 mt-4">
+    <img class="invite-width" src="../../../assets/images/sessionTimeExpire.svg">
+  </div>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center ml-1 mt-2">
+    <p [ngClass]="{'invite-modal-subheading': data.modalType=='Invite Broker Modal' || data.modalType=='Inactivity Error Modal',
+      'transaction-subheading':data.modalType=='purchase-transaction'|| data.modalType=='sip-transaction'|| data.modalType=='swp-transaction'|| data.modalType=='stp-transaction'|| data.modalType=='additional-transaction' || data.modalType=='switch-out-transaction' || data.modalType=='broker-advisory' || data.modalType=='no-data-found-modal'|| data.modalType=='report-generation' }">
+      {{data.textValue}}
+    </p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <p *ngIf="data.modalType=='purchase-transaction'|| data.modalType=='swp-transaction'|| data.modalType=='additional-transaction' || data.modalType=='switch-out-transaction'" class="transaction-order-details">Order No : {{data.orderNO}}</p>
+      <p *ngIf="data.modalType=='sip-transaction'" class="transaction-order-details">SIP REG NO : {{data.orderNO}}</p>
+      <p *ngIf="data.modalType=='stp-transaction'" class="transaction-order-details">STP REG NO : {{data.orderNO}}</p>
+      <p *ngIf="data.modalType=='broker-advisory'" class="transaction-order-details">Advise ID : {{data.adviceId}}</p>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <p *ngIf="data.modalType=='purchase-transaction' ||  data.modalType=='broker-advisory'" class="transaction-order-details">Amount : {{amountModal}}</p>
+      <p *ngIf="data.modalType=='swp-transaction'" class="transaction-order-details"> {{data.withdrawlUnits}} : {{amountModal}}</p>
+      <p *ngIf="data.modalType=='sip-transaction'" class="transaction-order-details"> Installment Amount : {{installmentAmount}}</p>
+      <p *ngIf="data.modalType=='stp-transaction'" class="transaction-order-details"> Transfer Amount : {{amountModal}}</p>
+      <p *ngIf="data.modalType=='additional-transaction'" class="transaction-order-details"> {{data.AmountType}} : {{amountModal}}</p>
+      <p *ngIf="data.modalType=='switch-out-transaction'  && this.unitFlagValue=='No'" class="transaction-order-details"> {{data.selectedField}} : {{this.SwitchFieldValue}}</p>
+      <p *ngIf="data.modalType=='switch-out-transaction' && this.unitFlagValue=='Yes'" class="transaction-order-details"> All Units Flag</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <p *ngIf="data.modalType=='purchase-transaction'|| data.modalType=='sip-transaction'|| data.modalType=='swp-transaction'|| data.modalType=='stp-transaction' || data.modalType=='additional-transaction' || data.modalType=='switch-out-transaction'" class="transaction-order-details">Mode : {{mode}}</p>
+      <p *ngIf="data.modalType=='broker-advisory'" class="transaction-order-details">Risk Profile: {{data.riskProfile}}</p>
+    </div>
+
+    <div *ngIf="data.modalType=='purchase-transaction'|| data.modalType=='sip-transaction'|| data.modalType=='swp-transaction'|| data.modalType=='stp-transaction' || data.modalType=='additional-transaction' || data.modalType=='switch-out-transaction'" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <p class="transaction-order-details">Type : {{data.transactionType}}</p>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <!-- <div *ngIf="data.modalType=='additional-transaction'"class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <p class="transaction-order-details"> Scheme: {{data.SchemeCode}} </p>
+    </div> -->
+    <div *ngIf="data.modalType=='purchase-transaction'|| data.modalType=='sip-transaction'|| data.modalType=='swp-transaction' || data.modalType=='additional-transaction'"class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <p class="transaction-order-details"> Scheme: {{FundCode}} </p>
+    </div>
+    <div *ngIf="data.modalType=='stp-transaction' || data.modalType=='switch-out-transaction'" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <p class="transaction-order-details"> From Scheme: {{FundCode}} </p>
+    </div>
+    <div *ngIf="data.modalType=='stp-transaction' || data.modalType=='switch-out-transaction'" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <p class="transaction-order-details"> To Scheme: {{FundCode2}} </p>
+    </div>
+    <div  *ngIf="data.modalType=='purchase-transaction'|| data.modalType=='sip-transaction'|| data.modalType=='swp-transaction'|| data.modalType=='stp-transaction'  || data.modalType=='switch-out-transaction' || data.modalType=='additional-transaction'" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <p class="transaction-order-details">Client Name: {{clientName}}</p>
+    </div>
+    <div  *ngIf="data.modalType=='purchase-transaction'|| data.modalType=='sip-transaction'|| data.modalType=='swp-transaction'|| data.modalType=='stp-transaction'  || data.modalType=='switch-out-transaction' || data.modalType=='additional-transaction'" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <p class="transaction-order-details">Client Email : <span class="client-email">{{clientEmail}}</span></p>
+    </div>
+  </div>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center ml-1 mt-4">
+    <button type="submit" class="button-styling-1" mat-raised-button (click)="onClose()">{{data.buttonValue}}</button>
+  </div>
+</div>

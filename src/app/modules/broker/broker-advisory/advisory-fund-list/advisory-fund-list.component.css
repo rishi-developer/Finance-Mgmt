@@ -1,0 +1,67 @@
+.fund-list-mat-card {
+  background: #FDFCFC;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.11);
+  border-radius: 8px;
+}
+
+.sub-heading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #5C5C5C;
+}
+
+.fund-list-heading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #000000;
+}
+
+.fund-list-card {
+  background: #EFF3F8;
+  border-radius: 8px;
+  padding-bottom: 0px;
+  margin-bottom: 19px;
+}
+
+.fund-name-text {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.allocation-text {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #4D4D4D;
+
+}
+
+.amount-text {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #4D4D4D;
+}
+.text-color{
+  color: #000000;
+}

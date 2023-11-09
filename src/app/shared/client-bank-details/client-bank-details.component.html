@@ -1,0 +1,62 @@
+<div class="container">
+    <div><span class="vertical-tab-heading">Bank Details</span></div>
+    <mat-divider class="mat-divider-profile mt-3"></mat-divider>
+
+    <div *ngFor="let bankDetail of this.element1 index as i">
+     <div>
+        <h2 class="sub-heading mt-5">Bank Account {{i + 1}}</h2>
+   
+        <div class="row ">
+            <div></div>
+            <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+                <span class="profile-details-labels">Account No.</span>
+                <span class="profile-details-data">{{bankDetail.accountNo}} </span>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+                <span class="profile-details-labels">Account Type</span>
+                <span class="profile-details-data">{{bankDetail.accountType}}</span>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div></div>
+            <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+                <span class="profile-details-labels">NEFT/IFSC Code</span>
+                <span class="profile-details-data">{{bankDetail.ifscCode}}</span>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+                <span class="profile-details-labels">MICR No.</span>
+                <span class="profile-details-data">{{bankDetail.micrNo === null ? 'N/A' :bankDetail.micrNo }}</span>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div></div>
+            <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+                <span class="profile-details-labels">Bank Name</span>
+                <span class="profile-details-data">{{bankDetail.bankName}}</span>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3"  *ngIf="this.bankDetail.bankBranch">
+                <span class="profile-details-labels">Location</span>
+                <span class="profile-details-data">{{bankDetail.bankBranch}}</span>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div></div>
+            <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3" *ngIf="this.bankDetail.defaultBankFlag">
+                <span class="profile-details-labels">Default Branch Flag</span>
+                <span class="profile-details-data">{{bankDetail.defaultBankFlag}}</span>
+            </div>
+        </div>
+
+        <!-- <mat-divider class="mat-divider-profile mt-3"></mat-divider> -->
+        <div class="custom-separator">
+            <mat-divider class="mat-divider-separator mt-3"></mat-divider>
+        </div>
+     </div>
+       
+
+    </div>
+
+</div>

@@ -1,0 +1,192 @@
+<mat-card class="mat-card mt-1">
+  <div class="row d-flex align-items-center mx-1">
+    <div class="col-lg-3 col-md-3 search-div mb-2 search-styling">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input
+        class="search-text"
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Search Users by Name"
+      />
+    </div>
+    <div class="col-lg-3 col-md-6 filter-div mb-2 search-styling">
+      <img src="assets/images/filter-icon.svg" />
+      <span class="search-text">Filter</span>
+    </div>
+    <div class="col-lg-8 col-md-3 mb-2">
+      <button
+        class="d-flex align-items-center ms-md-auto ms-2"
+        (click)="addNewClient()"
+        id="submit-button"
+      >
+        Add New Client
+      </button>
+    </div>
+  </div>
+
+  <div class="col-12 new-table-styling mt-1">
+    <div class="overflow-auto">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        (matSortChange)="sortData()"
+        class="w-100"
+      >
+        <!-- PAN Column -->
+        <ng-container matColumnDef="panNo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>PAN</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.panNo }}
+          </td>
+        </ng-container>
+
+        <!-- Client Name Column -->
+        <ng-container matColumnDef="clientName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Client Name</th>
+          <td mat-cell *matCellDef="let element">
+            <a
+              class="highlight-router-link"
+              (click)="
+                clientProfile(element.clientUserId, element.clientCodeBse)
+              "
+              >{{
+                (element.clientFirstName ?? "") +
+                  (element.clientMiddleName ?? "") +
+                  (element.clientLastName ?? "")
+              }}</a
+            >
+          </td>
+        </ng-container>
+
+        <!-- Portfolio Value Column -->
+        <ng-container matColumnDef="portfolioValue">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Portfolio Value(₹)
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.portfolioValue }}
+          </td>
+        </ng-container>
+
+        <!-- Invested Value(₹) Column -->
+        <ng-container matColumnDef="investedValue">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Invested Value(₹)
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.investedValue }}
+          </td>
+        </ng-container>
+
+        <!-- Assigned RM Column -->
+        <ng-container matColumnDef="assignedRM">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Assigned RM</th>
+          <td mat-cell *matCellDef="let element">
+            <span *ngIf="element.assignedRMUserId != null"
+              >{{
+                (element.assignedRMFirstName ?? "") +
+                  (element.assignedRMMiddleName ?? "") +
+                  (element.assignedRMLastName ?? "")
+              }}
+            </span>
+            <span *ngIf="element.assignedRMUserId === null">Not Assigned</span>
+          </td>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" class="user-menu">
+              <button
+                mat-menu-item
+                [ngClass]="{
+                  disabled:
+                    element.clientUCCActivation ||
+                    element.clientUCCActivation === null
+                }"
+                [disabled]="
+                  element.clientUCCActivation ||
+                  element.clientUCCActivation === null
+                "
+                (click)="
+                  acticateUcc(
+                    element.clientUserId,
+                    element.clientFirstName,
+                    element.clientMiddleName,
+                    element.clientLastName
+                  )
+                "
+              >
+                <span class="mat-menu-item-text">Activate UCC</span>
+              </button>
+              <button
+                mat-menu-item
+                (click)="activateNominee(element.clientUserId)"
+                [ngClass]="{ disabled: element.clientUCCActivation === null }"
+                [disabled]="element.clientUCCActivation === null"
+              >
+                <span class="mat-menu-item-text">Activate Nominee</span>
+              </button>
+              <button
+                *ngIf="hasRMFunctionality"
+                mat-menu-item
+                (click)="
+                  assignReassignRm(
+                    element.assignedRMUserId,
+                    element.clientFirstName,
+                    element.clientMiddleName,
+                    element.clientLastName,
+                    element.clientUserId,
+                    element.assignedRMFirstName,
+                    element.assignedRMMiddleName,
+                    element.assignedRMLastName
+                  )
+                "
+              >
+                <span class="mat-menu-item-text">Assign/Reassign RM</span>
+              </button>
+              <button
+                mat-menu-item
+                (click)="deactivateClient(element.clientUserId)"
+              >
+                <span class="mat-menu-item-text">Remove Client</span>
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <!-- No Records Table -->
+      <div
+        *ngIf="!dataSource.data.length || !isTableHasFilteredData"
+        class="no_record center-align"
+      >
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <img src="assets/images/cross-icon.svg" />
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            No records found!
+          </div>
+        </div>
+      </div>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        showFirstLastButtons
+        class="position-fix"
+        aria-label="Select page"
+        [hidePageSize]="dataSource.filteredData.length < 6"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</mat-card>

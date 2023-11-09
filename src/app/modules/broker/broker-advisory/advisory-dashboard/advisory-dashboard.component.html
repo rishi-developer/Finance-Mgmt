@@ -1,0 +1,74 @@
+<div class="advisory-card">
+  <mat-card class="broker-advisory-mat-card">
+    <div class="row">
+      <h2 class="advisory-heading">Advisory</h2>
+    </div>
+    <div class="row">
+      <p class="sub-heading">Select client name for which robo advisory is required along with amount to be invested.
+      </p>
+    </div>
+    <form [formGroup]="modalForm">
+
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+          <p class="input-field-heading">Select the client</p>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-select formControlName="clientId" placeholder="Select the client"
+              (selectionChange)="getClientRiskProfileDetails($event.value)">
+              <mat-option *ngFor="let client of clientsList" [value]="client.userId">
+                {{client.userId }} - {{client.message}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('clientId')?.hasError('required')">
+              Select the client is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+          <p class="input-field-heading">Amount (₹)</p>
+          <mat-form-field class="w-100" appearance="outline">
+            <input class="enable-input-field" min="100000" step="100000" type="number"
+              onkeydown="return event.keyCode !== 69" formControlName="invAmt" placeholder="Enter the Amount" matInput>
+            <mat-error
+              *ngIf="this.modalForm.controls.invAmt.errors!=null && this.modalForm.controls.invAmt.errors.amountValidation">
+              {{this.modalForm.controls.invAmt.errors.requiredValue}}
+            </mat-error>
+          </mat-form-field>
+          <p class="helper-text">(Amount should be greater than or equal to 1 lakh and in multiple of 1 lakh.)</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div *ngIf="this.riskGenerated" class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+          <p class="input-field-heading">Risk Profile</p>
+          <mat-form-field class="w-100" appearance="outline">
+            <input class="disable-input-field" type="text" disabled value={{this.convertedRiskProfile}} matInput />
+          </mat-form-field>
+        </div>
+        <div *ngIf="!this.riskGenerated" class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+          <p class="input-field-heading">Risk Profile</p>
+          <div class="risk-not-generated">
+            <p class="pt-3 disable-input-field no-risk-profile">No risk profile</p>
+          </div>
+          <p class="mat-error-text mt-2">Risk Profile not generated.</p>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="!this.riskGenerated" routerLink="/risk-profile">
+        <p class="generate-profile-text mt-2">Generate Risk Profile</p>
+      </div>
+
+      <div class="form-buttons row mt-4">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <button mat-raised-button *ngIf="this.riskGenerated"
+            [ngClass]="{'disable-proceed-button':this.modalForm.invalid==true ,'enable-proceed-button':this.modalForm.invalid==false}"
+            (click)="onSubmit()">
+            Proceed
+          </button>
+          <button mat-raised-button *ngIf="!this.riskGenerated" class="disable-proceed-button">
+            Proceed
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,20 @@
+.OTP-input-width {
+  width: 44.27px !important;
+  height: 52.73px;
+}
+
+.OTP-inputFileds {
+  display: flex;
+  justify-content: space-around;
+}
+
+.to-new-page-resend {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: #01529e;
+  cursor: pointer;
+  text-decoration: none;
+}

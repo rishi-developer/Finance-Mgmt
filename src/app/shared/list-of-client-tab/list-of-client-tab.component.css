@@ -1,0 +1,76 @@
+.advisory-chip {
+  background: #01529E;
+  border-radius: 24px;
+  font-family: Epilogue;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #FFFFFF;
+  height: 16px;
+  width: 180px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  margin-right: 2rem;
+  margin-bottom: 5px;
+}
+
+.broker-chip {
+  font-family: Epilogue;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 24px;
+  height: 16px;
+  width: 180px;
+  padding-top: 20px;
+  padding-bottom: 28px;
+  margin-bottom: 5px;
+}
+
+
+
+.activebtn {
+  background: #01529E;
+  color: #ffffff;
+}
+
+.nonactivebtn {
+  color: rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+}
+
+.unselectable{
+  color: #7F7F7FE5;
+   cursor: not-allowed;
+}
+
+.client-id {
+  font-family: Epilogue;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  text-decoration-line: underline;
+  cursor: pointer;
+  color: #01529E;
+}
+
+.disable-client-id {
+  font-family: Epilogue;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  text-decoration-line: underline;
+}
+:host ::ng-deep .mobile-select-options .mat-select-value{
+  color: #01529E !important;
+}
+
+
+
+

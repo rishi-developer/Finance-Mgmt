@@ -1,0 +1,19 @@
+.client-id {
+    font-family: Epilogue;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    text-decoration-line: underline;
+    color: #01529E;
+    cursor: pointer;
+}
+
+.adjust-id {
+    padding-left: 1rem;
+}
+
+
+
+
+

@@ -1,0 +1,22 @@
+.content {
+  height: 90vh;
+  max-width: 100%;
+  padding: 20px;
+  margin: 18px auto 0 95px;
+
+}
+
+.dash-screen{
+  margin-top: 3.37rem;
+}
+.overlay{
+  opacity: 0.3;
+}
+
+.sidenav-container{
+  min-height:100vh;
+}
+
+.main-content{
+  padding:1rem;
+}

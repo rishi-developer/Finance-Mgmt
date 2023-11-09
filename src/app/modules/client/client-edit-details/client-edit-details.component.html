@@ -1,0 +1,189 @@
+<mat-card>
+    <!-- <mat-card-title class="mat-card-title">Personal Details</mat-card-title> -->
+    <form [formGroup]="modalForm">
+        <div class="row mt-2">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field">Name</mat-label>
+                    <input class="enable-form-field" type="text" placeholder="Input" 
+                    value="{{data.primaryHolderFirstName}} {{data.primaryHolderMiddleName}} {{data.primaryHolderLastName}}" [disabled]="true"    matInput />
+             
+                </mat-form-field>
+            </div>
+
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field">PAN</mat-label>
+                    <input class="enable-form-field" type="text"  
+                    value="{{data.primaryHolderPAN}}" [disabled]="true"    matInput />
+
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field">Tax Status</mat-label>
+                    <input class="enable-form-field" type="text" 
+                    value="Individual" [disabled]="true" matInput />
+
+                </mat-form-field>
+            </div>
+
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field">DOB</mat-label>
+                    <input class="enable-form-field" type="text" 
+                    value="{{data.primaryHolderDOB}}" [disabled]="true"  matInput />
+
+                </mat-form-field>
+            </div>
+        </div>
+        
+        <div class="row mt-2">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field">Email ID</mat-label>
+                    <input class="enable-form-field" type="text"
+                    value={{data.email}}  [disabled]="true" matInput />
+
+                </mat-form-field>
+            </div>
+
+           
+
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field">Mobile No.</mat-label>
+                    <input class="enable-form-field" type="text" formControlName="mobile" 
+                  matInput />
+                  <mat-error *ngIf="modalForm.get('mobile')?.hasError('required')">
+                   Mobile No. is required
+                  </mat-error>
+                </mat-form-field>
+            </div>
+
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                  <mat-label class="mat-label-field">Mobile Declaration </mat-label>
+                  <mat-select class="enable-form-field" formControlName="filler1MobileDeclarationFlag" placeholder="Select">
+                    <mat-option *ngFor="let mobileDeclaration of mobileDeclarationList"
+                      [value]="mobileDeclaration.declarationFlag">
+                      {{mobileDeclaration.declarationValue}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="modalForm.get('filler1MobileDeclarationFlag')?.hasError('required')">
+                    Mobile Declaration is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                  <mat-label class="mat-label-field">Email Declaration </mat-label>
+                  <mat-select class="enable-form-field" formControlName="filler2EmailDeclarationFlag" placeholder="Select">
+                    <mat-option *ngFor="let mobileDeclaration of mobileDeclarationList"
+                      [value]="mobileDeclaration.declarationFlag">
+                      {{mobileDeclaration.declarationValue}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="modalForm.get('filler2EmailDeclarationFlag')?.hasError('required')">
+                    Email Declaration is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+        </div>
+
+
+        <div class="row mt-2">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+                <mat-label class="mat-label-field">Occupation </mat-label>
+                <mat-select class="enable-form-field" formControlName="occupationCode" placeholder="Select">
+                  <mat-option *ngFor="let  occupation of occupationCodeList" [value]="occupation.occupationCode">
+                    {{occupation.occupation}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="modalForm.get('occupationCode')?.hasError('required')">
+                  Email Declaration is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                  <mat-label class="mat-label-field">Client Code </mat-label>
+                  <input class="enable-form-field" #textInput (input)="onClientCodeChange(textInput.value)" type="text" formControlName="clientCode"   matInput />
+                </mat-form-field>
+              </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field">Address Line 1:</mat-label>
+                    <input class="enable-form-field" type="text" formControlName="address1"
+                  matInput />
+                  <mat-error *ngIf="modalForm.get('address1')?.hasError('required')">
+                    Address Line 1 is required
+                  </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field">Address Line 2:</mat-label>
+                    <input class="enable-form-field" type="text" formControlName="address2"
+                  matInput />
+                  <mat-error *ngIf="modalForm.get('address2')?.hasError('required')">
+                    Address Line 2 is required
+                  </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field">Address Line 3:</mat-label>
+                    <input class="enable-form-field" type="text" formControlName="address3"
+                  matInput />
+                  <mat-error *ngIf="modalForm.get('address3')?.hasError('required')">
+                    Address Line 3 is required
+                  </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field">Pin Code</mat-label>
+                    <input class="enable-form-field" type="text" formControlName="pincode"
+                  matInput />
+                  <mat-error *ngIf="modalForm.get('pincode')?.hasError('required')">
+                    Pin Code is required
+                  </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field">City</mat-label>
+                    <input class="enable-form-field" type="text" formControlName="city"
+                  matInput />
+                  <mat-error *ngIf="modalForm.get('city')?.hasError('required')">
+                    City is required
+                  </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="mt-3">
+        <button  matTooltip={{buttonHoverText}} (click)="submit()" id="submit-button">Update</button>
+        </div>
+    </form>
+</mat-card>

@@ -1,0 +1,26 @@
+<div class="clovek-font container-fluid mt-1">
+  <div class="display-flex-sb">
+    <div class="font-32 heading mb-1">
+      <b>Overview</b>
+    </div>
+    <div>
+    </div>
+  </div>
+
+  <div class="mat-tab-styling mt-4">
+    <mat-tab-group mat-align-tabs="left" animationDuration="0ms" class="demo-tab-group">
+      <mat-tab label="List Of Brokers">
+        <ng-template matTabContent>
+          <app-list-of-brokers-tab [category]=roleType></app-list-of-brokers-tab>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="List Of Clients">
+        <ng-template matTabContent>
+          <app-list-of-client-tab [category]=roleType></app-list-of-client-tab>
+        </ng-template>
+      </mat-tab>
+
+
+    </mat-tab-group>
+  </div>
+</div>

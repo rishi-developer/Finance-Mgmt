@@ -1,0 +1,246 @@
+<mat-card class="onboarding-card">
+  <mat-horizontal-stepper linear #stepper labelPosition="bottom">
+    <mat-step [stepControl]="firstFormGroup">
+      <form class="firstStepperForm mt-2" [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Platform Usage</ng-template>
+        <div class="row">
+          <mat-card-title class="mat-card-title">Platform usage</mat-card-title>
+          <mat-card-subtitle class="mat-card-subtitle"
+            >Before getting started on this application, please provide your
+            consent for the below required fields in order to
+            proceed.</mat-card-subtitle
+          >
+          <mat-checkbox
+            color="primary"
+            class="checkbox mt-3"
+            formControlName="checkbox1"
+            >I have read the
+            <span class="terms-conditions">Terms and Conditions</span> and agree
+            to adhere to it. <span class="asterisk-color">*</span></mat-checkbox
+          >
+          <mat-checkbox
+            color="primary"
+            class="checkbox mt-3"
+            formControlName="checkbox2"
+            >The information provided in the form is true to best of my
+            knowledge. <span class="asterisk-color">*</span></mat-checkbox
+          >
+          <mat-checkbox
+            color="primary"
+            class="checkbox mt-3"
+            formControlName="checkbox3"
+            >Allow Gemfin to store credentials to initiate transactions on BSE
+            Star.
+          </mat-checkbox>
+
+          <mat-error
+            class="ms-4"
+            style="color: #4d4d4d"
+            *ngIf="!firstFormGroup.value.checkbox3"
+          >
+            If not provided, transactions can't be done on Gemfin.
+          </mat-error>
+          <div class="d-flex">
+            <button
+              mat-button
+              class="mt-5"
+              id="submit-button"
+              (click)="firstStepSubmit()"
+              matStepperNext
+            >
+              Proceed
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup">
+      <form
+        class="firstStepperForm"
+        [formGroup]="secondFormGroup"
+        *ngIf="message !== 'success'"
+      >
+        <ng-template matStepLabel>Broker Details</ng-template>
+        <div class="row">
+          <mat-card-title class="mat-card-title">Broker Details</mat-card-title>
+          <mat-card-subtitle class="mat-card-subtitle"
+            >Provide the below required details which are required to initiate
+            actions through the platform.</mat-card-subtitle
+          >
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >ARN <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-icon matPrefix class="form-field-image">
+                <img src="assets/images/userId.svg" />
+              </mat-icon>
+              <input
+                class="enable-form-field"
+                type="text"
+                formControlName="arn"
+                matInput
+                placeholder="Input"
+              />
+              <mat-error
+                *ngIf="secondFormGroup.get('arn')?.hasError('required')"
+              >
+                ARN is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >EUIN <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-icon matPrefix class="form-field-image">
+                <img src="assets/images/userId.svg" />
+              </mat-icon>
+              <input
+                class="enable-form-field"
+                type="text"
+                formControlName="euin"
+                matInput
+                placeholder="Input"
+                maxLength="7"
+              />
+              <mat-error
+                *ngIf="secondFormGroup.get('euin')?.hasError('required')"
+              >
+                EUIN is required
+              </mat-error>
+              <mat-error
+                *ngIf="secondFormGroup.get('euin')?.hasError('pattern')"
+              >
+                Invalid pattern : Starts with 'E' followed by 6 numbers
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div *ngIf="firstFormGroup.value.checkbox3">
+          <div class="row mt-4">
+            <mat-card-title class="mat-card-title"
+              >BSE Star Credentials</mat-card-title
+            >
+            <mat-card-subtitle class="mat-card-subtitle"
+              >Provide your BSE credentials, in order to initiate transactions
+              on behalf of your clients, which will be stored securely on our
+              platform.
+            </mat-card-subtitle>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+              <mat-form-field appearance="outline">
+                <mat-label class="mat-label-field"
+                  >User ID (for BSE Star)
+                  <span class="asterisk-color">*</span></mat-label
+                >
+                <mat-icon matPrefix class="form-field-image">
+                  <img src="assets/images/userId.svg" />
+                </mat-icon>
+                <input
+                  class="enable-form-field"
+                  type="text"
+                  formControlName="bseUserId"
+                  matInput
+                  placeholder="Input"
+                />
+                <mat-error
+                  *ngIf="secondFormGroup.get('bseUserId')?.hasError('required')"
+                >
+                  User ID is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+              <mat-form-field appearance="outline">
+                <mat-label class="mat-label-field"
+                  >Member ID (for BSE Star)
+                  <span class="asterisk-color">*</span></mat-label
+                >
+                <mat-icon matPrefix class="form-field-image">
+                  <img matPrefix src="assets/images/userId.svg" />
+                </mat-icon>
+                <input
+                  class="enable-form-field"
+                  type="text"
+                  formControlName="bseMemberId"
+                  matInput
+                  placeholder="Input"
+                />
+                <mat-error
+                  *ngIf="
+                    secondFormGroup.get('bseMemberId')?.hasError('required')
+                  "
+                >
+                  Member ID is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+              <mat-form-field appearance="outline">
+                <mat-label class="mat-label-field"
+                  >Password (for BSE Star)
+                  <span class="asterisk-color">*</span></mat-label
+                >
+                <mat-icon matPrefix class="form-field-image">
+                  <img matPrefix src="assets/images/password.svg" />
+                </mat-icon>
+                <input
+                  class="enable-form-field"
+                  type="text"
+                  formControlName="bsePwd"
+                  matInput
+                  placeholder="Input"
+                />
+                <mat-error
+                  *ngIf="secondFormGroup.get('bsePwd')?.hasError('required')"
+                >
+                  Password is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex">
+          <button mat-button id="discard-button" matStepperPrevious>
+            Back
+          </button>
+          <button
+            mat-button
+            id="submit-button"
+            (click)="secondStepSubmit()"
+            matStepperNext
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+
+      <div class="row confirmation-div" *ngIf="message === 'success'">
+        <img class="success-img" src="assets/images/trans_success.svg" />
+        <mat-card-title class="mt-4 mat-card-title account-created-text"
+          >Account Created Successfuly</mat-card-title
+        >
+        <mat-card-subtitle class="mat-card-subtitle"
+          >Account has been created according to the information provided, Click
+          on proceed to home.</mat-card-subtitle
+        >
+        <div class="center-align">
+          <button
+            class="mt-4"
+            mat-button
+            id="submit-button"
+            (click)="redirectTo()"
+          >
+            Proceed to home
+          </button>
+        </div>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-card>

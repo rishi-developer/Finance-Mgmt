@@ -1,0 +1,24 @@
+.sub-heading {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+}
+
+.container {
+    padding-left: 3rem;
+    max-height: 50vh;
+}
+
+.mat-divider{
+    margin-left: -55%;   
+}
+
+.custom-separator ::ng-deep .mat-divider-separator{
+    display: flex;
+    justify-content: center;
+    margin-right: 36px;
+    margin-left: 0;
+    border: 1px dashed #D9D9D9 !important;
+}

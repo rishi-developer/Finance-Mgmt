@@ -1,0 +1,46 @@
+<div *ngIf="this.mobile==false" class="clovek-font container-fluid mt-1">
+
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 ">
+        <b class="heading font-32">List of Clients</b>
+      </div>
+    </div>
+    <div class="mat-tab-styling mt-4">
+        <mat-tab-group mat-align-tabs="left" animationDuration="0ms" class="demo-tab-group">
+                <mat-tab label="Advisory Client">
+                        <ng-template matTabContent>
+                                <app-advisory-client-list></app-advisory-client-list>
+                        </ng-template>
+                </mat-tab>
+
+                <mat-tab label="Broker Client" class="mat-tab-2">
+                        <ng-template matTabContent>
+                                <app-broker-client-list></app-broker-client-list>
+                        </ng-template>
+                </mat-tab>
+        </mat-tab-group>
+</div>
+</div>
+
+<!-- Mobile view -->
+
+<div *ngIf="this.mobile">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+      <h2 class="mobile-heading">List of Client</h2>
+    </div>
+    <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+      <mat-select class="mobile-select-options search-filter" [(ngModel)]="selectedClientType">
+        <mat-option *ngFor="let client of clientTypes" [value]="client">
+           {{client}}
+         </mat-option>
+       </mat-select>
+    </div>
+  </div>
+  <div class="row" *ngIf="selectedClientType=='Advisory Client'">
+    <app-advisory-client-list [selectedClientType]="selectedClientType"></app-advisory-client-list>
+  </div>
+  <div class="row" *ngIf="selectedClientType=='Broker Client'">
+    <app-broker-client-list [selectedClientType]="selectedClientType"></app-broker-client-list>
+  </div>
+</div>

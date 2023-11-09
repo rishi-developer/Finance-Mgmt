@@ -1,0 +1,46 @@
+<div class="update-password-close-icon">
+  <mat-icon>
+    <img src="../../../../assets/images/client-removal.svg" />
+  </mat-icon>
+</div>
+<div class="update-password">
+  <div class="text-center mt-3">
+    <p class="login-heading">Client Removal !!</p>
+  </div>
+  <div class="text-center">
+    <p>
+      Are you sure you want to remove this client, this client have an active
+      profile ?
+    </p>
+  </div>
+
+  <div class="mt-4">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group auth-form-group mb-0 mt-2">
+        <mat-form-field appearance="outline" class="comments-section">
+          <mat-label class="mat-label-field"
+            >Add Comments <span class="asterisk-color">*</span></mat-label
+          >
+          <input
+            class="enable-form-field"
+            type="text"
+            placeholder="Input"
+            formControlName="textArea"
+            matInput
+          />
+          <mat-error *ngIf="form.get('textArea')?.hasError('required')"
+            >Comments is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="confirm-reject">
+        <button id="discard-button" class="action-button" (click)="goBack()">
+          No
+        </button>
+        <button id="submit-button" class="action-button" type="submit">
+          Yes
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

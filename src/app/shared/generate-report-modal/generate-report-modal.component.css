@@ -1,0 +1,36 @@
+.heading {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 150%;
+}
+
+.close-icon {
+  float: right;
+  cursor: pointer;
+}
+
+.form-containers {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 2.5rem;
+  padding-left: 2.5rem;
+}
+
+.date-icon {
+  margin-bottom: 1rem;
+}
+
+:host ::ng-deep .mat-select-arrow {
+  opacity: 0;
+}
+
+::ng-deep.mat-button-focus-overlay {
+  background-color: transparent !important;
+}
+
+::ng-deep .modal-styling .mat-dialog-container {
+  background: #FFFFFF;
+  border-radius: 8px;
+}

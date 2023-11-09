@@ -1,0 +1,51 @@
+<div class="row">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item non-active-breadcrumb"><a (click)="backRoute()">Home</a></li>
+      <li class="breadcrumb-item active-breadcrumb" aria-current="page">Reports</li>
+    </ol>
+  </nav>
+</div>
+
+<mat-card class="report-dashboard">
+  <h3>Select Report</h3>
+  <div class="test">
+    <ng-container *ngFor="let reportData of reportsName;let i =index">
+      <mat-card
+      class="report-data"
+      (click)="reportSelected(reportData.title);setSelectedReport(i)"
+      [class.active] = "selectedCardIndex === i"
+    >
+      <mat-card-header>
+        <mat-card-title-group>
+          <img src="{{ reportData.imgName }}" alt="" />
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ reportData.title }}</p>
+      </mat-card-content>
+    </mat-card>
+    </ng-container>
+
+  </div>
+  <div class="d-flex">
+      <p class="mt-5"><span> Report Type</span></p>
+    <mat-radio-group [(ngModel)]="reportType" (change)="reportTypeValue()">
+      <div class="d-flex">
+        <ng-container
+          *ngIf="reportsTitle !== reportsName[2].title; else transactionOption"
+        >
+          <div class="mx-4 mt-5" *ngFor="let rt of reportTypes">
+            <mat-radio-button [value]="rt">{{ rt }}</mat-radio-button>
+          </div>
+        </ng-container>
+        <ng-template #transactionOption>
+          <mat-radio-button class="mx-4 mt-5" [value]="reportTypes[0]">{{
+            reportTypes[0]
+          }}</mat-radio-button>
+        </ng-template>
+      </div>
+    </mat-radio-group>
+  </div>
+  <router-outlet></router-outlet>
+</mat-card>

@@ -1,0 +1,51 @@
+.heading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 33px;
+  color: #000000;
+}
+
+.plus-icon{
+    margin-bottom: 10px;
+    margin-right: 10px;
+    font-size: 30px;
+}
+
+
+.mat-tab-styling ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar{
+    height: 4px;
+    background-color: #01529E;
+}
+
+.mat-tab-styling ::ng-deep .mat-tab-list .mat-tab-label{
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #414141;
+
+}
+
+.mat-tab-styling ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active{
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
+  color: #01529E;
+}
+
+.mat-tab-styling ::ng-deep .mat-tab-body-wrapper{
+    margin-top: 23px;
+}
+
+::ng-deep .mat-tab-body-content{
+  overflow-x:hidden !important;
+}
+
+::ng-deep.mat-tab-label-active{
+    opacity: 1.0!important;
+}

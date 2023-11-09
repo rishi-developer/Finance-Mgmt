@@ -1,0 +1,62 @@
+.button-div {
+  display: flex;
+  justify-content: center;
+}
+
+.disclaimer-text {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #4D4D4D;
+}
+
+.disclaimer-heading {
+  font-weight: 600;
+}
+
+.header-styling {
+  text-align: center;
+}
+
+.prefilled-ucc-text {
+  margin: 0px;
+  font-weight: 600;
+}
+
+.document-link{
+  color:#01529E;
+  cursor:pointer;
+  text-decoration: none;
+}
+
+.close-div{
+  float:right;
+}
+
+::ng-deep .modal-styling .mat-dialog-container {
+  background: #FFFFFF;
+  border-radius: 16px;
+}
+
+#fileUpload {
+  display: none;
+}
+
+.upload-styling{
+  cursor:pointer
+}
+
+.table-data {
+  height:75px;
+}
+
+.document-type{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #4D4D4D;
+}

@@ -1,0 +1,53 @@
+<div class="clovek-font container-fluid mt-1">
+    <mat-card class="report-mat-card mt-2">
+
+        <div class="heading-container">
+            <div class="risk-profile-result-score">
+                Your Risk Profile is <b>{{ profilescore}}</b>
+
+            </div>
+
+            <div class="button-styling-riskprofile-result">
+                <button type="button" class="viewIPD" (click)="viewIPD()"
+                [ngClass]="{
+                    enableViewIPD: disableViewButton,
+                    disableViewIPD: !disableViewButton
+                }"
+                >View
+                    IPD</button>
+                <button type="button" class="uploadIPD" (click)="uploadIPD()">Upload IPD</button>
+
+                <!-- <button mat-button class="discard-button-IPD mat-raised-button " (click)="viewIPD()" [disabled]="!disableViewButton">View IPD</button>
+                <button mat-button  class="discard-button-IPD mat-raised-button" (click)="uploadIPD()">Upload IPD</button> -->
+            </div>
+        </div>
+
+
+        <div class="divider mt-4 mb-4">
+            <!-- <mat-divider></mat-divider> -->
+        </div>
+
+
+
+        <div *ngIf="profilescore=='AGGRESSIVE'"
+            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center ml-1 mt-4 image-center">
+            <img src="../../../assets/images/aggressive.svg" class="responsive">
+        </div>
+
+        <div *ngIf="profilescore=='MODERATE'"
+            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center ml-1 mt-4 image-center">
+            <img src="../../../assets/images/risk-profile-moderate.png" class="responsive">
+        </div>
+
+        <div *ngIf="profilescore=='CONSERVATIVE'"
+            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center ml-1 mt-4 image-center">
+            <img src="../../../assets/images/risk-profile-conservative.png" class="responsive">
+        </div>
+        <div class="button-allingment">
+            <button mat-button class="viewIPD" (click)="backtoRiskprofile()">Update</button>
+            <!-- <button id="submit-button">Share Result</button> -->
+
+        </div>
+
+    </mat-card>
+</div>

@@ -1,0 +1,304 @@
+<mat-nav-list (click)="showSubmenu = !showSubmenu">
+  <div class="mt-3 mb-5">
+    <img
+      src="../../assets/images/gemfin-logo.svg"
+      *ngIf="isExpanded"
+      alt=""
+      class="sidebar-clovek-logo"
+    />
+    <img
+      src="../../assets/images/gemfin-icon.svg"
+      alt=""
+      *ngIf="!isExpanded"
+      class="sidebar-clovek-logo"
+    />
+  </div>
+
+  <div>
+    <a
+      *ngIf="role === 'ADMIN'"
+      mat-list-item
+      routerLink="/product-admin"
+      routerLinkActive="active-list-item"
+      class="navbar-menu"
+    >
+      <span class="sidebar-active-item" *ngIf="isExpanded"></span>
+      <img
+        src="../../assets/images/home-icon-2.svg"
+        alt=""
+        class="sidebar-icons"
+      />
+      <span class="sidebar-list-item-text" *ngIf="isExpanded">Home</span>
+    </a>
+
+    <a
+      *ngIf="role === 'BROKER ADMIN'"
+      mat-list-item
+      routerLink="/broker"
+      routerLinkActive="active-list-item"
+    >
+      <span class="sidebar-active-item" *ngIf="isExpanded"></span>
+      <img
+        src="../../assets/images/home-icon-2.svg"
+        alt=""
+        class="sidebar-icons"
+      />
+      <span class="sidebar-list-item-text" *ngIf="isExpanded">Home</span>
+    </a>
+
+    <a
+      *ngIf="role === 'RELATIONSHIP MANAGER'"
+      mat-list-item
+      routerLink="/relationshipManager"
+      routerLinkActive="active-list-item"
+    >
+      <span class="sidebar-active-item" *ngIf="isExpanded"></span>
+      <img
+        src="../../assets/images/home-icon-2.svg"
+        alt=""
+        class="sidebar-icons"
+      />
+      <span class="sidebar-list-item-text" *ngIf="isExpanded">Home</span>
+    </a>
+
+    <!-- <a *ngIf="role === 'CLIENT'" mat-list-item routerLink="/client" routerLinkActive="active-list-item">
+      <span class="sidebar-active-item" *ngIf="isExpanded"></span>
+      <img src="../../assets/images/home-icon-2.svg" alt="" class="sidebar-icons" />
+      <span class="sidebar-list-item-text" *ngIf="isExpanded">Home</span>
+    </a> -->
+    <a
+      *ngIf="role === 'CLIENT'"
+      mat-list-item
+      routerLink="/client/profile"
+      routerLinkActive="active-list-item"
+    >
+      <span class="sidebar-active-item" *ngIf="isExpanded"></span>
+      <img
+        src="../../assets/images/home-icon-2.svg"
+        alt=""
+        class="sidebar-icons"
+      />
+      <span class="sidebar-list-item-text" *ngIf="isExpanded">Profile</span>
+    </a>
+    <a
+      *ngIf="role === 'CLIENT'"
+      mat-list-item
+      routerLink="/client/holdings"
+      routerLinkActive="active-list-item"
+    >
+      <span class="sidebar-active-item" *ngIf="isExpanded"></span>
+      <img
+        src="../../assets/images/home-icon-2.svg"
+        alt=""
+        class="sidebar-icons"
+      />
+      <span class="sidebar-list-item-text" *ngIf="isExpanded">Holdings</span>
+    </a>
+    <a
+      *ngIf="role === 'CLIENT'"
+      mat-list-item
+      routerLink="/client/transactions"
+      routerLinkActive="active-list-item"
+    >
+      <span class="sidebar-active-item" *ngIf="isExpanded"></span>
+      <img
+        src="../../assets/images/home-icon-2.svg"
+        alt=""
+        class="sidebar-icons"
+      />
+      <span class="sidebar-list-item-text" *ngIf="isExpanded"
+        >Transactions</span
+      >
+    </a>
+    <a
+      *ngIf="
+        role === 'CLIENT' && profileScore === 'Risk Profile Not Generated.'
+      "
+      mat-list-item
+      routerLink="/client/riskprofile"
+      routerLinkActive="active-list-item"
+    >
+      <span class="sidebar-active-item" *ngIf="isExpanded"></span>
+      <img
+        src="../../assets/images/home-icon-2.svg"
+        alt=""
+        class="sidebar-icons"
+      />
+      <span class="sidebar-list-item-text" *ngIf="isExpanded"
+        >Risk Profile</span
+      >
+    </a>
+    <a
+      *ngIf="
+        role === 'CLIENT' && profileScore !== 'Risk Profile Not Generated.'
+      "
+      mat-list-item
+      routerLink="/client/riskprofileresult"
+      routerLinkActive="active-list-item"
+    >
+      <span class="sidebar-active-item" *ngIf="isExpanded"></span>
+      <img
+        src="../../assets/images/home-icon-2.svg"
+        alt=""
+        class="sidebar-icons"
+      />
+      <span class="sidebar-list-item-text" *ngIf="isExpanded"
+        >Risk Profile</span
+      >
+    </a>
+
+    <mat-accordion
+      class="example-headers-align"
+      multi
+      *ngIf="
+        role === 'BROKER ADMIN' || role === 'RELATIONSHIP MANAGER'
+      "
+    >
+      <mat-expansion-panel
+        class="sidebar-mat-expansion-panel"
+        [expanded]="state === 0"
+        (opened)="setOpenState(0)"
+      >
+        <mat-expansion-panel-header class="sidebar-mat-expansion-panel-header">
+          <mat-panel-title>
+            <img
+              src="../../assets/images/onboarding-icon.svg"
+              alt=""
+              class="sidebar-icons"
+            />
+            <span class="mt-1 sidebar-list-item-text">Onboarding</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="row mat-expansion-panel-list">
+          <p
+            *ngIf="role === 'BROKER ADMIN'"
+            [ngClass]="{
+              'active-list-item transaction-text':
+                isActive &&
+                selectedModal === 'Send Email Invitation Broker Admin'
+            }"
+            (click)="addRM('Send Email Invitation Broker Admin')"
+          >
+            New Broker Admin
+          </p>
+          <p
+            class="mat-expansion-new-client"
+            routerLink="/client/client-onboarding"
+            routerLinkActive="active-list-item transaction-text"
+          >
+            New Client
+          </p>
+          <p
+            *ngIf="hasRMFunctionality"
+            (click)="addRM('Send Email Invitation')"
+            [ngClass]="{
+              'active-list-item transaction-text':
+                isActive && selectedModal === 'Send Email Invitation'
+            }"
+          >
+            New RM
+          </p>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel
+        class="sidebar-mat-expansion-panel"
+        [expanded]="state === 1"
+        (opened)="setOpenState(1)"
+      >
+        <mat-expansion-panel-header class="sidebar-mat-expansion-panel-header">
+          <mat-panel-title>
+            <img
+              src="../../assets/images/transactions-icon-2.svg"
+              alt=""
+              class="sidebar-icons"
+            />
+            <span class="mt-1 sidebar-list-item-text">Transactions</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <!-- <div class="row mat-expansion-panel-list" (click)="transactionRouting()"> -->
+        <div class="row mat-expansion-panel-list">
+          <p
+            [routerLink]="['/fresh/transaction', 'Purchase']"
+            class="transaction-text"
+            routerLinkActive="active-list-item"
+          >
+            Purchase
+          </p>
+          <p
+            [routerLink]="['/fresh/transaction', 'SIP']"
+            class="transaction-text"
+            routerLinkActive="active-list-item"
+          >
+            SIP
+          </p>
+          <p
+            [routerLink]="['/fresh/transaction/STP-SWP', 'STP']"
+            class="transaction-text"
+            routerLinkActive="active-list-item"
+          >
+            STP
+          </p>
+          <p
+            [routerLink]="['/fresh/transaction/STP-SWP', 'SWP']"
+            class="transaction-text"
+            routerLinkActive="active-list-item"
+          >
+            SWP
+          </p>
+          <p
+            [routerLink]="['/fresh/transaction/STP-SWP', 'Switch out']"
+            class="transaction-text"
+            routerLinkActive="active-list-item"
+          >
+            Switch Out
+          </p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <a
+      *ngIf="
+        role === 'BROKER ADMIN' || role === 'RELATIONSHIP MANAGER'
+      "
+      mat-list-item
+      routerLink="/reports/portfolio-valuation-report"
+      [queryParams]="{ reportType: 'portfolio' }"
+      routerLinkActive="active-list-item"
+    >
+      <span class="sidebar-active-item" *ngIf="isExpanded"></span>
+      <img
+        src="../../assets/images/report-black-icon.svg"
+        alt=""
+        class="sidebar-icons"
+      />
+      <span class="sidebar-list-item-text" *ngIf="isExpanded">Reports</span>
+    </a>
+    <a
+      *ngIf="
+        role === 'BROKER ADMIN' || role === 'RELATIONSHIP MANAGER'
+      "
+      mat-list-item
+      routerLink="/mandate"
+      routerLinkActive="active-list-item"
+    >
+      <span class="sidebar-active-item" *ngIf="isExpanded"></span>
+      <img
+        src="../../assets/images/robo-advisory-icon-2.svg"
+        alt=""
+        class="sidebar-icons"
+      />
+      <span class="sidebar-list-item-text" *ngIf="isExpanded">Mandate</span>
+    </a>
+    <!-- <a mat-list-item routerLink="/risk-profile" routerLinkActive="active-list-item" *ngIf="role==='BROKER ADMIN'">
+      <img src="../../assets/images/risk-profile.svg" alt="" class="sidebar-icons" />
+      <span class="sidebar-list-item-text" *ngIf="isExpanded">Risk Profile</span>
+    </a> -->
+  </div>
+</mat-nav-list>
+
+<!-- <a mat-list-item routerLink="/advisory" routerLinkActive="active-list-item" (click)="selectedTab()"
+      *ngIf="role==='Broker'">
+      <img src="../../assets/images/robo-advisory-icon.svg" alt="" class="sidebar-icons" />
+      <span class="sidebar-list-item-text">Advisory</span>
+    </a> -->

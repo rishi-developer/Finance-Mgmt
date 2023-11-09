@@ -1,0 +1,28 @@
+:host .mat-form-field {
+  width: 80% !important;
+}
+
+.mat-option {
+  white-space: normal;
+  line-height: normal !important;
+}
+
+.rotate-icon{
+  transform: rotate(90deg);
+  margin-right:11px;
+}
+
+.cancel-button{
+  float:right;
+  cursor:pointer;
+}
+
+::ng-deep .mat-horizontal-stepper-header{
+  pointer-events: none !important;
+}
+
+.long-button-text{
+  width: 134px;
+  white-space: normal;
+  line-height: 1.2rem;
+}

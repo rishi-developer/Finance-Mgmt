@@ -1,0 +1,34 @@
+.adjust-size {
+    padding-right: 3rem;
+}
+
+.adjust-name {
+    padding-right: 5rem;
+}
+
+.client-id {
+    font-family: Epilogue;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    text-decoration-line: underline;
+    color: #01529E;
+    cursor: pointer;
+}
+
+.adjust-id {
+    padding-left: 1rem;
+}
+
+.no_record{
+    height: 300px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+
+    color: #C4C4C4;
+      }

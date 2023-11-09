@@ -1,0 +1,291 @@
+<div class="clovek-font container-fluid mt-1">
+  <mat-card class="report-mat-card mt-4">
+
+    <form [formGroup]="modalForm" *ngIf="this.viewForm">
+
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+          <img class="sub-heading-img" src="../../../../../assets/images/new-transactions.svg">
+          <span class="sub-heading-text-transactions">Transaction Details</span>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Mode of Action</mat-label>
+            <input class="disable-input-field" matInput disabled value={{this.modeOfAction}}>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">KYC Status</mat-label>
+            <input class="disable-input-field" matInput disabled value={{this.viewDetail.kycStatus}}>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mb-4 mt-2">
+        <mat-divider class="divider"></mat-divider>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+          <img class="sub-heading-img" src="../../../../../assets/images/user-transactions.svg">
+          <span class="sub-heading-text-transactions">Client Details</span>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Client Pan/Name</mat-label>
+            <input class="disable-input-field" matInput disabled value={{this.viewDetail.combinedclientDetails}}>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Email ID</mat-label>
+            <input class="disable-input-field" matInput disabled value={{this.viewDetail.emailId}}>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Mobile No.</mat-label>
+            <input class="disable-input-field" matInput disabled value={{this.viewDetail.phoneNo}}>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mb-4 mt-2">
+        <mat-divider class="divider"></mat-divider>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+          <img class="sub-heading-img" src="../../../../../assets/images/new-bank-icon.svg">
+          <span class="sub-heading-text-transactions">Fund Details</span>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Folio No.</mat-label>
+            <input class="disable-input-field" matInput disabled value={{this.folioNumber}}>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Fund Name</mat-label>
+            <input class="disable-input-field" matInput disabled value={{selectedFundDetails}}>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction=='Purchase'" >
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Type of Transaction</mat-label>
+            <input class="disable-input-field" matInput disabled value="Additional">
+          </mat-form-field>
+        </div>
+        <!-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+          <p class="input-field-heading">EUIN Declaration<span class="asterisk-color">*</span></p>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-select formControlName="EUINval" (selectionChange)="setValidation()" placeholder="Select">
+              <mat-option *ngFor="let declarationOptions of euinDeclarationOptions" [value]="declarationOptions">
+                {{declarationOptions }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('EUINval')?.hasError('required')">
+              EUIN Declaration is required
+            </mat-error>
+          </mat-form-field>
+        </div> -->
+
+        <!-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+          <p class="input-field-heading"
+            *ngIf="this.modalForm.value.EUINval=='Yes' || this.modalForm.value.EUINval=='' || this.modalForm.value.EUINval=='Y'">
+            EUIN<span class="asterisk-color">*</span></p>
+          <p class="input-field-heading"
+            *ngIf="this.modalForm.value.EUINval=='No' || this.modalForm.value.EUINval=='N'">EUIN</p>
+          <mat-form-field class="w-100" appearance="outline">
+            <input class="enable-input-fields " type="text" placeholder="EUIN" formControlName="EUIN" matInput />
+            <mat-error *ngIf="modalForm.get('EUIN')?.hasError('required')">
+              EUIN is required
+            </mat-error>
+          </mat-form-field>
+        </div> -->
+
+        <!-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+          <p class="input-field-heading">EUIN<span class="asterisk-color">*</span></p>
+          <mat-form-field class="w-100" appearance="outline">
+            <input class="enable-input-fields " type="text" placeholder="EUIN" formControlName="EUIN" matInput />
+            <mat-error *ngIf="modalForm.get('EUIN')?.hasError('required')">
+              EUIN is required
+            </mat-error>
+          </mat-form-field>
+        </div> -->
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction=='Redemption'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Bank Account No.</mat-label>
+            <mat-select class="enable-input-fields" formControlName="accountNo"  [(ngModel)]="defaultBankAccount" placeholder="Account Number">
+              <mat-option *ngFor="let accounNoOptions of accounNoList" [value]="accounNoOptions.accountNo">
+                {{accounNoOptions.accountNo}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('accountNo')?.hasError('required')">
+              Account Number is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.role!='RELATIONSHIP MANAGER'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">EUIN<span class="asterisk-color">*</span></mat-label>
+            <mat-select class="enable-input-fields" formControlName="EUIN" placeholder="Select">
+           <mat-option *ngFor="let euin of euinList index as i" [value]="euin">
+            {{euin}}
+         </mat-option>
+          </mat-select>
+            <mat-error *ngIf="modalForm.get('EUIN')?.hasError('required')">
+              EUIN is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.role=='RELATIONSHIP MANAGER'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">EUIN</mat-label>
+            <input class="disable-input-field" matInput disabled value={{this.euinNumber}}>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Mode of Transaction</mat-label>
+            <input class="disable-input-field" matInput disabled value="Physical">
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction=='Redemption'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Action<span class="asterisk-color">*</span></mat-label>
+            <mat-select formControlName="selectedAction" (selectionChange)="setValidation()" placeholder="Select">
+              <mat-option *ngFor="let actions of actionOptions" [value]="actions">
+                {{actions }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('selectedAction')?.hasError('required')">
+              Action is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3"
+          *ngIf="this.modalForm.value.selectedAction=='Amount (₹)' && this.modeOfAction=='Redemption'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Amount (₹)<span class="asterisk-color">*</span></mat-label>
+            <input class="enable-input-fields" type="number" formControlName="orderVal" min="0"
+              placeholder="Enter Amount" matInput>
+            <mat-error *ngIf="modalForm.get('orderVal')?.hasError('required')">
+              Amount is required
+            </mat-error>
+            <mat-error *ngIf="modalForm.get('orderVal')?.hasError('min')">
+              Amount should not be less than 1
+            </mat-error>
+          </mat-form-field>
+          <!-- <p class="converted-value">Unit:</p> -->
+          <p class="helper-text-transaction">Total Amount ₹ {{this.clientBalanceAmount}}</p>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3"
+          *ngIf="this.modalForm.value.selectedAction=='No. of Units' && this.modeOfAction=='Redemption'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Units<span class="asterisk-color">*</span></mat-label>
+            <input class="enable-input-fields" type="number" formControlName="qty" min="0" placeholder="Enter Unit"
+              matInput>
+            <mat-error *ngIf="modalForm.get('qty')?.hasError('required')">
+              Unit is required
+            </mat-error>
+            <mat-error *ngIf="modalForm.get('qty')?.hasError('min')">
+              Unit should not be less than 1
+            </mat-error>
+          </mat-form-field>
+
+          <p class="helper-text-transaction">Total Units {{this.clientBalanceUnits}}</p>
+        </div>
+
+        <!-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction=='Redemption'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Minimum Redeem<span class="asterisk-color">*</span></mat-label>
+            <mat-select class="enable-input-fields" formControlName="minRedeem" placeholder="Select">
+              <mat-option *ngFor="let redeemOptions of euinDeclarationOptions" [value]="redeemOptions">
+                {{redeemOptions }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('minRedeem')?.hasError('required')">
+              Minimum Redeem is required
+            </mat-error>
+          </mat-form-field>
+        </div> -->
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction=='Purchase'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Action</mat-label>
+            <input class="disable-input-field" matInput disabled value="Amount (₹)">
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction=='Purchase'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Amount (₹)<span class="asterisk-color">*</span></mat-label>
+            <input class="enable-input-fields" type="number" formControlName="orderVal" min="0"
+              placeholder="Enter Amount" matInput>
+            <mat-error *ngIf="modalForm.get('orderVal')?.hasError('required')">
+              Amount is required
+            </mat-error>
+            <mat-error *ngIf="modalForm.get('orderVal')?.hasError('min')">
+              Amount should not be less than 1
+            </mat-error>
+          </mat-form-field>
+          <!-- <p class="converted-value">Unit:</p> -->
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction=='Purchase'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">DPC flag</mat-label>
+            <input class="disable-input-field" matInput disabled value='Yes'>
+            <!-- <mat-select class="enable-input-fields" formControlName="DPC" placeholder="Select">
+              <mat-option *ngFor="let dpcFlagOptions of euinDeclarationOptions" [value]="dpcFlagOptions">
+                {{dpcFlagOptions }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('DPC')?.hasError('required')">
+              DPC flag is required
+            </mat-error> -->
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Remarks</mat-label>
+            <input class="enable-input-fields" placeholder="Enter Remarks" type="text" formControlName="remarks"
+              matInput />
+            <!-- <mat-error *ngIf="modalForm.get('remarks')?.hasError('required')">
+              Remarks is required
+            </mat-error> -->
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="d-flex mt-4">
+        <button type="button" mat-raised-button id="discard-button" (click)="onReset()" >
+          Reset
+        </button>
+          <button mat-raised-button id="submit-button" (click)="onSubmit()">
+            Place Order
+          </button>
+      </div>
+  
+    </form>
+  </mat-card>
+</div>

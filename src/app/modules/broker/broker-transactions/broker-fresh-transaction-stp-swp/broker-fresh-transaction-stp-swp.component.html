@@ -1,0 +1,565 @@
+<div class="clovek-font container-fluid mt-1">
+
+  <mat-card class="report-mat-card mt-4">
+    <form [formGroup]="modalForm">
+
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+          <img class="sub-heading-img" src="../../../../../assets/images/new-transactions.svg">
+          <span class="sub-heading-text-transactions">Transaction Details</span>
+        </div>
+      </div>
+
+
+      <div class="row mt-4">
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Mode of Action</mat-label>
+            <input class="disable-input-field" matInput disabled value={{this.modeOfAction}}>
+          </mat-form-field>
+        </div>
+
+        <!-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6" *ngIf="this.modeOfAction == 'STP'">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label class="mat-label-field">Type of Transaction</mat-label>
+          <input class="disable-input-field" matInput disabled value="Fresh">
+        </mat-form-field>
+      </div> -->
+      </div>
+
+      <!-- <div class="row">
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6" *ngIf="this.modeOfAction=='Switch out'">
+        <p class="input-field-heading">KYC Status<span class="asterisk-color">*</span></p>
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-select class="enable-input-fields" formControlName="kycSatus" placeholder="Select">
+            <mat-option *ngFor="let dpcFlagOptions of euinDeclarationOptions" [value]="dpcFlagOptions">
+              {{dpcFlagOptions }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="modalForm.get('kycSatus')?.hasError('required')">
+            KYC is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div> -->
+
+      <div class="row mb-4 mt-2">
+        <mat-divider class="divider"></mat-divider>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+          <img class="sub-heading-img" src="../../../../../assets/images/user-transactions.svg">
+          <span class="sub-heading-text-transactions">Client Details</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.flagType!='Additional'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Client Name/PAN <span class="asterisk-color">*</span></mat-label>
+            <mat-select class="enable-input-fields" formControlName="clientCode" placeholder="Select"
+              (selectionChange)="getclientPersonalDetails($event.value)">
+              <mat-option (click)="accounNumberEnable()" *ngFor="let clients of clientData"
+                [value]="[clients?.clientUserCode,clients?.clientCodeBSE]">
+                <!-- {{clients.clientCodeBSE }} -  -->
+                {{clients.clientFirstName === null ? '' :
+                clients.clientFirstName}} {{clients.clientMiddleName === null ? '' :
+                clients.clientMiddleName}} {{clients.clientLastName === null ? '' : clients.clientLastName}}
+                - ({{ clients.clientPan === null ? '' :
+                clients.clientPan}})</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('clientCode')?.hasError('required')">
+              Client Name/PAN is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.flagType==='Additional'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Client Pan/Name</mat-label>
+            <input class="disable-input-field" disabled placeholder="Client Pan/Name" matInput
+              value={{this.combinedclientDetails}}>
+          </mat-form-field>
+        </div>
+
+        <!-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6" *ngIf="this.modeOfAction=='SWP'"> -->
+        <!-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6" *ngIf="this.modeOfAction=='SWP'">
+        <p class="input-field-heading">Account No.</p>
+        <mat-form-field class="w-100" appearance="outline">
+          <input class="disable-input-field" disabled placeholder="Account Number" matInput
+            value={{clientBankAccNumber}}>
+        </mat-form-field>
+      </div> -->
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction==='SWP'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Account No.<span class="asterisk-color">*</span></mat-label>
+            <!-- <input class="disable-input-field" disabled placeholder="Account Number" matInput
+            value={{clientBankAccNumber}}> -->
+            <mat-select class="enable-input-fields" formControlName="accountNumber" [(ngModel)]="defaultBankAccount"
+              placeholder="Account Number">
+              <mat-option *ngFor="let accounNoOptions of accounNoList" [value]="accounNoOptions.accountNo">
+                {{accounNoOptions.accountNo}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('accountNumber')?.hasError('required')">
+              Bank Account Number is required
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3"
+          *ngIf="this.modeOfAction==='SWP' || this.modeOfAction==='Switch out'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Email ID</mat-label>
+            <input class="disable-input-field" disabled placeholder="Email ID" matInput value={{this.clientEmail}}>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Mobile No</mat-label>
+            <input class="disable-input-field" disabled placeholder="Mobile No." matInput value={{this.clientPhoneNo}}>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6" *ngIf="this.modeOfAction==='STP'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Email ID</mat-label>
+
+            <input class="disable-input-field" disabled placeholder="Email ID" matInput value={{this.clientEmail}}>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mb-4 mt-2">
+        <mat-divider class="divider"></mat-divider>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+          <img class="sub-heading-img" src="../../../../../assets/images/new-bank-icon.svg">
+          <span class="sub-heading-text-transactions">Fund Details</span>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <!-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <p class="input-field-heading">Folio Number<span class="asterisk-color">*</span></p>
+        <mat-form-field class="w-100" appearance="outline">
+          <input class="enable-input-fields" placeholder="Enter Folio Number" min="0" type="number"  onkeydown="return event.keyCode !== 69"  min="0"
+          step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+ formControlName="folioNo"
+            matInput />
+          <mat-error *ngIf="modalForm.get('folioNo')?.hasError('required')">
+            Folio Number is required
+          </mat-error>
+          <mat-error *ngIf="modalForm.get('folioNo')?.hasError('min')">
+            Folio Number should not be less than 1
+           </mat-error>
+        </mat-form-field>
+      </div> -->
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6" *ngIf="this.flagType!='Additional'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Folio Number<span class="asterisk-color">*</span></mat-label>
+            <mat-select class="enable-input-fields" formControlName="folioNo" placeholder="Select"
+              (selectionChange)="getSchemeInFolioNo($event.value)">
+              <mat-option *ngFor="let folioNos of folioNosList" [value]="folioNos">
+                {{folioNos}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('folioNo')?.hasError('required')">
+              Folio Number is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6" *ngIf="this.flagType==='Additional'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Folio Number</mat-label>
+            <input class="disable-input-field" disabled placeholder="Folio Number" matInput value={{this.folioNumber}}>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6" *ngIf="this.flagType!='Additional'">
+          <!-- <p class="input-field-heading" *ngIf="this.modeOfAction=='STP' || this.modeOfAction=='Switch out'"> Existing Fund (Fund Name 1)<span class="asterisk-color">*</span></p>
+        <p class="input-field-heading" *ngIf="this.modeOfAction=='SWP'">Fund Name<span class="asterisk-color">*</span></p> -->
+
+          <!-- <div class="search-part" *ngIf="this.modeOfAction!='Switch out'">
+        <mat-form-field class="w-100 field1" appearance="outline">
+          <input class="enable-input-fields" type="text" placeholder="Search Fund Name" formControlName="fromBSESchemeCode" matInput/>
+          <mat-error *ngIf="modalForm.get('fromBSESchemeCode')?.hasError('required') && this.modeOfAction=='STP'">
+            Existing Fund Name is required
+          </mat-error>
+          <mat-error *ngIf="modalForm.get('fromBSESchemeCode')?.hasError('required') && this.modeOfAction=='SWP'">
+            Fund Name is required
+          </mat-error>
+      </mat-form-field>
+      <button type="button" class="search-button"  (click)="SearchFund()" color="primary"  >
+        Go
+      </button>
+    </div>
+    <p class="helper-text" *ngIf="this.modeOfAction!='Switch out'">Enter few characters of scheme code or scheme name.</p> -->
+
+          <!-- In case of switch out transaction  -->
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field"
+              *ngIf="this.modeOfAction==='STP'  || this.modeOfAction==='Switch out'">Existing Fund (Fund Name 1) <span
+                class="asterisk-color">*</span></mat-label>
+            <mat-label class="mat-label-field" *ngIf="this.modeOfAction==='SWP'">Fund Name <span
+                class="asterisk-color">*</span></mat-label>
+            <input class="disable-input-field" matInput disabled value="{{this.holdingFundsList.fmcode ===
+        null ? 'Fund Name' : this.holdingFundsList.fmcode}}  {{this.holdingFundsList.funddesc}}">
+            <!-- <mat-select class="enable-input-fields"   formControlName="fromBSESchemeCode" placeholder="Select Fund" (selectionChange)="getClientBalanceFreshSwitchOut($event.value)" >
+        <mat-option *ngFor="let fund of holdingFundsList" [value]="fund.fmcode">
+           {{fund.fmcode}}  {{fund.funddesc}}
+        </mat-option>
+      </mat-select> -->
+            <!-- <mat-error *ngIf="modalForm.get('fromBSESchemeCode')?.hasError('required')">
+        Existing Fund Name is required
+      </mat-error> -->
+          </mat-form-field>
+
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6" *ngIf="this.flagType==='Additional'">
+          <!-- <p class="input-field-heading" *ngIf="this.modeOfAction=='STP'  || this.modeOfAction=='Switch out'">Existing Fund (Fund Name 1)</p>
+        <p class="input-field-heading" *ngIf="this.modeOfAction=='SWP'">Fund Name</p> -->
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field"
+              *ngIf="this.modeOfAction==='STP'  || this.modeOfAction==='Switch out'">Existing Fund (Fund Name
+              1)</mat-label>
+            <mat-label class="mat-label-field" *ngIf="this.modeOfAction==='SWP'">Fund Name</mat-label>
+            <input class="disable-input-field" matInput disabled value={{selectedFundDetails}}>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3"
+          *ngIf="this.modeOfAction==='STP' || this.modeOfAction==='Switch out'">
+          <div class="search-part">
+            <mat-form-field class="w-100 field1" appearance="outline">
+              <mat-label class="mat-label-field">Desired Fund (Fund Name 2)<span
+                  class="asterisk-color">*</span></mat-label>
+              <input class="enable-input-fields" type="text" placeholder="Search Fund" formControlName="toBSESchemeCode"
+                matInput />
+              <mat-error *ngIf="modalForm.get('toBSESchemeCode')?.hasError('required')">
+                Desired Fund Name is required
+              </mat-error>
+            </mat-form-field>
+            <button class="search-button" type="button" (click)="SearchFund2()" color="primary">
+              Go
+            </button>
+          </div>
+          <p class="helper-text">Enter few characters of scheme code or scheme name.</p>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="!this.flagType">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Transaction mode<span class="asterisk-color">*</span></mat-label>
+            <mat-select class="enable-input-fields" formControlName="transactionMode" placeholder="Select">
+              <mat-option *ngFor="let transactionOption of DPTransactionMode" [value]="transactionOption">
+                {{transactionOption }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('transactionMode')?.hasError('required')">
+              Transaction mode is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction==='SWP'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Frequency<span class="asterisk-color">*</span></mat-label>
+            <mat-select class="enable-input-fields" formControlName="frequencyType"
+              (selectionChange)="getNoOfInvestment()" placeholder="Select">
+              <mat-option *ngFor="let transactionOption of frequency" [value]="transactionOption">
+                {{transactionOption }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('frequencyType')?.hasError('required')">
+              Frequency is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction==='STP'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Transfer Amount (₹)<span class="asterisk-color">*</span></mat-label>
+            <input class="enable-input-fields" placeholder="Enter Amount" type="number"
+              onkeydown="return event.keyCode !== 69" min="0" step="1" formControlName="instAmount" matInput />
+            <mat-error *ngIf="modalForm.get('instAmount')?.hasError('required')">
+              Transfer Amount is required
+            </mat-error>
+            <mat-error *ngIf="modalForm.get('instAmount')?.hasError('min')">
+              Transfer Amount should not be less than 1
+            </mat-error>
+          </mat-form-field>
+          <p class="helper-text-transaction">Total Amount ₹ {{this.clientBalanceAmount}}</p>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction==='STP'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Frequency<span class="asterisk-color">*</span></mat-label>
+            <mat-select class="enable-input-fields" formControlName="frequencyType"
+              (selectionChange)="getNoOfInvestment()" placeholder="Select">
+              <mat-option *ngFor="let transactionOption of frequency" [value]="transactionOption">
+                {{transactionOption }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('frequencyType')?.hasError('required')">
+              Frequency is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction==='SWP'">
+          <!-- <p class="input-field-heading" *ngIf="this.selectedField=='Withdrawl Unit Field'">Withdrawl Units<span class="asterisk-color">*</span></p>
+        <p class="input-field-heading" *ngIf="this.selectedField!='Withdrawl Unit Field'">Withdrawl Units</p> -->
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field" *ngIf="this.selectedField==='Withdrawl Unit Field'">Withdrawl Units<span
+                class="asterisk-color">*</span></mat-label>
+            <mat-label class="mat-label-field" *ngIf="this.selectedField!='Withdrawl Unit Field'">Withdrawl
+              Units</mat-label>
+            <input class="enable-input-fields" min="0" (input)="setValidation('Withdrawl Unit Field')"
+              placeholder="Enter Units" type="number" onkeydown="return event.keyCode !== 69" min="0" step="1"
+              formControlName="installmentUnits" matInput />
+            <mat-error *ngIf="modalForm.get('installmentUnits')?.hasError('required')">
+              Withdrawl Units is required
+            </mat-error>
+            <mat-error *ngIf="modalForm.get('installmentUnits')?.hasError('min')">
+              Withdrawl Units should not be less than 1
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction==='SWP'">
+          <!-- <p class="input-field-heading" *ngIf="this.selectedField=='Withdrawl Unit Field'">Withdrawl Amount(₹)</p>
+        <p class="input-field-heading" *ngIf="this.selectedField!='Withdrawl Unit Field'">Withdrawl Amount(₹)<span class="asterisk-color">*</span></p> -->
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field" *ngIf="this.selectedField==='Withdrawl Unit Field'">Withdrawl
+              Amount(₹)</mat-label>
+            <mat-label class="mat-label-field" *ngIf="this.selectedField!='Withdrawl Unit Field'">Withdrawl
+              Amount(₹)<span class="asterisk-color">*</span></mat-label>
+            <input class="enable-input-fields" min="0" (input)="setValidation('Withdrawl Amount Field')"
+              placeholder="Enter Amount" type="number" onkeydown="return event.keyCode !== 69" min="0" step="1"
+              formControlName="intallmentAmount" matInput />
+            <mat-error *ngIf="modalForm.get('intallmentAmount')?.hasError('required')">
+              Withdrawl Amount is required
+            </mat-error>
+            <mat-error *ngIf="modalForm.get('intallmentAmount')?.hasError('min')">
+              Withdrawl Amount should not be less than 1
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction!='Switch out'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Start date<span class="asterisk-color">*</span></mat-label>
+            <input class="enable-input-fields" (dateChange)="getNoOfInvestment()"
+              (mousedown)="picker.open(); $event.preventDefault()" [min]="minDate" matInput readonly
+              [matDatepicker]="picker" formControlName="startDate" placeholder="Select" />
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>
+                <img class="calendar-icon" src="../../../../assets/images/date-icon.svg">
+              </mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker (closed)="modalForm.get('startDate')?.markAsTouched()"></mat-datepicker>
+            <mat-error *ngIf="modalForm.get('startDate')?.hasError('required')">
+              Start Date is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction!='Switch out'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">End date<span class="asterisk-color">*</span></mat-label>
+            <input class="enable-input-fields" (dateChange)="getNoOfInvestment()"
+              (mousedown)="picker2.open(); $event.preventDefault()" [min]="this.modalForm.value.startDate" readonly
+              matInput [matDatepicker]="picker2" formControlName="endDate" placeholder="Select" />
+            <mat-datepicker-toggle matSuffix [for]="picker2">
+              <mat-icon matDatepickerToggleIcon>
+                <img class="calendar-icon" src="../../../../assets/images/date-icon.svg">
+              </mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker2 (closed)="modalForm.get('endDate')?.markAsTouched()"></mat-datepicker>
+            <mat-error *ngIf="modalForm.get('endDate')?.hasError('required')">
+              End Date is required
+            </mat-error>
+          </mat-form-field>
+          <mat-error *ngIf="dateRangeValidator(this.modalForm.value)">
+            End Date must be greater then or equal to the Start Date .
+          </mat-error>
+        </div>
+
+        <!-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <p class="input-field-heading">No. of Installments<span class="asterisk-color">*</span></p>
+        <mat-form-field class="w-100" appearance="outline">
+          <input class="enable-input-fields" placeholder="Enter no. of Installments" min="0" type="number"  onkeydown="return event.keyCode !== 69"  min="0"
+          step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+            formControlName="noOfTransfers" matInput />
+          <mat-error *ngIf="modalForm.get('noOfTransfers')?.hasError('required')">
+            No of Installments is required
+          </mat-error>
+          <mat-error *ngIf="modalForm.get('noOfTransfers')?.hasError('min')">
+            No of Installments should not be less than 1
+           </mat-error>
+        </mat-form-field>
+      </div> -->
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction!='Switch out'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">No. of Installments</mat-label>
+            <input class="disable-input-field" disabled placeholder="No. of Installments" matInput
+              value={{this.noOfInvestment}}>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction!='Switch out'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Generate First Order Today<span
+                class="asterisk-color">*</span></mat-label>
+            <mat-select class="enable-input-fields" formControlName="firstOrderToday" placeholder="Select">
+              <mat-option *ngFor="let transactionOption of firstOrderToday" [value]="transactionOption">
+                {{transactionOption }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('firstOrderToday')?.hasError('required')">
+              Generate First Order Today is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction==='Switch out'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Minimum Redeem<span class="asterisk-color">*</span></mat-label>
+            <mat-select class="enable-input-fields" formControlName="minRedeem" placeholder="Select" [disabled]="true">
+              <mat-option *ngFor="let redeemOptions of euinDeclarationOptions" [value]="redeemOptions">
+                {{redeemOptions }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('minRedeem')?.hasError('required')">
+              Minimum Redeem is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.role!='RELATIONSHIP MANAGER'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">EUIN<span class="asterisk-color">*</span></mat-label>
+            <mat-select class="enable-input-fields" formControlName="euinnumber" placeholder="Select">
+              <mat-option *ngFor="let euin of euinList index as i" [value]="euin">
+                {{euin}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('euinnumber')?.hasError('required')">
+              EUIN is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.role==='RELATIONSHIP MANAGER'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">EUIN</mat-label>
+            <input class="disable-input-field" matInput disabled value={{this.euinNumber}}>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction==='Switch out'">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">All Units Flag<span class="asterisk-color">*</span></mat-label>
+            <mat-select class="enable-input-fields" formControlName="allUnitsFlag"
+              (selectionChange)="setValidation('selectedSwitchField')" placeholder="Select">
+              <mat-option *ngFor="let allUnitsFlagOptions of euinDeclarationOptions" [value]="allUnitsFlagOptions">
+                {{ allUnitsFlagOptions }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="modalForm.get('allUnitsFlag')?.hasError('required')">
+              All Units Flag is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction==='Switch out'">
+          <!-- <p class="input-field-heading"  *ngIf="this.selectedField=='Transfer Amount'">Transfer Amount (₹)<span class="asterisk-color">*</span></p>
+        <p class="input-field-heading"  *ngIf="this.selectedField!='Transfer Amount'">Transfer Amount (₹)</p> -->
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field" *ngIf="this.selectedField==='Transfer Amount'">Transfer Amount (₹)<span
+                class="asterisk-color">*</span></mat-label>
+            <mat-label class="mat-label-field" *ngIf="this.selectedField!='Transfer Amount'">Transfer Amount
+              (₹)</mat-label>
+
+            <input class="enable-input-fields" (input)="setValidation('Transfer Amount')" placeholder="Enter Amount"
+              min="0" type="number" onkeydown="return event.keyCode !== 69" formControlName="switchAmount" matInput />
+            <mat-error *ngIf="modalForm.get('switchAmount')?.hasError('required')">
+              Transfer amount is required
+            </mat-error>
+            <mat-error *ngIf="modalForm.get('switchAmount')?.hasError('min')">
+              Transfer amount should not be less than 1
+            </mat-error>
+          </mat-form-field>
+          <p class="helper-text-transaction">Total Amount ₹ {{this.clientBalanceAmount}}</p>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3" *ngIf="this.modeOfAction==='Switch out'">
+          <!-- <p class="input-field-heading"  *ngIf="this.selectedField=='No of Units'">No of Units<span class="asterisk-color">*</span></p>
+        <p class="input-field-heading"  *ngIf="this.selectedField!='No of Units'">No of Units</p> -->
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field" *ngIf="this.selectedField==='No of Units'">No of Units<span
+                class="asterisk-color">*</span></mat-label>
+            <mat-label class="mat-label-field" *ngIf="this.selectedField!='No of Units'">No of Units</mat-label>
+            <input class="enable-input-fields" (input)="setValidation('No of Units')" placeholder="Enter Units" min="0"
+              type="number" onkeydown="return event.keyCode !== 69" formControlName="switchUnits" matInput />
+            <mat-error *ngIf="modalForm.get('switchUnits')?.hasError('required')">
+              No of Units is required
+            </mat-error>
+            <mat-error *ngIf="modalForm.get('switchUnits')?.hasError('min')">
+              No of Units should not be less than 1
+            </mat-error>
+          </mat-form-field>
+          <p class="helper-text-transaction">Total Units {{this.clientBalanceUnits}}</p>
+        </div>
+
+        <!-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <p class="input-field-heading">EUIN Declaration<span class="asterisk-color">*</span></p>
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-select formControlName="euindeclaration" (selectionChange)="setValidation()" placeholder="Select">
+            <mat-option *ngFor="let declarationOptions of euinDeclarationOptions" [value]="declarationOptions">
+              {{declarationOptions }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="modalForm.get('euindeclaration')?.hasError('required')">
+            EUIN Declaration is required
+          </mat-error>
+        </mat-form-field>
+      </div> -->
+
+        <!-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <p class="input-field-heading" *ngIf="this.modalForm.value.euindeclaration=='Yes' || this.modalForm.value.euindeclaration=='' || this.modalForm.value.euinVal=='Y'">EUIN<span class="asterisk-color">*</span></p>
+        <p class="input-field-heading" *ngIf="this.modalForm.value.euindeclaration=='No' || this.modalForm.value.euinVal=='N'">EUIN</p>
+        <mat-form-field class="w-100" appearance="outline">
+          <input class="enable-input-fields" type="text" placeholder="EUIN" formControlName="euinnumber" matInput />
+          <mat-error *ngIf="modalForm.get('euinnumber')?.hasError('required')">
+            EUIN is required
+          </mat-error>
+        </mat-form-field>
+      </div> -->
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mt-3">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="mat-label-field">Remarks</mat-label>
+            <input class="enable-input-fields" placeholder="Remarks" type="text" formControlName="remarks" matInput />
+            <!-- <mat-error *ngIf="modalForm.get('remarks')?.hasError('required')">
+            Remarks is required
+          </mat-error> -->
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="d-flex mt-4">
+        <button type="button" mat-raised-button id="discard-button" (click)="onReset()">
+          Reset
+        </button>
+        <button mat-raised-button id="submit-button" (click)="onSubmit()">
+          Place Order
+        </button>
+      </div>
+
+    </form>
+  </mat-card>
+</div>

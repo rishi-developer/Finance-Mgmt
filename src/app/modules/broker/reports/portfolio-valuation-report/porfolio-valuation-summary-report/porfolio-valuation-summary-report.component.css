@@ -1,0 +1,229 @@
+.test {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+::ng-deep .mat-card-header-text {
+  margin: 0 !important;
+}
+.investment-data {
+  margin: 0 25px 20px 0;
+  text-align: left;
+  /* height: 1vw;*/
+  width: 17%;
+}
+
+.pie-chart {
+  height: 369px;
+  /* box-shadow: 5px 4px 16px rgba(0, 0, 0, 0.1); */
+  border-radius: 7.6766px;
+  width: 95%;
+  padding: 0.5%;
+  border: 2px solid rgba(0,0,0,0.1);
+}
+.pie-test{
+  background-color: transparent;
+  width: 80%;
+}
+.headings {
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 18px;
+}
+table.mat-table {
+  width: 100%;
+}
+tr.mat-header-row {
+  height: 56px;
+  background: #e6f3ff;
+  color: #1A1A1A;
+  font-weight: 500;
+}
+.mat-cell {
+  color: #4D4D4D;
+}
+
+table tr:last-child {
+  font-weight: bold;
+}
+.mat-header-cell {
+  color: rgba(26, 26, 26, 1);
+  font-weight: 600;
+}
+
+.template-design{
+  display: flex;
+  flex-direction: column;
+}
+.template-background{
+  background-image:
+    linear-gradient(to right,  #01529E, #54C495),
+    url('../../../../../../assets/images/pattern.svg');
+}
+
+.logo-image{
+  margin-left: auto;
+  margin-right: auto;
+}
+.template-content{
+  height: 400px;
+  border-radius: 30px 30px 0 0;
+  z-index: 9;
+  margin-top: -30px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-inborder{
+  border: 1px solid var(--white-white-100, #FFF);
+  margin: 80px 80px;
+  border-radius: 20px;
+padding: 3% 43%;
+}
+.logo{
+  height: 73.385px;
+  width: 106px;
+  margin-bottom: 10px;
+
+}
+
+
+.heading{
+  color: var(--primary-clov-31, #01529E);
+font-family: Poppins;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.report-date{
+  color: var(--neutral-black-30, #4D4D4D);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.heading-values{
+  color: var(--neutral-black-10, #1A1A1A);
+font-family: Poppins;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.index-heading{
+  color: var(--neutral-black-10, #1A1A1A);
+font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+padding: 0 20px;
+}
+.index-data{
+  color: var(--neutral-black-10, #1A1A1A);
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+padding: 0 20px;
+
+}
+
+
+.rm-head{
+  color: var(--neutral-black-10, #1A1A1A);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.detail-head{
+  color: var(--neutral-black-30, #4D4D4D);
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.detail-data{
+  color: var(--neutral-black-30, #4D4D4D);
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.details{
+  display: flex;  
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 30px;
+  border-top: 1px solid var(--secondary-gem-90, #D9F2E7);
+}
+.client-table{
+  margin-right: 60px;
+  margin-top: 30px;
+
+}
+.rm-table{
+  margin-left: 60px;
+  margin-top: 30px;
+}
+
+.hide-in-ui { 
+  display: none; 
+}
+
+.check{
+  height:200px !important;
+}
+
+
+.overlay {
+  height: 100vh;
+  width: 100%;
+  background: rgba(255,255,255,1);
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.pdf-generate-title{
+  color:black;
+  position: absolute;
+  top: 55%;
+  text-align: center;
+  left: 47%;
+  font-weight: 500;
+}
+
+.report-header{
+  display: inline;
+  color: var(--neutral-black-10, #1A1A1A);
+font-family: Poppins;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 150%; /* 30px */
+}

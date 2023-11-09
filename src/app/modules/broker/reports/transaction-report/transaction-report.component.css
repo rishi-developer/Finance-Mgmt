@@ -1,0 +1,63 @@
+.transaction-report-card {
+  background: #FDFCFC;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.11);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.heading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.sub-heading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #01529E;
+}
+
+.input-field-heading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+:host ::ng-deep .mat-select-placeholder {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+:host ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background: #01529E;
+}
+
+/* .email-haeding{
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #091E42;
+} */

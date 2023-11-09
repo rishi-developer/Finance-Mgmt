@@ -1,0 +1,80 @@
+<div class="container">
+    <div><span class="vertical-tab-heading">Communication Details</span></div>
+    <mat-divider class="mat-divider-profile mt-3"></mat-divider>
+    <h2 class="sub-heading mt-5">Address Details</h2>
+   
+    <div class="row ">
+        <div></div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <span class="profile-details-labels">Address 1</span>
+            <span class="profile-details-data">{{this.viewDetail.address1}}</span>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <span class="profile-details-labels">Address 2</span>
+            <span class="profile-details-data">{{this.viewDetail.address2}}</span>
+        </div>
+
+    </div>
+    <div class="row ">
+        <div></div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <span class="profile-details-labels">Address 3</span>
+            <span class="profile-details-data">{{this.viewDetail.address3}}</span>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <span class="profile-details-labels">City</span>
+            <span class="profile-details-data">{{this.viewDetail.city}}</span>
+        </div>
+
+    </div>
+    <div class="row ">
+        <div></div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <span class="profile-details-labels">Bank</span>
+            <span class="profile-details-data">{{this.viewDetail.bankName1}}</span>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <span class="profile-details-labels">Pin Code</span>
+            <span class="profile-details-data">{{this.viewDetail.pincode}}</span>
+        </div>
+
+    </div>
+    <div class="row ">
+        <div></div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <span class="profile-details-labels">Country</span>
+            <span class="profile-details-data">{{this.viewDetail.country}}</span>
+        </div>
+    </div>
+    <div class="custom-separator">
+        <mat-divider class="mat-divider-separator mt-3"></mat-divider>
+    </div>
+
+
+    <h2 class="sub-heading mt-5">Contact Details</h2>
+
+    <div class="row ">
+        <div></div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3" *ngIf="this.viewDetail.residentialFax">
+            <span  class="profile-details-labels">Residence Fax</span>
+            <span class="profile-details-data">{{this.viewDetail.residentialFax}}</span>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3" *ngIf="this.viewDetail.officeFax">
+            <span class="profile-details-labels" >Office Fax</span>
+            <span class="profile-details-data">{{this.viewDetail.officeFax}}</span>
+        </div>
+    
+    </div>
+    <div class="row ">
+        <div></div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3" *ngIf="this.viewDetail.officePhone">
+            <span class="profile-details-labels" >Office Phone No.</span>
+            <span class="profile-details-data">{{this.viewDetail.officePhone}}</span>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3" *ngIf="this.viewDetail.email">
+            <span class="profile-details-labels" >Email ID</span>
+            <span class="profile-details-data">{{this.viewDetail.email}}</span>
+        </div>
+
+</div>
+

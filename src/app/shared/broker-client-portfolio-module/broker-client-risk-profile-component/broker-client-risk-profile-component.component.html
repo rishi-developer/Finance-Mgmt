@@ -1,0 +1,22 @@
+<mat-card class="mat-card mt-3">
+  <div class="card-content">
+    <p class="heading">Risk Assessment</p>
+    <p class="details">
+      Please complete the risk profile questionnaire given below.
+    </p>
+    <div *ngFor="let question of questionSet; let i = index" class="question-container mb-3">
+      <p class="question">Q{{ i + 1 }}. {{ question.questionText }}</p>
+      <div *ngFor="let option of question.riskProfileAnswerOptions; let j = index">
+        <label class="form-check-label text-nowrap" class="options-present"><input type="radio"
+            class="form-check-input option-name" [name]="'question_' + i" [value]="option"
+            [checked]="question.selectedOption === option" (change)="onOptionSelected(question, option)">
+          {{ option.answerText }}</label>
+      </div>
+    </div>
+
+    <div class="d-flex mt-2 mb-2">
+      <button type="button" mat-raised-button id="discard-button" (click)="resetForm()">Reset</button>
+      <button mat-raised-button id="submit-button" (click)="submitForm()">Submit</button>
+    </div>
+  </div>
+</mat-card>

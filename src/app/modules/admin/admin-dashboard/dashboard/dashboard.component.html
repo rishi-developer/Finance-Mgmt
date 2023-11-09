@@ -1,0 +1,28 @@
+<div class="clovek-font container-fluid mt-1">
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <h2 class="heading">Overview</h2>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <button (click)="openAddBrokerModal()" class="button-styling search-filter"><mat-icon class="plus-icon">add</mat-icon>Invite Broker</button>
+      </div>
+    </div>
+
+    <div class="mat-tab-styling mt-4">
+        <mat-tab-group mat-align-tabs="left" animationDuration="0ms" class="demo-tab-group">
+                <mat-tab label="List Of Brokers">
+                        <ng-template matTabContent>
+                               <app-list-of-brokers-tab [category]=roleType></app-list-of-brokers-tab>
+
+                        </ng-template>
+                </mat-tab>
+                <mat-tab label="List Of Clients">
+                    <ng-template matTabContent>
+                      <app-list-of-client-tab [category]=roleType></app-list-of-client-tab>
+                    </ng-template>
+            </mat-tab>
+
+
+        </mat-tab-group>
+</div>
+</div>

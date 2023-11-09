@@ -1,0 +1,122 @@
+.heading {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 30px */
+  margin: 0px 5rem 16px;
+}
+.button-allingment {
+  display: flex;
+  justify-content: center;
+}
+
+.upload-button-conatiner {
+  margin-top: 2rem;
+  padding: 0px 50px;
+}
+.helper-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 0.4);
+  /* margin-left: 1.7rem; */
+}
+#firsting {
+  height: 68px;
+  /* border: 20px dotted red; */
+  padding: 18px;
+  padding-left: 50px;
+  /* display: none; */
+}
+
+.cancel {
+  float: right;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.discard-button {
+  width: 178px;
+  height: 48px;
+  border: 1px solid #01529e;
+  filter: drop-shadow(0px 8px 16px rgba(136, 136, 136, 0.5));
+  border-radius: 8px;
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #01529e;
+  margin-left: 12px;
+  margin-bottom: 15px;
+}
+.desc {
+  color: var(--neutral-black-30, #4d4d4d);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+}
+::ng-deep .mat-dialog-container {
+  border-radius: 20px;
+}
+
+.custom-file-input {
+  display: flex;
+  justify-content: space-around;
+  height: 4rem;
+  align-items: center;
+  cursor: pointer;
+position: relative;
+  border-radius: 10px;
+  border: 1px dashed var(--primary-clov-90, #cce6ff);
+  background: var(--primary-clov-99, #fafdff);
+}
+
+.upload-icon {
+  width: 50px; /* Adjust as needed */
+  height: 50px; /* Adjust as needed */
+}
+
+.upload-text-1 {
+  color: var(--primary-clov-31, #01529e);
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.upload-text-2 {
+  color: var(--neutral-black-10, #1a1a1a);
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.upload-text-3 {
+  color: var(--neutral-black-50, #808080);
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}

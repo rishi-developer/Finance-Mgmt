@@ -1,0 +1,101 @@
+.icon {
+  max-width: 4% !important;
+}
+
+:host ::ng-deep .mat-tab-group{
+  flex-direction: row;
+  background: #ffffff !important;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.11) !important;
+  border-radius: 8px !important;
+  width: 100%;
+}
+.mat-card-profile{
+  padding-right:0;
+}
+
+:host /deep/ .mat-tab-header {
+  border-bottom: none;
+}
+
+:host /deep/ .mat-tab-header-pagination {
+  display: none !important;
+}
+
+:host ::ng-deep .mat-tab-labels {
+  flex-direction: column;
+  width: 15rem !important;
+  margin-top: 100px !important;
+}
+
+
+
+::ng-deep .mat-tab-label .mat-tab-label-content {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+
+}
+
+:host /deep/ .mat-ink-bar {
+  height: 100% !important;
+  left: 98% !important;
+}
+
+:host /deep/ .mat-tab-body-wrapper {
+  flex: 1 1 auto;
+}
+
+
+ :host ::ng-deep .mat-tab-label {
+  padding-left: 0 !important;
+  margin-left: 14%;
+  justify-content: left !important;
+  color: #4d4d4d;
+
+
+}
+:host /deep/ .mat-ink-bar {
+  height: 100% !important;
+  left: 98% !important;
+}
+
+.mat-tab-group ::ng-deep .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #d9d9d9 !important;
+  width: 1px !important;
+}
+.profile-info-user {
+  min-width: 24rem;
+  /* max-width:24rem ; */
+  max-width: fit-content;
+}
+
+.user-image{
+  font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 27px;
+display: flex;
+align-items: center;
+color: #1A1A1A;
+background: #DAF1E7;
+width: 64px;
+height: 64px;
+border-radius:50%;
+margin-right:12px;
+justify-content: space-around;
+}
+.client-profile-heading-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  color: #4d4d4d;
+  position: absolute;
+  margin-top: 2%;
+  margin-left: 2%;
+}

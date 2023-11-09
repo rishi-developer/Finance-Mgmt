@@ -1,0 +1,26 @@
+.mat-form-field {
+  width: 90% !important;
+}
+
+.existing-rm {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #4D4D4D;
+}
+
+.existing-rm-name{
+  color: #1A1A1A;
+}
+
+::ng-deep .rm-modal .mat-dialog-container {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.assign-reassign-form{
+  height:100%;
+  overflow:hidden;
+}

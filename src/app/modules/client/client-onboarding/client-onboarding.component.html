@@ -1,0 +1,3201 @@
+<mat-card class="onboarding-card">
+  <div class="row">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item non-active-breadcrumb">
+          <a (click)="backRoute()">Home</a>
+        </li>
+        <li class="breadcrumb-item non-active-breadcrumb">
+          <a (click)="backRoute()">Onboarding</a>
+        </li>
+        <li class="breadcrumb-item active-breadcrumb" aria-current="page">
+          Client Onboarding
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+  <mat-stepper
+    #stepper
+    linear
+    labelPosition="bottom"
+    (selectionChange)="stepChanged($event)"
+  >
+    <!-- In case of Edit -->
+    <ng-template matStepperIcon="edit">
+      <img src="../../../../assets/images/stepper-edit-icon.svg" />
+    </ng-template>
+
+    <!-- In case of Inactive -->
+    <ng-template matStepperIcon="first-stepper">
+      <img src="../../../../assets/images/stepper-inactive-icon.svg" />
+    </ng-template>
+    <ng-template matStepperIcon="second-stepper">
+      <img src="../../../../assets/images/stepper-inactive-icon.svg" />
+    </ng-template>
+    <ng-template matStepperIcon="third-stepper">
+      <img src="../../../../assets/images/stepper-inactive-icon.svg" />
+    </ng-template>
+    <ng-template matStepperIcon="fourth-stepper">
+      <img src="../../../../assets/images/stepper-inactive-icon.svg" />
+    </ng-template>
+    <ng-template matStepperIcon="fifth-stepper">
+      <img src="../../../../assets/images/stepper-inactive-icon.svg" />
+    </ng-template>
+    <mat-step [stepControl]="firstFormGroup" state="first-stepper">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Personal Information</ng-template>
+        <div class="row">
+          <mat-card-title class="mat-card-title"
+            >Personal Details</mat-card-title
+          >
+          <mat-card-subtitle class="mat-card-subtitle"
+            >Provide the below-required details that are required to initiate
+            actions through the platform.</mat-card-subtitle
+          >
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Tax Status <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="taxStatus"
+                placeholder="Select"
+                #mySelect
+                (selectionChange)="onTaxStatusSelectionChange($event.value)"
+              >
+                <mat-option
+                  *ngFor="let taxStatus of taxStatusList"
+                  [value]="taxStatus.code"
+                >
+                  {{ taxStatus?.statusType }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="firstFormGroup.get('taxStatus')?.hasError('required')"
+              >
+                Tax Status is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value !== '02' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '26' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '28' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >PAN<span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="primaryHolderPAN"
+                matInput
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('primaryHolderPAN')?.hasError('required')
+                "
+              >
+                PAN is required
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('primaryHolderPAN')?.hasError('pattern')
+                "
+              >
+                Invalid format
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value !== '02' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '26' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '28' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >First Name <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="primaryHolderFirstName"
+                matInput
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('primaryHolderFirstName')
+                    ?.hasError('required')
+                "
+              >
+                First Name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value !== '02' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '26' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '28' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Middle Name </mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="primaryHolderMiddleName"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value !== '02' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '26' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '28' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Last Name </mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="primaryHolderLastName"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value !== '02' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '26' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '28' &&
+              firstFormGroup?.controls?.taxStatus?.value !== '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >DOB <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                (dateChange)="dateChange1()"
+                (mousedown)="picker.open(); $event.preventDefault()"
+                readonly
+                matInput
+                [matDatepicker]="picker"
+                formControlName="primaryHolderDOB"
+                placeholder="Select"
+                [max]="minDate"
+              />
+              <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>
+                  <img
+                    class="calendar-icon"
+                    src="../../../../assets/images/date-icon.svg"
+                  />
+                </mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker
+                #picker
+                (closed)="
+                  firstFormGroup.get('primaryHolderDOB')?.markAsTouched()
+                "
+              ></mat-datepicker>
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('primaryHolderDOB')?.hasError('required')
+                "
+              >
+                DOB is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> b6dfca16b75cfb443ad2559f683caf85508d8c88
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '03' ||
+              firstFormGroup?.controls?.taxStatus?.value === '29' ||
+              firstFormGroup?.controls?.taxStatus?.value === '27'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Date of Incorporation
+                <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                (dateChange)="dateChange4()"
+                (mousedown)="picker.open(); $event.preventDefault()"
+                readonly
+                matInput
+                [matDatepicker]="picker"
+                formControlName="dateOfIncorporation"
+                placeholder="Select"
+                [max]="maxDate"
+              />
+              <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>
+                  <img
+                    class="calendar-icon"
+                    src="../../../../assets/images/date-icon.svg"
+                  />
+                </mat-icon>
+              </mat-datepicker-toggle>
+
+              <mat-datepicker
+                #picker
+                (closed)="
+                  firstFormGroup.get('dateOfIncorporation')?.markAsTouched()
+                "
+              ></mat-datepicker>
+
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('dateOfIncorporation')
+                    ?.hasError('required')
+                "
+              >
+                Date of Incorporation is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-xs-6 col-md-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '01' ||
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '03' ||
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '21' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '24' ||
+              firstFormGroup?.controls?.taxStatus?.value === '41' ||
+              firstFormGroup?.controls?.taxStatus?.value === '61' ||
+              firstFormGroup?.controls?.taxStatus?.value === '62' ||
+              firstFormGroup?.controls?.taxStatus?.value === '70'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Gender <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="gender"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let gender of gendersList"
+                  [value]="gender.genderCode"
+                >
+                  {{ gender.gender }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="firstFormGroup.get('gender')?.hasError('required')"
+              >
+                Gender is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">ARN</mat-label>
+              <input
+                class="enable-form-field"
+                matInput
+                disabled
+                value="{{ this.arn }}"
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Guardian Name <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                formControlName="guardianFirstName"
+                matInput
+                placeholder="Input"
+              />
+
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('guardianFirstName')?.hasError('required')
+                "
+              >
+                Guardian Name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Guardian PAN <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                formControlName="guardianPAN"
+                matInput
+                placeholder="Input"
+              />
+
+              <mat-error
+                *ngIf="firstFormGroup.get('guardianPAN')?.hasError('required')"
+              >
+                Guardian PAN is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Guardian D.O.B.
+                <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                (dateChange)="guardianDOBchange()"
+                (mousedown)="picker.open(); $event.preventDefault()"
+                readonly
+                matInput
+                [matDatepicker]="picker"
+                formControlName="guardianDOB"
+                placeholder="Select"
+                [max]="minDate"
+              />
+              <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>
+                  <img
+                    class="calendar-icon"
+                    src="../../../../assets/images/date-icon.svg"
+                  />
+                </mat-icon>
+              </mat-datepicker-toggle>
+
+              <mat-datepicker
+                #picker
+                (closed)="firstFormGroup.get('guardianDOB')?.markAsTouched()"
+              ></mat-datepicker>
+
+              <mat-error
+                *ngIf="firstFormGroup.get('guardianDOB')?.hasError('required')"
+              >
+                Guardian DOB is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '01' ||
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '21' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '24' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42' ||
+              firstFormGroup?.controls?.taxStatus?.value === '41' ||
+              firstFormGroup?.controls?.taxStatus?.value === '61' ||
+              firstFormGroup?.controls?.taxStatus?.value === '62' ||
+              firstFormGroup?.controls?.taxStatus?.value === '70'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Mobile Declaration
+                <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="mobileDeclarationFlag"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let mobileDeclaration of mobileDeclarationList"
+                  [value]="mobileDeclaration.declarationFlag"
+                >
+                  {{ mobileDeclaration.declarationValue }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('mobileDeclarationFlag')
+                    ?.hasError('required')
+                "
+              >
+                Mobile Declaration is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Mobile No. <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                (keyup)="validatePhoneNumber($event)"
+                type="text"
+                placeholder="Input"
+                matInput
+                formControlName="indianMobileNo"
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('indianMobileNo')?.hasError('required') &&
+                  !startsWithZero
+                "
+              >
+                Mobile No. is required
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('indianMobileNo')?.hasError('pattern')
+                "
+              >
+                Can only contain numbers
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  startsWithZero &&
+                  !firstFormGroup.controls['indianMobileNo'].hasError('pattern')
+                "
+              >
+                Cannot start with 0
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('indianMobileNo')?.hasError('minlength') &&
+                  !startsWithZero &&
+                  !firstFormGroup.get('indianMobileNo')?.hasError('pattern')
+                "
+              >
+                Min length is 10 digits
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('indianMobileNo')?.hasError('maxlength') &&
+                  !startsWithZero &&
+                  !firstFormGroup.get('indianMobileNo')?.hasError('pattern')
+                "
+              >
+                Max length is 10 digits
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '01' ||
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '21' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '24' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42' ||
+              firstFormGroup?.controls?.taxStatus?.value === '41' ||
+              firstFormGroup?.controls?.taxStatus?.value === '61' ||
+              firstFormGroup?.controls?.taxStatus?.value === '62' ||
+              firstFormGroup?.controls?.taxStatus?.value === '70'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Email Declaration
+                <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="emailDeclarationFlag"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let mobileDeclaration of mobileDeclarationList"
+                  [value]="mobileDeclaration.declarationFlag"
+                >
+                  {{ mobileDeclaration.declarationValue }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('emailDeclarationFlag')
+                    ?.hasError('required')
+                "
+              >
+                Email Declaration is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Email ID <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="email"
+                formControlName="email"
+                matInput
+                placeholder="Input"
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('email')?.hasError('email') ||
+                  firstFormGroup.get('email')?.hasError('pattern')
+                "
+              >
+                Please enter a valid email address
+              </mat-error>
+              <mat-error
+                *ngIf="firstFormGroup.get('email')?.hasError('required')"
+              >
+                Email ID is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '29' ||
+              firstFormGroup?.controls?.taxStatus?.value === '21' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '27' ||
+              firstFormGroup?.controls?.taxStatus?.value === '24' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42' ||
+              firstFormGroup?.controls?.taxStatus?.value === '41' ||
+              firstFormGroup?.controls?.taxStatus?.value === '61' ||
+              firstFormGroup?.controls?.taxStatus?.value === '62' ||
+              firstFormGroup?.controls?.taxStatus?.value === '70'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Foreign Mobile No </mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                formControlName="foreignAddressResiPhone"
+                placeholder="Input"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '01' ||
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '11' ||
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '29' ||
+              firstFormGroup?.controls?.taxStatus?.value === '21' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '27' ||
+              firstFormGroup?.controls?.taxStatus?.value === '24' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42' ||
+              firstFormGroup?.controls?.taxStatus?.value === '41' ||
+              firstFormGroup?.controls?.taxStatus?.value === '61' ||
+              firstFormGroup?.controls?.taxStatus?.value === '62' ||
+              firstFormGroup?.controls?.taxStatus?.value === '70'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Country <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="country"
+                placeholder="Select"
+              >
+                <mat-option>
+                  <ngx-mat-select-search
+                    placeholderLabel="Search country"
+                    noEntriesFoundLabel="No country found"
+                    [formControl]="countryListFilterCtrl"
+                  ></ngx-mat-select-search>
+                </mat-option>
+                <mat-option
+                  *ngFor="let countries of filteredCountryList | async"
+                  [value]="countries.countryName"
+                  [disabled]="countries.countryName !== 'India'"
+                >
+                  {{ countries.countryName }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="firstFormGroup.get('country')?.hasError('required')"
+              >
+                Country is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '01' ||
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '11'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >City <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="city"
+                matInput
+              />
+              <mat-error
+                *ngIf="firstFormGroup.get('city')?.hasError('required')"
+              >
+                City is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              (!firstFormGroup.get('country')?.valid ||
+                firstFormGroup.get('country')?.value === 'India') &&
+              (firstFormGroup?.controls?.taxStatus?.value === '01' ||
+                firstFormGroup?.controls?.taxStatus?.value === '02' ||
+                firstFormGroup?.controls?.taxStatus?.value === '11' ||
+                firstFormGroup?.controls?.taxStatus?.value === '26' ||
+                firstFormGroup?.controls?.taxStatus?.value === '21' ||
+                firstFormGroup?.controls?.taxStatus?.value === '29' ||
+                firstFormGroup?.controls?.taxStatus?.value === '28' ||
+                firstFormGroup?.controls?.taxStatus?.value === '27' ||
+                firstFormGroup?.controls?.taxStatus?.value === '24' ||
+                firstFormGroup?.controls?.taxStatus?.value === '42' ||
+                firstFormGroup?.controls?.taxStatus?.value === '41' ||
+                firstFormGroup?.controls?.taxStatus?.value === '61' ||
+                firstFormGroup?.controls?.taxStatus?.value === '62' ||
+                firstFormGroup?.controls?.taxStatus?.value === '70')
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >State <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="state"
+                placeholder="Select"
+              >
+                <mat-option>
+                  <ngx-mat-select-search
+                    placeholderLabel="Search state"
+                    noEntriesFoundLabel="No state found"
+                    [formControl]="stateListFilterCtrl"
+                  ></ngx-mat-select-search>
+                </mat-option>
+                <mat-option
+                  *ngFor="let states of filteredStateList | async"
+                  [value]="states.stateCode"
+                >
+                  {{ states.stateName }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="firstFormGroup.get('state')?.hasError('required')"
+              >
+                State is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.get('country')?.valid &&
+              firstFormGroup.get('country')?.value !== 'India' &&
+              firstFormGroup?.controls?.taxStatus?.value === '01'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >State <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                matInput
+                class="enable-form-field"
+                autocomplete="off"
+                placeholder="No data found"
+                value="No data found"
+                readonly
+              />
+              <mat-error
+                *ngIf="firstFormGroup.get('state')?.hasError('required')"
+              >
+                State is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '01' ||
+              firstFormGroup?.controls?.taxStatus?.value === '02'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Pincode <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                matInput
+                formControlName="pincode"
+              />
+              <mat-error
+                *ngIf="firstFormGroup.get('pincode')?.hasError('required')"
+              >
+                Pincode is required
+              </mat-error>
+              <mat-error
+                *ngIf="firstFormGroup.get('pincode')?.hasError('pattern')"
+              >
+                Can only contain numbers
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <mat-card-title class="mat-card-title"
+            >Investor Registration</mat-card-title
+          >
+          <mat-card-subtitle class="mat-card-subtitle"
+            >Provide the below required details which are required to initiate
+            actions through the platform.</mat-card-subtitle
+          >
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '03' ||
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '29' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '27' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Holding <span class="asterisk-color">*</span></mat-label
+              >
+
+              <mat-select
+                class="enable-form-field"
+                (selectionChange)="setValidators()"
+                formControlName="holdingNature"
+                placeholder="Select"
+              >
+                <mat-option [value]="holdingsList[0].code"> Single </mat-option>
+              </mat-select>
+
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('holdingNature')?.hasError('required')
+                "
+              >
+                Holding is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '01' ||
+              firstFormGroup?.controls?.taxStatus?.value === '21' ||
+              firstFormGroup?.controls?.taxStatus?.value === '11' ||
+              firstFormGroup?.controls?.taxStatus?.value === '24' ||
+              firstFormGroup?.controls?.taxStatus?.value === '41' ||
+              firstFormGroup?.controls?.taxStatus?.value === '61' ||
+              firstFormGroup?.controls?.taxStatus?.value === '62' ||
+              firstFormGroup?.controls?.taxStatus?.value === '70'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Holding <span class="asterisk-color">*</span></mat-label
+              >
+
+              <mat-select
+                class="enable-form-field"
+                (selectionChange)="setValidators()"
+                formControlName="holdingNature"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let holding of holdingsList"
+                  [value]="holding.code"
+                >
+                  {{ holding.holdingName }}
+                </mat-option>
+              </mat-select>
+
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('holdingNature')?.hasError('required')
+                "
+              >
+                Holding is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Occupation <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="occupationCode"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let occupation of occupationCodeList"
+                  [value]="occupation.occupationCode"
+                >
+                  {{ occupation.occupation }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('occupationCode')?.hasError('required')
+                "
+              >
+                Occupation is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Address 1 <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="address1"
+                matInput
+              />
+              <mat-error
+                *ngIf="firstFormGroup.get('address1')?.hasError('required')"
+              >
+                Address 1 is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Address 2 <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="address2"
+                matInput
+              />
+              <mat-error
+                *ngIf="firstFormGroup.get('address2')?.hasError('required')"
+              >
+                Address 2 is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Address 3 <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="address3"
+                matInput
+              />
+              <mat-error
+                *ngIf="firstFormGroup.get('address3')?.hasError('required')"
+              >
+                Address 3 is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >PAN <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="primaryHolderPAN"
+                matInput
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('primaryHolderPAN')?.hasError('required')
+                "
+              >
+                PAN is required
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('primaryHolderPAN')?.hasError('pattern')
+                "
+              >
+                Invalid format
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >First Name <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="primaryHolderFirstName"
+                matInput
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('primaryHolderFirstName')
+                    ?.hasError('required')
+                "
+              >
+                First Name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Middle Name </mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="primaryHolderMiddleName"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Last Name </mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="primaryHolderLastName"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup?.controls?.taxStatus?.value === '02' ||
+              firstFormGroup?.controls?.taxStatus?.value === '26' ||
+              firstFormGroup?.controls?.taxStatus?.value === '28' ||
+              firstFormGroup?.controls?.taxStatus?.value === '42'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >DOB <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                (dateChange)="dateChange1()"
+                (mousedown)="picker.open(); $event.preventDefault()"
+                readonly
+                matInput
+                [matDatepicker]="picker"
+                formControlName="primaryHolderDOB"
+                placeholder="Select"
+                [min]="minDate"
+                [max]="maxDate"
+              />
+              <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>
+                  <img
+                    class="calendar-icon"
+                    src="../../../../assets/images/date-icon.svg"
+                  />
+                </mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker
+                #picker
+                (closed)="
+                  firstFormGroup.get('primaryHolderDOB')?.markAsTouched()
+                "
+              ></mat-datepicker>
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('primaryHolderDOB')?.hasError('required')
+                "
+              >
+                DOB is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Joint PAN 1 <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="secondHolderPan"
+                matInput
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('secondHolderPan')?.hasError('required')
+                "
+              >
+                Joint PAN is required
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('secondHolderPan')?.hasError('pattern')
+                "
+              >
+                Invalid format
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Joint First Name 1
+                <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="secondHolderFirstName"
+                matInput
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('secondHolderFirstName')
+                    ?.hasError('required')
+                "
+              >
+                Joint First Name 1 is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Joint Middle Name 1</mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="secondHolderMiddleName"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Joint Last Name 1 </mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="secondHolderLastName"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Joint DOB 1 <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                (dateChange)="dateChange2()"
+                (mousedown)="picker.open(); $event.preventDefault()"
+                readonly
+                matInput
+                [matDatepicker]="picker"
+                formControlName="secondHolderDOB"
+                placeholder="Select"
+                [max]="minDate"
+              />
+              <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>
+                  <img
+                    class="calendar-icon"
+                    src="../../../../assets/images/date-icon.svg"
+                  />
+                </mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker
+                #picker
+                (closed)="
+                  firstFormGroup.get('secondHolderDOB')?.markAsTouched()
+                "
+              ></mat-datepicker>
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('secondHolderDOB')?.hasError('required')
+                "
+              >
+                Joint DOB 1 is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Mobile Declaration 1
+                <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="secondHolderMobileDeclaration"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let mobileDeclaration of mobileDeclarationList"
+                  [value]="mobileDeclaration.declarationFlag"
+                >
+                  {{ mobileDeclaration.declarationValue }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('secondHolderMobileDeclaration')
+                    ?.hasError('required')
+                "
+              >
+                Mobile Declaration is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Mobile No. 1 <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                (keyup)="validatePhoneNumber($event)"
+                type="text"
+                placeholder="Input"
+                matInput
+                formControlName="secondHolderMobile"
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('secondHolderMobile')
+                    ?.hasError('required') && !startsWithZero
+                "
+              >
+                Mobile No. is required
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('secondHolderMobile')?.hasError('pattern')
+                "
+              >
+                Can only contain numbers
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  startsWithZero &&
+                  !firstFormGroup.controls['secondHolderMobile'].hasError(
+                    'pattern'
+                  )
+                "
+              >
+                Cannot start with 0
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('secondHolderMobile')
+                    ?.hasError('minlength') &&
+                  !startsWithZero &&
+                  !firstFormGroup.get('secondHolderMobile')?.hasError('pattern')
+                "
+              >
+                Min length is 10 digits
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('secondHolderMobile')
+                    ?.hasError('maxlength') &&
+                  !startsWithZero &&
+                  !firstFormGroup.get('secondHolderMobile')?.hasError('pattern')
+                "
+              >
+                Max length is 10 digits
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Email Declaration 1
+                <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="secondHolderEmailDeclaration"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let mobileDeclaration of mobileDeclarationList"
+                  [value]="mobileDeclaration.declarationFlag"
+                >
+                  {{ mobileDeclaration.declarationValue }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('secondHolderEmailDeclaration')
+                    ?.hasError('required')
+                "
+              >
+                Email Declaration is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Email ID 1 <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="email"
+                formControlName="secondHolderEmail"
+                matInput
+                placeholder="Input"
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('secondHolderEmail')?.hasError('email') ||
+                  firstFormGroup.get('secondHolderEmail')?.hasError('pattern')
+                "
+              >
+                Please enter a valid email address
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('secondHolderEmail')?.hasError('required')
+                "
+              >
+                Email ID is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Joint PAN 2 </mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="thirdHolderPan"
+                matInput
+              />
+              <!-- <mat-error
+                *ngIf="
+                  firstFormGroup.get('thirdHolderPan')?.hasError('required')
+                "
+              >
+                Joint PAN is required
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('thirdHolderPan')?.hasError('pattern')
+                "
+              >
+                Invalid format
+              </mat-error> -->
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Joint First Name 2 </mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="thirdHolderFirstName"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Joint Middle Name 2
+              </mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="thirdHolderMiddleName"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Joint Last Name 2 </mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="thirdHolderLastName"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Mobile Declaration 2 ></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="thirdHoldermobileDeclaration"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let mobileDeclaration of mobileDeclarationList"
+                  [value]="mobileDeclaration.declarationFlag"
+                >
+                  {{ mobileDeclaration.declarationValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Mobile No. 2 </mat-label>
+              <input
+                class="enable-form-field"
+                (keyup)="validatePhoneNumber($event)"
+                type="text"
+                placeholder="Input"
+                matInput
+                formControlName="thirdHolderMobile"
+              />
+              
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('thirdHolderMobile')?.hasError('pattern')
+                "
+              >
+                Can only contain numbers
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  startsWithZero &&
+                  !firstFormGroup.controls['thirdHolderMobile'].hasError(
+                    'pattern'
+                  )
+                "
+              >
+                Cannot start with 0
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('thirdHolderMobile')
+                    ?.hasError('minlength') &&
+                  !startsWithZero &&
+                  !firstFormGroup.get('thirdHolderMobile')?.hasError('pattern')
+                "
+              >
+                Min length is 10 digits
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('thirdHolderMobile')
+                    ?.hasError('maxlength') &&
+                  !startsWithZero &&
+                  !firstFormGroup.get('thirdHolderMobile')?.hasError('pattern')
+                "
+              >
+                Max length is 10 digits
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Email Declaration 2
+              </mat-label>
+              <mat-select
+                class="enable-form-field"
+                formControlName="thirdHolderEmailDeclaration"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let mobileDeclaration of mobileDeclarationList"
+                  [value]="mobileDeclaration.declarationFlag"
+                >
+                  {{ mobileDeclaration.declarationValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.holdingNature === 'JO' ||
+              firstFormGroup.value.holdingNature === 'AS'
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Email ID 2</mat-label>
+              <input
+                class="enable-form-field"
+                type="email"
+                formControlName="thirdHolderEmail"
+                matInput
+                placeholder="Input"
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('thirdHolderEmail')?.hasError('email') ||
+                  firstFormGroup.get('thirdHolderEmail')?.hasError('pattern')
+                "
+              >
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Client Code Preference
+                <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="clientCodePreference"
+                (selectionChange)="generateClientCode()"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let clientCodePreference of clientCodePreferenceList"
+                  [value]="clientCodePreference"
+                >
+                  {{ clientCodePreference }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('clientCodePreference')
+                    ?.hasError('required')
+                "
+              >
+                Client Code Preference is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="
+              firstFormGroup.value.clientCodePreference === 'Custom' ||
+              firstFormGroup.value.clientCodePreference === undefined
+            "
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Client Code <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="clientCode"
+                matInput
+              />
+              <mat-error
+                *ngIf="firstFormGroup.get('clientCode')?.hasError('required')"
+              >
+                Client Code is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+            *ngIf="firstFormGroup.value.clientCodePreference === 'Random'"
+          >
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Client Code</mat-label>
+              <input
+                class="enable-form-field"
+                matInput
+                disabled
+                value="{{ this.randomClientCode }}"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <mat-checkbox
+          *ngIf="
+            firstFormGroup?.controls?.taxStatus?.value !== '01' &&
+            firstFormGroup?.controls?.taxStatus?.value !== '02' &&
+            firstFormGroup?.controls?.taxStatus?.value !== '03'
+          "
+          color="primary"
+          class="checkbox mt-3"
+          (change)="setValidators()"
+          formControlName="checkbox"
+          >Does this client have an overseas address ?</mat-checkbox
+        ><mat-error
+          *ngIf="firstFormGroup.get('checkbox')?.hasError('required')"
+        >
+          Foreign Address Details are required
+        </mat-error>
+
+        <div
+          class="row mt-2"
+          *ngIf="this.firstFormGroup.value.checkbox === true"
+        >
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Address 1 <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="foreignAddress1"
+                matInput
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('foreignAddress1')?.hasError('required')
+                "
+              >
+                Address 1 is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Address 2 <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="foreignAddress2"
+                matInput
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('foreignAddress2')?.hasError('required')
+                "
+              >
+                Address 2 is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Country <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="foreignAddressCountry"
+                placeholder="Select"
+              >
+                <mat-option>
+                  <ngx-mat-select-search
+                    placeholderLabel="Search country"
+                    noEntriesFoundLabel="No country found"
+                    [formControl]="overseasCountryListFilterCtrl"
+                  ></ngx-mat-select-search>
+                </mat-option>
+                <mat-option
+                  *ngFor="let countries of filteredOverseasCountryList | async"
+                  [value]="countries.countryCode"
+                >
+                  {{ countries.countryName }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('foreignAddressCountry')
+                    ?.hasError('required')
+                "
+              >
+                Country is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >City <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="foreignAddressCity"
+                matInput
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup.get('foreignAddressCity')?.hasError('required')
+                "
+              >
+                City is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >State <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="foreignAddressState"
+                matInput
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('foreignAddressState')
+                    ?.hasError('required')
+                "
+              >
+                State is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Pincode <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                matInput
+                formControlName="foreignAddressPincode"
+              />
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('foreignAddressPincode')
+                    ?.hasError('required')
+                "
+              >
+                Pincode is required
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  firstFormGroup
+                    .get('foreignAddressPincode')
+                    ?.hasError('pattern')
+                "
+              >
+                Can only contain numbers
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="d-flex mt-5">
+          <button
+            mat-button
+            id="discard-button"
+            (click)="backRoute()"
+            matStepperPrevious
+          >
+            Back
+          </button>
+          <button
+            mat-button
+            id="submit-button"
+            (click)="firstStepperSubmit()"
+            matStepperNext
+          >
+            Proceed
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" state="second-stepper">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Bank Account Information</ng-template>
+
+        <div>
+          <mat-card-title class="mat-card-title">Bank Details</mat-card-title>
+          <mat-card-subtitle class="mat-card-subtitle"
+            >Provide the below-required details that are required to initiate
+            actions through the platform.</mat-card-subtitle
+          >
+
+          <div
+            *ngIf="this.secondFormGroup.value.bankAccountDetails.length <= 5"
+            formArrayName="bankAccountDetails"
+            class="row"
+          >
+            <div
+              *ngFor="
+                let bankAccount of getBankAccounts(secondFormGroup);
+                let i = index
+              "
+            >
+              <div
+                class="row"
+                *ngIf="this.bankAccountCount === i"
+                [formGroupName]="i"
+              >
+                <div *ngIf="i > 0" (click)="removeBankAccount(i)">
+                  <mat-icon class="cancel-button" color="warn">cancel</mat-icon>
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >IFSC Code
+                      <span class="asterisk-color">*</span></mat-label
+                    >
+                    <input
+                      class="enable-form-field"
+                      type="text"
+                      placeholder="Input"
+                      formControlName="ifscCode"
+                      matInput
+                    />
+                    <mat-error
+                      *ngIf="bankAccount.get('ifscCode')?.hasError('required')"
+                    >
+                      IFSC Code is required
+                    </mat-error>
+                    <mat-error
+                      *ngIf="bankAccount.get('ifscCode')?.hasError('pattern')"
+                    >
+                      Can not contain special characters
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >Bank Name
+                      <span class="asterisk-color">*</span></mat-label
+                    >
+                    <input
+                      class="enable-form-field"
+                      type="text"
+                      placeholder="Input"
+                      formControlName="bankName"
+                      matInput
+                    />
+                    <mat-error
+                      *ngIf="bankAccount.get('bankName')?.hasError('required')"
+                    >
+                      Bank Name is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >MICR Code
+                      <span class="asterisk-color">*</span>
+                    </mat-label>
+                    <input
+                      class="enable-form-field"
+                      type="text"
+                      placeholder="Input"
+                      formControlName="micrNo"
+                      matInput
+                    />
+                    <mat-error
+                      *ngIf="bankAccount.get('micrNo')?.hasError('required')"
+                    >
+                      MICR Code is required
+                    </mat-error>
+                    <mat-error
+                      *ngIf="bankAccount.get('micrNo')?.hasError('pattern')"
+                    >
+                      Can only contain numbers
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >Account No.
+                      <span class="asterisk-color">*</span></mat-label
+                    >
+                    <input
+                      class="enable-form-field"
+                      type="text"
+                      placeholder="Input"
+                      formControlName="accountNo"
+                      matInput
+                    />
+                    <mat-error
+                      *ngIf="bankAccount.get('accountNo')?.hasError('required')"
+                    >
+                      Account No. is required
+                    </mat-error>
+                    <mat-error
+                      *ngIf="bankAccount.get('accountNo')?.hasError('pattern')"
+                    >
+                      Can only contain numbers
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >Account Type
+                      <span class="asterisk-color">*</span></mat-label
+                    >
+                    <mat-select
+                      class="enable-form-field"
+                      formControlName="accountType"
+                      placeholder="Select"
+                    >
+                      <mat-option
+                        *ngFor="let accountType of accountTypesList"
+                        [value]="accountType.accountCode"
+                      >
+                        {{ accountType.description }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error
+                      *ngIf="
+                        bankAccount.get('accountType')?.hasError('required')
+                      "
+                    >
+                      Account Type is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <mat-checkbox
+                    color="primary"
+                    class="checkbox mt-3"
+                    (change)="selectedRow(i)"
+                    formControlName="checkbox"
+                    [checked]="i === 0"
+                    [disabled]="i === 0"
+                    >Set as default</mat-checkbox
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="center-align mt-4">
+              <button
+                mat-button
+                id="discard-button"
+                [ngClass]="{ disabled: secondFormGroup.invalid }"
+                [disabled]="secondFormGroup.invalid"
+                (click)="addBankAccount('add')"
+              >
+                <mat-icon>add</mat-icon>
+                Add Another Bank Account
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="this.secondFormGroup.value.bankAccountDetails.length > 1">
+          <mat-card-title class="mat-card-title mt-3"
+            >Provided Bank Accounts</mat-card-title
+          >
+
+          <mat-card class="mt-4 table-card">
+            <div
+              class="new-table-styling"
+              [ngClass]="{ 'table-responsive': mobile === true }"
+            >
+              <table
+                mat-table
+                [dataSource]="bankAccountDataSource"
+                class="w-100"
+              >
+                <!-- Bank Name Column -->
+                <ng-container matColumnDef="bankName">
+                  <th mat-header-cell *matHeaderCellDef>Bank Name</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.bankName }}
+                  </td>
+                </ng-container>
+
+                <!-- Account No. Column -->
+                <ng-container matColumnDef="accountNo">
+                  <th mat-header-cell *matHeaderCellDef>Account No.</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.accountNo }}
+                  </td>
+                </ng-container>
+
+                <!-- Account Type Column -->
+                <ng-container matColumnDef="accountType">
+                  <th mat-header-cell *matHeaderCellDef>Account Type</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.accountType }}
+                  </td>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef>Action</th>
+                  <td mat-cell *matCellDef="let element; index as i">
+                    <button mat-button (click)="editBankAccount(i)">
+                      <img src="../../../../assets/images/edit-icon.svg" />
+                    </button>
+                    <button mat-button (click)="removeBankAccount(i)">
+                      <img src="../../../../assets/images/delete-icon.svg" />
+                    </button>
+                  </td>
+                </ng-container>
+
+                <tr
+                  mat-header-row
+                  *matHeaderRowDef="displayedBankDetailsColumns"
+                ></tr>
+
+                <tr
+                  mat-row
+                  *matRowDef="
+                    let row;
+                    columns: displayedBankDetailsColumns;
+                    let i = index
+                  "
+                  [style.fontWeight]="i === selectedIndex ? '600' : 'inherit'"
+                  (click)="selectedRow(i)"
+                ></tr>
+              </table>
+
+              <!-- No Records Table -->
+              <div
+                *ngIf="!bankAccountDataSource.data.length"
+                class="no_record center-align"
+              >
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <img src="../../../../assets/images/cross-icon.svg" />
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    No records found!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+
+        <div class="d-flex mt-5">
+          <button mat-button id="discard-button" matStepperPrevious>
+            Back
+          </button>
+          <button
+            mat-button
+            id="submit-button"
+            (click)="secondStepperSubmit()"
+            matStepperNext
+          >
+            Proceed
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step
+      [stepControl]="thirdFormGroup"
+      state="third-stepper"
+      *ngIf="
+        firstFormGroup?.controls?.taxStatus?.value !== '02' &&
+        firstFormGroup?.controls?.taxStatus?.value !== '26' &&
+        firstFormGroup?.controls?.taxStatus?.value !== '29' &&
+        firstFormGroup?.controls?.taxStatus?.value !== '11' &&
+        firstFormGroup?.controls?.taxStatus?.value !== '28' &&
+        firstFormGroup?.controls?.taxStatus?.value !== '27' &&
+        firstFormGroup?.controls?.taxStatus?.value !== '42'
+      "
+    >
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Nominee Information</ng-template>
+
+        <div>
+          <mat-card-title class="mat-card-title"
+            >Nominee Details</mat-card-title
+          >
+          <mat-card-subtitle class="mat-card-subtitle"
+            >Provide the below-required details that are required to initiate
+            actions through the platform. The sum of the share percentage needs
+            to be 100. The maximum number of nominees could be
+            3.</mat-card-subtitle
+          >
+
+          <div formArrayName="nomineeDetails" class="row">
+            <div
+              *ngFor="
+                let nomineeDetail of getNomineeDetails(thirdFormGroup);
+                let i = index
+              "
+            >
+              <div
+                class="row"
+                *ngIf="this.nomineeDetailsCount === i"
+                [formGroupName]="i"
+              >
+                <div *ngIf="i > 0" (click)="removeNomineeDetails(i)">
+                  <mat-icon class="cancel-button" color="warn">cancel</mat-icon>
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >Nominee Name
+                      <span class="asterisk-color">*</span></mat-label
+                    >
+                    <input
+                      class="enable-form-field"
+                      type="text"
+                      placeholder="Input"
+                      formControlName="nomineeName"
+                      matInput
+                    />
+                    <mat-error
+                      *ngIf="
+                        nomineeDetail.get('nomineeName')?.hasError('required')
+                      "
+                    >
+                      Nominee Name is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >Nominee Type
+                      <span class="asterisk-color">*</span></mat-label
+                    >
+                    <mat-select
+                      class="enable-form-field"
+                      (selectionChange)="setValidators()"
+                      formControlName="nomineeMinorFlag"
+                      placeholder="Select"
+                    >
+                      <mat-option
+                        *ngFor="let nomineeType of nomineeTypeList"
+                        [value]="nomineeType.code"
+                      >
+                        {{ nomineeType.type }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error
+                      *ngIf="
+                        nomineeDetail
+                          .get('nomineeMinorFlag')
+                          ?.hasError('required')
+                      "
+                    >
+                      Nominee Type is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >Relation <span class="asterisk-color">*</span></mat-label
+                    >
+                    <input
+                      class="enable-form-field"
+                      type="text"
+                      placeholder="Input"
+                      formControlName="nomineeRelationship"
+                      matInput
+                    />
+                    <mat-error
+                      *ngIf="
+                        nomineeDetail
+                          .get('nomineeRelationship')
+                          ?.hasError('required')
+                      "
+                    >
+                      Relation is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >Share (%)
+                      <span class="asterisk-color">*</span></mat-label
+                    >
+                    <input
+                      class="enable-form-field"
+                      type="number"
+                      (input)="calculateSharedPercentage()"
+                      placeholder="Input"
+                      formControlName="nomineeApplicablePercent"
+                      matInput
+                    />
+                    <mat-error
+                      *ngIf="
+                        nomineeDetail
+                          .get('nomineeApplicablePercent')
+                          ?.hasError('required')
+                      "
+                    >
+                      Share is required
+                    </mat-error>
+
+                    <mat-error
+                      *ngIf="
+                        nomineeDetail
+                          .get('nomineeApplicablePercent')
+                          ?.hasError('min')
+                      "
+                    >
+                      Share% is invalid
+                    </mat-error>
+                    <mat-error
+                      *ngIf="
+                        nomineeDetail
+                          .get('nomineeApplicablePercent')
+                          ?.hasError('max')
+                      "
+                    >
+                      Share% is invalid
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div
+                  class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+                  *ngIf="this.nomineeDetail.value.nomineeMinorFlag === 'Y'"
+                >
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >DOB <span class="asterisk-color">*</span></mat-label
+                    >
+                    <input
+                      class="enable-form-field"
+                      (dateChange)="dateChange4()"
+                      (mousedown)="picker.open(); $event.preventDefault()"
+                      readonly
+                      matInput
+                      [matDatepicker]="picker"
+                      formControlName="nomineeDOB"
+                      placeholder="Select"
+                      [min]="minDate"
+                      [max]="maxDate"
+                    />
+                    <mat-datepicker-toggle matSuffix [for]="picker">
+                      <mat-icon matDatepickerToggleIcon>
+                        <img
+                          class="calendar-icon"
+                          src="../../../../assets/images/date-icon.svg"
+                        />
+                      </mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker
+                      #picker
+                      (closed)="
+                        nomineeDetail.get('nomineeDOB')?.markAsTouched()
+                      "
+                    ></mat-datepicker>
+                    <mat-error
+                      *ngIf="
+                        nomineeDetail.get('nomineeDOB')?.hasError('required')
+                      "
+                    >
+                      DOB is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div
+                  class="col-lg-6 col-sm-6 col-md-6 col-xs-6"
+                  *ngIf="this.nomineeDetail.value.nomineeMinorFlag === 'Y'"
+                >
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >Guardian Name
+                      <span class="asterisk-color">*</span></mat-label
+                    >
+                    <input
+                      class="enable-form-field"
+                      type="text"
+                      placeholder="Input"
+                      formControlName="nomineeGuardian"
+                      matInput
+                    />
+                    <mat-error
+                      *ngIf="
+                        nomineeDetail
+                          .get('nomineeGuardian')
+                          ?.hasError('required')
+                      "
+                    >
+                      Guardian Name is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <mat-error
+              class="center-align"
+              *ngIf="nomineeDetailsCount > 0 && this.sharePercentage !== 100"
+            >
+              The sum of the share percentage needs to be 100
+            </mat-error>
+            <mat-error
+              class="center-align"
+              *ngIf="this.thirdFormGroup.value.nomineeDetails.length > 3"
+            >
+              Maximum no. of nominee can be 3
+            </mat-error>
+
+            <div class="center-align mt-4">
+              <button
+                mat-button
+                id="discard-button"
+                [ngClass]="{
+                  disabled:
+                    thirdFormGroup.invalid ||
+                    sharePercentage > 100 ||
+                    this.thirdFormGroup.value.nomineeDetails.length > 3
+                }"
+                [disabled]="
+                  thirdFormGroup.invalid ||
+                  sharePercentage > 100 ||
+                  this.thirdFormGroup.value.nomineeDetails.length > 3
+                "
+                type="button"
+                (click)="addNomineeDetails('add')"
+              >
+                <mat-icon>add</mat-icon>
+                Add Nominee Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="this.thirdFormGroup.value.nomineeDetails.length > 1">
+          <mat-card-title class="mat-card-title mt-3"
+            >Provided Nominees</mat-card-title
+          >
+
+          <mat-card class="mt-4 table-card">
+            <div
+              class="new-table-styling"
+              [ngClass]="{ 'table-responsive': mobile === true }"
+            >
+              <table
+                mat-table
+                [dataSource]="nomineeDetailsDataSource"
+                class="w-100"
+              >
+                <!-- Nominee Name Column -->
+                <ng-container matColumnDef="nomineeName">
+                  <th mat-header-cell *matHeaderCellDef>Nominee Name</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.nomineeName }}
+                  </td>
+                </ng-container>
+
+                <!-- Share (%) Column -->
+                <ng-container matColumnDef="share">
+                  <th mat-header-cell *matHeaderCellDef>Share (%)</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.nomineeApplicablePercent }}
+                  </td>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef>Action</th>
+                  <td mat-cell *matCellDef="let element; index as i">
+                    <button mat-button (click)="editNomineeDetails(i)">
+                      <img src="../../../../assets/images/edit-icon.svg" />
+                    </button>
+                    <button mat-button (click)="removeNomineeDetails(i)">
+                      <img src="../../../../assets/images/delete-icon.svg" />
+                    </button>
+                  </td>
+                </ng-container>
+
+                <tr
+                  mat-header-row
+                  *matHeaderRowDef="displayedNomineeDetailsColumns"
+                ></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedNomineeDetailsColumns"
+                ></tr>
+              </table>
+
+              <!-- No Records Table -->
+              <div
+                *ngIf="!nomineeDetailsDataSource.data.length"
+                class="no_record center-align"
+              >
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <img src="../../../../assets/images/cross-icon.svg" />
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    No records found!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+
+        <div class="d-flex mt-5">
+          <button mat-button id="discard-button" matStepperPrevious>
+            Back
+          </button>
+          <button
+            mat-button
+            id="submit-button"
+            [ngClass]="{
+              disabled:
+                this.sharePercentage !== 100 ||
+                this.thirdFormGroup.value.nomineeDetails.length > 3
+            }"
+            [disabled]="
+              this.sharePercentage !== 100 ||
+              this.thirdFormGroup.value.nomineeDetails.length > 3
+            "
+            (click)="thirdStepperSubmit()"
+            matStepperNext
+          >
+            Proceed
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="fourthFormGroup" state="fourth-stepper">
+      <form [formGroup]="fourthFormGroup">
+        <ng-template matStepLabel>FATCA</ng-template>
+        <div class="row">
+          <mat-card-title class="mat-card-title">FATCA</mat-card-title>
+          <mat-card-subtitle class="mat-card-subtitle"
+            >Provide the below-required details that are required to initiate
+            actions through the platform.</mat-card-subtitle
+          >
+
+          <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Nationality <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="clientNationality"
+                placeholder="Select"
+              >
+                <mat-option>
+                  <ngx-mat-select-search
+                    placeholderLabel="Search country"
+                    noEntriesFoundLabel="No country found"
+                    [formControl]="countryListFilterCtrl"
+                  ></ngx-mat-select-search>
+                </mat-option>
+                <mat-option
+                  *ngFor="let countries of filteredCountryList | async"
+                  [value]="countries.countryCode"
+                >
+                  {{ countries.countryName }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  fourthFormGroup.get('clientNationality')?.hasError('required')
+                "
+              >
+                Nationality is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Place Of Birth <span class="asterisk-color">*</span></mat-label
+              >
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="pobirinc"
+                matInput
+              />
+              <mat-error
+                *ngIf="fourthFormGroup.get('pobirinc')?.hasError('required')"
+              >
+                Place Of Birth is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Country Of Birth
+                <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="cobirinc"
+                placeholder="Select"
+              >
+                <mat-option>
+                  <ngx-mat-select-search
+                    placeholderLabel="Search country"
+                    noEntriesFoundLabel="No country found"
+                    [formControl]="countryListFilterCtrl"
+                  ></ngx-mat-select-search>
+                </mat-option>
+                <mat-option
+                  *ngFor="let countries of filteredCountryList | async"
+                  [value]="countries.countryCode"
+                >
+                  {{ countries.countryName }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="fourthFormGroup.get('cobirinc')?.hasError('required')"
+              >
+                Country Of Birth is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Father’s Name </mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="clientFatherName"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Mother’s Name </mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="clientMotherName"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field">Spouse </mat-label>
+              <input
+                class="enable-form-field"
+                type="text"
+                placeholder="Input"
+                formControlName="spname"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+          <mat-checkbox
+            color="primary"
+            class="checkbox mt-3"
+            (change)="addTaxEntry('checkboxValueChanged')"
+            formControlName="fatcaCheckbox"
+            >If the applicant(s) Guardian's Country of
+            Birth/Citizenship/Nationality/ Tax Residency is other than Indian?
+            If yes, please indicate all countries in which you are resident for
+            tax purposes and the associated TAX ID Number Below.</mat-checkbox
+          >
+        </div>
+
+        <div *ngIf="!disableField">
+          <div
+            class="row mt-3"
+            formArrayName="taxEntry"
+            *ngIf="this.fourthFormGroup.value.fatcaCheckbox"
+          >
+            <div
+              *ngFor="
+                let taxEntry of getTaxDetails(fourthFormGroup);
+                let i = index
+              "
+            >
+              <div
+                class="row"
+                *ngIf="this.taxEntryCount === i"
+                [formGroupName]="i"
+              >
+                <div *ngIf="i > 0" (click)="removeTaxEntry(i)">
+                  <mat-icon class="cancel-button" color="warn">cancel</mat-icon>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >Country {{ i + 1 }}
+                      <span class="asterisk-color">*</span></mat-label
+                    >
+                    <mat-select
+                      class="enable-form-field"
+                      formControlName="taxres"
+                      placeholder="Select"
+                    >
+                      <mat-option>
+                        <ngx-mat-select-search
+                          placeholderLabel="Search country"
+                          noEntriesFoundLabel="No country found"
+                          [formControl]="countryListFilterCtrl"
+                        ></ngx-mat-select-search>
+                      </mat-option>
+                      <mat-option
+                        *ngFor="let countries of filteredCountryList | async"
+                        [value]="countries.countryCode"
+                      >
+                        {{ countries.countryName }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error
+                      *ngIf="taxEntry.get('taxres')?.hasError('required')"
+                    >
+                      Country {{ i + 1 }} is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >Tax Payer ID No.
+                      <span class="asterisk-color">*</span></mat-label
+                    >
+                    <input
+                      class="enable-form-field"
+                      type="text"
+                      placeholder="Input"
+                      formControlName="tpin"
+                      matInput
+                    />
+                    <mat-error
+                      *ngIf="taxEntry.get('tpin')?.hasError('required')"
+                    >
+                      Tax Payer ID No. is required
+                    </mat-error>
+                    <mat-error
+                      *ngIf="taxEntry.get('tpin')?.hasError('pattern')"
+                    >
+                      Can only contain numbers
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label class="mat-label-field"
+                      >ID Document Type {{ i + 1 }}
+                      <span class="asterisk-color">*</span></mat-label
+                    >
+                    <mat-select
+                      class="enable-form-field"
+                      formControlName="idtype"
+                      placeholder="Select"
+                    >
+                      <mat-option
+                        *ngFor="let idDocument of idDocumentList"
+                        [value]="idDocument.identificationCode"
+                      >
+                        {{ idDocument.identificationType }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error
+                      *ngIf="taxEntry.get('idtype')?.hasError('required')"
+                    >
+                      ID Document Type {{ i + 1 }} is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="center-align mt-4"
+              *ngIf="this.fourthFormGroup.value.fatcaCheckbox"
+            >
+              <button
+                mat-button
+                id="discard-button"
+                [disabled]="taxEntry.invalid"
+                (click)="addTaxEntry('add')"
+              >
+                <mat-icon>add</mat-icon>
+                Add Tax Entry
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          *ngIf="
+            this.fourthFormGroup.value.taxEntry.length > 1 || this.showTaxTable
+          "
+        >
+          <mat-card-title class="mat-card-title mt-3"
+            >Provided Tax Entries</mat-card-title
+          >
+
+          <mat-card class="mt-3 table-card">
+            <div
+              class="new-table-styling"
+              [ngClass]="{ 'table-responsive': mobile === true }"
+            >
+              <table mat-table [dataSource]="taxEntryDataSource" class="w-100">
+                <!-- Country Name Column -->
+                <ng-container matColumnDef="countryName">
+                  <th mat-header-cell *matHeaderCellDef>Country Name</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.taxres }}
+                  </td>
+                </ng-container>
+
+                <!-- ID document Type Column -->
+                <ng-container matColumnDef="idDocumentType">
+                  <th mat-header-cell *matHeaderCellDef>ID document Type</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.idtype }}
+                  </td>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                  <th [hidden]="disableField" mat-header-cell *matHeaderCellDef>
+                    Action
+                  </th>
+                  <td
+                    [hidden]="disableField"
+                    mat-cell
+                    *matCellDef="let element; index as i"
+                  >
+                    <button mat-button (click)="editTaxEntry(i)">
+                      <img src="../../../../assets/images/edit-icon.svg" />
+                    </button>
+                    <button mat-button (click)="removeTaxEntry(i)">
+                      <img src="../../../../assets/images/delete-icon.svg" />
+                    </button>
+                  </td>
+                </ng-container>
+
+                <tr
+                  mat-header-row
+                  *matHeaderRowDef="displayedTaxEntryColumns"
+                ></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedTaxEntryColumns"
+                ></tr>
+              </table>
+
+              <!-- No Records Table -->
+              <div
+                *ngIf="!taxEntryDataSource.data.length"
+                class="no_record center-align"
+              >
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <img src="../../../../assets/images/cross-icon.svg" />
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    No records found!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+
+        <div class="d-flex mt-5">
+          <button mat-button id="discard-button" matStepperPrevious>
+            Back
+          </button>
+          <button
+            mat-button
+            id="submit-button"
+            (click)="fourthStepperSubmit()"
+            matStepperNext
+          >
+            Proceed
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="fifthFormGroup" state="fifth-stepper">
+      <form [formGroup]="fifthFormGroup">
+        <ng-template matStepLabel>KYC Information</ng-template>
+        <div class="row">
+          <mat-card-title class="mat-card-title">KYC Details</mat-card-title>
+          <mat-card-subtitle class="mat-card-subtitle"
+            >Provide the below-required KYC details which are required to
+            proceed with client onboarding.</mat-card-subtitle
+          >
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Source of Wealth
+                <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="srcewealt"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let sourceofWealth of sourceOfWealthList"
+                  [value]="sourceofWealth.sourceCode"
+                >
+                  {{ sourceofWealth.source }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="fifthFormGroup.get('srcewealt')?.hasError('required')"
+              >
+                Source of Wealth is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Gross Annual Income
+                <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="incslab"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let grossAnnualIncome of grossAnnualIncomeList"
+                  [value]="grossAnnualIncome.incomeCode"
+                >
+                  {{ grossAnnualIncome.income }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="fifthFormGroup.get('incslab')?.hasError('required')"
+              >
+                Gross Annual Income is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Services Provided (For Organization)
+                <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="corpservs"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let forNonIndividuals of forNonIndividualsList"
+                  [value]="forNonIndividuals.code"
+                >
+                  {{ forNonIndividuals.nonIndividualName }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="fifthFormGroup.get('corpservs')?.hasError('required')"
+              >
+                Services Provided (For Organization) is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="mat-label-field"
+                >Politically Exposed (For Individuals)
+                <span class="asterisk-color">*</span></mat-label
+              >
+              <mat-select
+                class="enable-form-field"
+                formControlName="pepflag"
+                placeholder="Select"
+              >
+                <mat-option
+                  *ngFor="let forIndividuals of forIndividualsList"
+                  [value]="forIndividuals.code"
+                >
+                  {{ forIndividuals.individualName }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="fifthFormGroup.get('pepflag')?.hasError('required')"
+              >
+                Politically Exposed (For Individuals) is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="d-flex mt-5">
+          <button mat-button id="discard-button" matStepperPrevious>
+            Back
+          </button>
+          <button
+            mat-button
+            [matMenuTriggerFor]="menu"
+            id="submit-button"
+            matStepperNext
+          >
+            <span>Proceed</span
+            ><mat-icon class="rotate-icon">maximize</mat-icon>
+            <mat-icon class="arrow-color">keyboard_arrow_down</mat-icon>
+          </button>
+
+          <mat-menu #menu="matMenu" class="user-menu">
+            <button
+              *ngIf="
+                this.clientDataCSV.clientOnboardedFrom === 'gemfinWithoutUCC' ||
+                !this.editClientDetails
+              "
+              mat-menu-item
+              (click)="onboardClient('false', proceedButtonText1)"
+            >
+              <p class="mat-menu-button-text">{{ proceedButtonText1 }}</p>
+            </button>
+            <button
+              mat-menu-item
+              (click)="onboardClient('true', proceedButtonText2)"
+            >
+              <p class="mat-menu-button-text long-button-text">
+                {{ proceedButtonText2 }}
+              </p>
+            </button>
+          </mat-menu>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+</mat-card>

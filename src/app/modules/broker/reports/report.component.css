@@ -1,0 +1,56 @@
+.report-dashboard {
+    padding: 25px;
+}
+
+.mat-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.test {
+    display: flex;
+    flex-wrap: wrap;
+}
+.report-data {
+    margin: 0 25px 20px 0;
+    text-align: center;
+    height: 114px;
+    width: 15%;
+    color: #808080;
+  }
+
+  .active{
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, .1) !important;
+    border:2px solid #56C596!important;
+    background: #fbfefd !important;
+    color: #1a1a1a;
+  }
+
+
+.reportImages{
+    text-align: center;
+    color: black;
+}
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: white  !important;
+    height: 15px !important;
+    width: 15px !important;
+    left: 2px !important;
+    top: 2px !important;
+}
+:ng-deep .mat-radio-inner-circle {
+    border-radius: 50% ;
+    box-sizing: border-box;
+    display: block;
+    height: 15px !important;
+    position: absolute ;
+    opacity: 0;
+    transition: transform ease 280ms,background-color ease 280ms,opacity linear 1ms 280ms;
+    width: 15px !important;
+    transform: scale(0.001);
+}
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #01529E;
+    border-width: 10px;
+}

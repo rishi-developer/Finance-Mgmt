@@ -1,0 +1,144 @@
+<div *ngIf="this.mobile==false" [ngClass]="{'body':mobile==false}" class="table-styling">
+  <mat-form-field appearance="outline" class="search-box search-filter">
+    <input (keyup)="applyFilter($event)" matInput autocomplete="off" type="text" placeholder="Search">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData(sort)" class="w-100">
+        <!-- Client ID Column -->
+        <ng-container matColumnDef="clientId">
+            <th class="head adjust-id" mat-header-cell *matHeaderCellDef mat-sort-header>Client's ID</th>
+            <td class="table-data-styling" mat-cell *matCellDef="let element">
+                <a (click)="routePortfolio(element.clientId)" class="client-id">{{element.clientId}}</a>
+            </td>
+        </ng-container>
+
+         <!-- Client Name Column -->
+        <ng-container matColumnDef="clientName">
+            <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header>Client Name</th>
+            <td class="table-data-styling" mat-cell *matCellDef="let element">
+                {{element.clientName}}
+            </td>
+        </ng-container>
+
+        <!-- Portfolio Value Column -->
+        <ng-container matColumnDef="portfolioValue">
+            <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header>Portfolio Value (₹)</th>
+            <td class="table-data-styling" mat-cell *matCellDef="let element">
+                {{element.portfolioValue}}
+            </td>
+        </ng-container>
+
+        <!-- Current Investment Column -->
+        <ng-container matColumnDef="currentInvestment">
+            <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header>Investment amount (₹)</th>
+            <td class="table-data-styling" mat-cell *matCellDef="let element">
+                {{element.currentInvestment}}
+            </td>
+        </ng-container>
+
+        <!-- Advised Date Column -->
+        <ng-container matColumnDef="advisedDate">
+            <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header>Advised Date</th>
+            <td class="table-data-styling" mat-cell *matCellDef="let element">
+                {{element.advisedDate|date:'dd/MM/yyyy'}}
+            </td>
+        </ng-container>
+
+        <!--Advised Status Column -->
+        <ng-container matColumnDef="status">
+            <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header>Advice Status</th>
+            <td class="cell-status table-data-styling" mat-cell *matCellDef="let element">
+                <mat-select [disabled]="element.advisedStatus==='Executed'" [ngClass]="{'pending-status': element.advisedStatus=='Pending','executed-status':element.advisedStatus=='Executed'}"  [(ngModel)]="element.advisedStatus">
+                   <mat-option *ngFor="let status of statusOptions" [value]="status">
+                      {{status}}
+                    </mat-option>
+                  </mat-select>
+            </td>
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!-- No Records Table -->
+    <div *ngIf="!dataSource.data.length" class="no_record center-align">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                <img src="../../../../assets/images/cross-icon.svg">
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                No records found!
+            </div>
+
+        </div>
+    </div>
+
+    <!--TODO: Paginator -->
+    <!-- <mat-paginator *ngIf="dataSource.data.length" [ngClass]="{'position-fix': mobile}" #paginator
+        [pageIndex]="tablePageIndex" [pageSize]="10" showFirstLastButtons
+        (page)="pageEvent=getClientList($event)" [length]="tableLength">
+    </mat-paginator> -->
+</div>
+
+
+<!-- Mobile View -->
+
+<div *ngIf="this.mobile==true">
+  <div class="row mt-4 mb-4">
+    <mat-divider class="mat-divider"></mat-divider>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+      <h2 class="mobile-mat-card-heading">{{selectedClientType}}</h2>
+    </div>
+    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+      <mat-form-field appearance="outline" class="search-box search-filter">
+        <input [(ngModel)]="searchText" matInput autocomplete="off" type="text" placeholder="Search">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+  <mat-card *ngFor="let element of advisoryClientList | filter:searchText" class="mb-3">
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-card-title class="mobile-mat-card-title">Client ID</mat-card-title>
+        <mat-card-subtitle (click)="routePortfolio(element.clientId)" class="mobile-mat-card-subtitle mobile-client-id-color cursor-pointer">{{element.clientId}}</mat-card-subtitle>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-card-title class="mobile-mat-card-title">Client Name</mat-card-title>
+        <mat-card-subtitle class="mobile-mat-card-subtitle"> {{element.clientName}}</mat-card-subtitle>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-card-title class="mobile-mat-card-title">Portfolio Value (₹)</mat-card-title>
+        <mat-card-subtitle class="mobile-mat-card-subtitle">{{element.portfolioValue}}</mat-card-subtitle>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-card-title class="mobile-mat-card-title">Current Investment (₹)</mat-card-title>
+        <mat-card-subtitle class="mobile-mat-card-subtitle">{{element.currentInvestment}}</mat-card-subtitle>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-card-title class="mobile-mat-card-title">Advised Date</mat-card-title>
+        <mat-card-subtitle class="mobile-mat-card-subtitle">{{element.advisedDate|date:'dd/MM/yyyy'}}</mat-card-subtitle>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-card-title class="mobile-mat-card-title">Advice Status</mat-card-title>
+        <mat-card-subtitle class="mobile-mat-card-subtitle">
+          <mat-select [disabled]="element.advisedStatus==='Executed'" [ngClass]="{'pending-status': element.advisedStatus=='Pending','executed-status':element.advisedStatus=='Executed'}"  [(ngModel)]="element.advisedStatus">
+            <mat-option *ngFor="let status of statusOptions" [value]="status">
+               {{status}}
+             </mat-option>
+           </mat-select>
+        </mat-card-subtitle>
+      </div>
+    </div>
+  </mat-card>
+</div>
+</div>

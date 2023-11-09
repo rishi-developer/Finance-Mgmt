@@ -1,0 +1,60 @@
+<div class="profile-info-user">
+  <mat-card class="mat-card-profile">
+    <div class="row">
+      <div class="col-3 pt-2">
+        <!-- <img src="../../../assets/images/profile-circle.svg" alt="error">  -->
+        <div class="user-image">
+          {{ viewDetail.userFirstNameAlphabet
+          }}{{viewDetail.userLastNameAlphabet }}
+        </div>
+      </div>
+      <div class="col-9 d-flex flex-column">
+        <span class="profile-card-client-name-text"
+          >{{ viewDetail.clientFirstName }}
+          {{ viewDetail.clientMiddleName }}
+          {{ viewDetail.clientLastName }}</span
+        >
+        <div class="mt-1 d-flex">
+          <img src="../../../../../assets/images/small-mail-icon.svg" alt="" />
+          <span class="profile-card-client-info-text">{{
+            viewDetail.email
+          }}</span>
+        </div>
+        <div class="mt-1">
+          <img src="../../../../../assets/images/small-phone-icon.svg" alt="" />
+          <span class="profile-card-client-info-text">{{
+            viewDetail.clientPhoneNo
+          }}</span>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+
+<div class="d-flex flex-md-row mt-5">
+  <div class="client-profile-heading-text">Profile Information</div>
+  
+  <mat-tab-group *ngIf="element" animationDuration="0ms">
+    
+    <mat-tab class="mt-5" label="Overview">
+      <app-client-profile-overview></app-client-profile-overview>
+    </mat-tab>
+    
+    <mat-tab label="Personal Details">
+      <app-client-personal-details></app-client-personal-details>
+    </mat-tab>
+    
+    <mat-tab label="Bank Details">
+      <app-client-bank-details></app-client-bank-details>
+    </mat-tab>
+    
+    <mat-tab label="Communication Details">
+      <app-client-communication-details></app-client-communication-details>
+    </mat-tab>
+    <mat-tab *ngIf="userRole ==='CLIENT'" label="Change Password">
+      <app-rm-profile-change-password></app-rm-profile-change-password>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+

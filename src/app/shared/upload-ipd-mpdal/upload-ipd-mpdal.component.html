@@ -1,0 +1,53 @@
+<div class="heading">
+  <div><h1>Upload Investment Policy Document (IPD)</h1></div>
+  <div class="cancel" (click)="onClose1()"><h3>X</h3></div>
+</div>
+
+<p class="desc">
+  Use the upload file functionality to upload the latest Investment Policy
+  Document (IPD) as recieved,also you can use view option to check valid file is
+  uploaded.
+</p>
+
+<div class="upload-button-conatiner mt-5">
+  <form [formGroup]="modalForm">
+    <div class="custom-file-input">
+      <img
+        src="assets/images/upload-icon.svg"
+        alt="Upload Icon"
+        class="upload-icon"
+      />
+      <div>
+        <span class="upload-text-1">Select a file</span>&nbsp;
+        <span class="upload-text-2">or drag and drop here</span><br />
+        <span class="upload-text-3"
+          >allowed formats include .jpeg, .pdf etc</span
+        >
+      </div>
+      <div></div>
+      <input
+        type="file"
+        id="firsting"
+        size="60"
+        class="form-control file-input"
+        formControlName="attachmentFile"
+        (change)="onChange($event)"
+      />
+    </div>
+    <mat-error
+      class="mt-1 error-style fix-top-margin"
+      *ngIf="
+        modalForm.controls.attachmentFile?.errors && this.submitted == true
+      "
+    >
+      Attachment is required
+    </mat-error>
+
+    <div class="button-allingment mt-5">
+      <button mat-button id="discard-button" (click)="onClose1()">
+        Discard
+      </button>
+      <button id="submit-button" (click)="onSubmit()">Proceed</button>
+    </div>
+  </form>
+</div>

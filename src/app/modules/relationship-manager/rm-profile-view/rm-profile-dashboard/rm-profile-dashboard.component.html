@@ -1,0 +1,49 @@
+<div class="row mt-1">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li (click)="backroute()" class="breadcrumb-item non-active-breadcrumb "><a>Home</a></li>
+            <li  *ngIf="!this.rmBoolean" (click)="backroute()"class="breadcrumb-item non-active-breadcrumb"><a>List of RM</a></li>
+            <li class="breadcrumb-item active-breadcrumb" aria-current="page">RM Profile</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="profile-info-user">
+    <mat-card class="mat-card-profile">
+        <div class="row" *ngIf="this.details">
+              <div class="user-image">{{details.userFirstNameAlphabet}}{{details.userLastNameAlphabet}}</div>
+           
+            <div class="col-9 d-flex flex-column">
+                <span class="profile-card-client-name-text">{{details.firstName}}  {{details.middleName}} {{details.lastName}}</span>
+                <div class="mt-1 d-flex">
+                   <img src="../../../../../assets/images/small-mail-icon.svg" alt=""> <span
+                        class="profile-card-client-info-text">{{details.email}}</span>
+                </div>
+                <div class="mt-1">
+                    <img src="../../../../../assets/images/small-phone-icon.svg" alt=""> <span
+                        class="profile-card-client-info-text">{{details.phone}}</span>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>
+
+<!-- <mat-card class="mat-card-profile mt-4">
+    <span class="client-profile-heading-text">Profile Information</span> -->
+
+
+
+    <div class="d-flex flex-md-row mt-5">
+        <div class="client-profile-heading-text">Profile Information</div>
+        
+    <mat-tab-group animationDuration="0ms" class="d-flex flex-md-row">
+        <div  *ngIf="this.details">
+            <mat-tab label="Details"><app-rm-profile-details-view (dataUpdateEvent)="getRMprofile()"></app-rm-profile-details-view> </mat-tab>
+            <mat-tab *ngIf="rmBoolean || hasRmFunctionality" label="Change Password "><app-rm-profile-change-password></app-rm-profile-change-password>
+            </mat-tab>
+        </div>
+
+    </mat-tab-group>
+
+</div>
+<!-- </mat-card> -->

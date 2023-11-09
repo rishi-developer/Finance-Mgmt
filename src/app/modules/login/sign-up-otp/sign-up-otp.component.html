@@ -1,0 +1,124 @@
+<div class="container-fluid p-0">
+  <div class="row no-gutters page">
+    <div class="col-lg-6 d-none d-lg-block login-block">
+      <div class="bg-overlay">
+        <div
+          fxLayout="row wrap"
+          fxFlex
+          fxShow="false"
+          fxShow.gt-md
+          fxFill
+          fxLayoutAlign="center center"
+          class="bg-overlay wrap text-white"
+        ></div>
+      </div>
+    </div>
+    <div class="col-lg-6 login-block">
+      <div class="auth-content d-flex justify-content-center">
+        <div
+          class="row d-flex align-items-center justify-content-center flex-column"
+        >
+          <div class="text-center">
+            <img src="assets/images/gemfin-logo.svg" alt="logo" />
+          </div>
+          <div class="mt-4 text-center">
+            <p class="login-heading">OTP Verification</p>
+          </div>
+          <div>
+            <p>
+              Enter the One time password recieved on <br />
+              your Email ID mentioned below
+            </p>
+          </div>
+          <form [formGroup]="signupForm">
+            <div class="form-group auth-form-group mb-0 mt-2">
+              <div class="form-group auth-form-group mb-0">
+                <mat-form-field
+                  class="example-full-width login-form"
+                  appearance="outline"
+                >
+                  <mat-icon matPrefix class="form-field-image">
+                    <img src="assets/images/mail-icon.svg" />
+                  </mat-icon>
+                  <input
+                    type="email"
+                    matInput
+                    value="{{ emailID }}"
+                    [disabled]="true"
+                  />
+                </mat-form-field>
+              </div>
+              <div
+                id="otp"
+                class="flex form-otp text-center pb-3 OTP-inputFileds"
+              >
+                <input
+                  class="text-center form-control OTP-input-width"
+                  #txt1
+                  maxlength="1"
+                  type="text"
+                  formControlName="otp1"
+                  (keyup)="handleInputFocus($event, null, txt1, txt2)"
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                />
+                <input
+                  class="text-center form-control OTP-input-width"
+                  #txt2
+                  maxlength="1"
+                  type="text"
+                  formControlName="otp2"
+                  (keyup)="handleInputFocus($event, txt1, txt2, txt3)"
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                />
+                <input
+                  class="text-center form-control OTP-input-width"
+                  #txt3
+                  maxlength="1"
+                  type="text"
+                  formControlName="otp3"
+                  (keyup)="handleInputFocus($event, txt2, txt3, txt4)"
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                />
+                <input
+                  class="text-center form-control OTP-input-width"
+                  #txt4
+                  maxlength="1"
+                  type="text"
+                  formControlName="otp4"
+                  (keyup)="handleInputFocus($event, txt3, txt4, txt5)"
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                />
+                <input
+                  class="text-center form-control OTP-input-width"
+                  #txt5
+                  maxlength="1"
+                  type="text"
+                  formControlName="otp5"
+                  (keyup)="handleInputFocus($event, txt4, txt5, txt6)"
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                />
+                <input
+                  class="text-center form-control OTP-input-width"
+                  #txt6
+                  maxlength="1"
+                  type="text"
+                  formControlName="otp6"
+                  (keyup)="handleInputFocus($event, txt5, txt6, null)"
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                  (keyup)="verifyOtpFn()"
+                />
+              </div>
+            </div>
+            <div class="mt-3">
+              <a
+                class="to-new-page-resend float-end cursor-pointer"
+                (click)="resend()"
+                >Resend OTP
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+.sidebar-icons {
+  width: 24px;
+  height: 24px;
+}
+
+.sidebar-list-item-text {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: -0.01em;
+  color: #4D4D4D;
+  margin-left: 15px;
+}
+
+.sidebar-clovek-logo {
+  /* width: 128.64px; */
+  height: 32px;
+  margin-left: 14px;
+}
+
+/* .active-list-item {
+  width: 80px !important;
+  height: 48px !important;
+  background: #E6F3FF !important;
+  border-radius: 0px 8px 8px 0px !important;
+} */
+
+.active-list-item{
+  width: 196px !important;
+  height: 48px !important;
+  background: #E6F3FF !important;
+  border-radius: 0px 8px 8px 0px !important;
+}
+
+.active-list-item .sidebar-active-item{
+  height: 100%;
+  background-color: #01529E;
+  margin-left: -18px;
+  width:7px;
+  border-radius: 0px 15px 15px 0px; 
+  margin-right: 12px;
+}
+.active-list-item span {
+  color: #4D4D4D;
+}
+
+.active-list-item p {
+  color: #4D4D4D;
+  padding-top: 13px;
+}
+
+.transaction-text {
+  color: #4D4D4D;
+  padding-top: 13px;
+  word-wrap:break-word;
+  margin-bottom: 0px;
+}
+
+.report-text {
+  color: #4D4D4D;
+  padding-top: 13px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.sidebar-mat-expansion-panel {
+  border-radius: 0px;
+  background: transparent;
+  box-shadow: none;
+  margin-top: 0;
+}
+
+::ng-deep .mat-expansion-panel-body {
+  padding: 0 24px !important;
+  margin-bottom: 0;
+}
+
+::ng-deep .ng-star-inserted{
+  margin-bottom: 0 !important;
+}
+.sidebar-mat-expansion-panel-header {
+  padding: 0px 19px;
+}
+
+.mat-expansion-panel-list {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  color: #4D4D4D;
+  cursor: pointer;
+}
+
+::ng-deep .mat-expansion-indicator::after {
+  color: #4D4D4D;
+}
+
+.mat-expansion-new-client{
+  margin: 12px 0px;;
+}
+
+/* .active-list-item .selected-tab {
+  width: 4px;
+  height: 48px;
+  background: #01529E;
+  border-radius: 0px 8px 8px 0px;
+  margin-right: 10px;
+} */

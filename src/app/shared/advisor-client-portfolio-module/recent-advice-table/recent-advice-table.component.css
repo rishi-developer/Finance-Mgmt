@@ -1,0 +1,70 @@
+.client-id {
+  font-family: Epilogue;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  text-decoration-line: underline;
+  color: #01529E;
+  cursor: pointer;
+}
+
+#sold {
+  font-family: 'Epilogue';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 150%;
+display: flex;
+align-items: center;
+color: #FF5D5C;
+background: rgba(255, 93, 92, 0.15);
+border: 1px solid #FF5D5C;
+border-radius: 8px;
+width: 144px;
+height: 48px;
+justify-content: center;
+}
+
+#bought {
+  font-family: 'Epilogue';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 150%;
+display: flex;
+align-items: center;
+color: #6DB624;
+background: #E9F4DE;
+border: 1px solid #6DB624;
+border-radius: 8px;
+width: 144px;
+height: 48px;
+justify-content: center;
+}
+
+
+.overlay {
+  height: 100vh;
+  width: 100%;
+  background: rgba(1, 82, 158, 0.2);
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.card{
+  background: #F0F4FA;
+  box-shadow: 0px 8px 15px rgba(136, 136, 136, 0.2);
+  border-radius: 12px;
+}

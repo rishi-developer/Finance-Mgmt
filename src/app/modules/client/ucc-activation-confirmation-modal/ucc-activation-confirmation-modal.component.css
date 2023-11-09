@@ -1,0 +1,42 @@
+.update-password-confirm {
+  display: flex;
+  flex-direction: column;
+  /* padding: 0 10%; */
+}
+
+.confirm-image {
+  display: flex;
+  /* background-color: #ECF8F3; */
+  width: 100%;
+  justify-content: center;
+  height: 163px;
+}
+::ng-deep .mat-dialog-container {
+  padding: 0px !important;
+  border-radius: 15px !important;
+}
+
+.login-heading {
+  color: #1a1a1a;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 30px */
+}
+
+.update-message {
+  color: #4d4d4d;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+}
+
+.confirm-ucc{
+    display: flex;
+    justify-content: center;
+}

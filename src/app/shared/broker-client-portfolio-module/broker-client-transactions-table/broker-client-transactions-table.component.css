@@ -1,0 +1,159 @@
+.classNav{
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 25% !important;
+    width: 30% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+
+  #Failed{
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    color: #FF5D5C;
+    background: rgba(255, 93, 92, 0.15);
+    border: 1px solid #FF5D5C;
+    border-radius: 24px;
+    width: 144px;
+    height: 36px;
+    justify-content: center;
+  }
+ 
+  
+
+
+  #Order_Placed{
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+     color: #6DB624;
+    background: rgba(109, 182, 36, 0.15);
+    border: 1px solid #6DB624;
+    border-radius: 24px;
+    width: 144px;
+    height: 36px;
+    justify-content: center;
+  }
+
+  .serach-filter-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .filter-button{
+    width: 232px;
+    height: 54px;
+    background-color: #FFFFFF;
+    border: 1px solid #DADADA;
+    border-radius: 8px;
+    font-family: "Epilogue";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #A6A6A6;
+ 
+ 
+}
+.filter-icon{
+  display: flex;
+  justify-content: space-between;
+}
+
+.divider-filter{
+  border: 1px solid #e6e6e6
+
+}
+.proceed-button{
+  width: 118px;
+  height: 48px;
+  background: #01529E;
+  box-shadow: 0 8px 16px #88888880;
+  border-radius: 8px;
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #fff;
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.discard-button-reset{
+  width: 118px;
+  height: 48px;
+  border: 1px solid #01529E;
+  filter: drop-shadow(0px 8px 16px rgba(136,136,136,.5));
+  border-radius: 8px;
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #01529e;
+  margin-left: 12px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.buttons-allingment{
+  display: flex;
+  justify-content: center;
+}
+
+:host ::ng-deep .mat-button-focus-overlay { 
+  background-color: transparent !important; 
+  }
+
+p{
+  font-family: 'Epilogue';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 150%;
+/* identical to box height, or 21px */
+
+display: flex;
+align-items: center;
+
+color: #000000;
+}
+
+h1{
+font-family: 'Epilogue';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 150%;
+display: flex;
+align-items: center;
+margin-left: 1rem;
+/* margin-top: 5px; */
+}
+
+::ng-deep .my-menu {
+  overflow: hidden !important;
+  border-radius: 12px !important;
+ 
+}

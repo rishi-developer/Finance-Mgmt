@@ -1,0 +1,454 @@
+<div class="display-flex-sb header">
+  <mat-card-title class="padding-changes mat-card-title">{{
+    modalData.heading
+  }}</mat-card-title>
+  <mat-icon class="cursor-pointer" (click)="onClose()" matSuffix
+    >close</mat-icon
+  >
+</div>
+<form [formGroup]="modalForm">
+  <div class="form-container">
+    <mat-card-subtitle class="mat-card-subtitle">{{
+      modalData.subheading
+    }}</mat-card-subtitle>
+    <mat-dialog-content
+      [ngClass]="{
+        'assign-reassign-form':
+          modalData.actionButton === 'Assign RM' ||
+          modalData.actionButton === 'Reassign RM' ||
+          modalData.actionButton === 'Assign Client' ||
+          modalData.actionButton === 'Reassign Client'
+      }"
+    >
+      <!-- Invite Rm -->
+
+      <div
+        class="row"
+        *ngIf="
+          modalData.actionButton === 'Send Email Invitation' ||
+          modalData.actionButton === 'Send Email Invitation Broker Admin'
+        "
+      >
+        <div
+          *ngIf="modalData.actionButton === 'Send Email Invitation'"
+          class="col-lg-12 col-sm-12 col-md-12 col-xs-12"
+        >
+          <mat-form-field appearance="outline" #userNameField>
+            <mat-label class="mat-label-field"
+              >RM ID<span class="asterisk-color">*</span></mat-label
+            >
+            <mat-icon matPrefix class="form-field-image">
+              <img src="assets/images/iput-icon.svg" />
+            </mat-icon>
+            <input
+              class="enable-form-field"
+              type="text"
+              placeholder="Input"
+              formControlName="virtualRMId"
+              matInput
+              (focus)="userNameField.updateOutlineGap()"
+            />
+            <mat-error
+              *ngIf="modalForm.get('virtualRMId')?.hasError('required')"
+            >
+              RM ID is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+          <mat-form-field appearance="outline">
+            <mat-label
+              *ngIf="modalData.actionButton === 'Send Email Invitation'"
+              class="mat-label-field"
+              >RM First Name <span class="asterisk-color">*</span></mat-label
+            >
+            <mat-label
+              *ngIf="
+                modalData.actionButton === 'Send Email Invitation Broker Admin'
+              "
+              class="mat-label-field"
+              >Broker First Name
+              <span class="asterisk-color">*</span></mat-label
+            >
+            <mat-icon matPrefix class="form-field-image">
+              <img src="assets/images/userId.svg" />
+            </mat-icon>
+            <input
+              class="enable-form-field"
+              type="text"
+              placeholder="Input"
+              formControlName="firstName"
+              matInput
+            />
+            <mat-error
+              *ngIf="
+                modalData.actionButton === 'Send Email Invitation' &&
+                modalForm.get('firstName')?.hasError('required')
+              "
+            >
+              RM First Name is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                modalData.actionButton ===
+                  'Send Email Invitation Broker Admin' &&
+                modalForm.get('firstName')?.hasError('required')
+              "
+            >
+              Broker First Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+          <mat-form-field appearance="outline">
+            <mat-label
+              *ngIf="modalData.actionButton === 'Send Email Invitation'"
+              class="mat-label-field"
+              >RM Middle Name</mat-label
+            >
+            <mat-label
+              *ngIf="
+                modalData.actionButton === 'Send Email Invitation Broker Admin'
+              "
+              class="mat-label-field"
+              >Broker Middle Name
+            </mat-label>
+            <mat-icon matPrefix class="form-field-image">
+              <img src="assets/images/userId.svg" />
+            </mat-icon>
+            <input
+              class="enable-form-field"
+              type="text"
+              placeholder="Input"
+              formControlName="middleName"
+              matInput
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+          <mat-form-field appearance="outline">
+            <mat-label
+              *ngIf="modalData.actionButton === 'Send Email Invitation'"
+              class="mat-label-field"
+              >RM Last Name
+              <!-- <span class="asterisk-color">*</span> -->
+            </mat-label>
+            <mat-label
+              *ngIf="
+                modalData.actionButton === 'Send Email Invitation Broker Admin'
+              "
+              class="mat-label-field"
+              >Broker Last Name
+              <!-- <span class="asterisk-color">*</span> -->
+            </mat-label>
+            <mat-icon matPrefix class="form-field-image">
+              <img src="assets/images/userId.svg" />
+            </mat-icon>
+            <input
+              class="enable-form-field"
+              type="text"
+              placeholder="Input"
+              formControlName="lastName"
+              matInput
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+          <mat-form-field appearance="outline">
+            <mat-label class="mat-label-field"
+              >Email ID <span class="asterisk-color">*</span></mat-label
+            >
+            <mat-icon matPrefix class="form-field-image">
+              <img src="assets/images/mail-icon.svg" />
+            </mat-icon>
+            <input
+              type="email"
+              formControlName="email"
+              matInput
+              placeholder="Input"
+            />
+            <mat-error
+              *ngIf="
+                modalForm.get('email')?.hasError('email') ||
+                modalForm.get('email')?.hasError('pattern')
+              "
+            >
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="modalForm.get('email')?.hasError('required')">
+              Email ID is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+          <mat-form-field appearance="outline">
+            <mat-icon matPrefix class="form-field-image">
+              <img src="assets/images/phone-icon.svg" />
+            </mat-icon>
+            <mat-label class="mat-label-field"
+              >Mobile No. <span class="asterisk-color">*</span></mat-label
+            >
+            <input
+              (keyup)="validatePhoneNumber($event)"
+              type="text"
+              placeholder="Input"
+              matInput
+              formControlName="phoneNo"
+            />
+            <mat-error
+              *ngIf="
+                modalForm.get('phoneNo')?.hasError('required') &&
+                !startsWithZero
+              "
+            >
+              Mobile Number is required
+            </mat-error>
+            <mat-error *ngIf="modalForm.get('phoneNo')?.hasError('pattern')">
+              Can only contain numbers
+            </mat-error>
+            <mat-error
+              *ngIf="
+                startsWithZero &&
+                !modalForm.controls['phoneNo'].hasError('pattern')
+              "
+            >
+              Cannot start with 0
+            </mat-error>
+            <mat-error
+              *ngIf="
+                modalForm.get('phoneNo')?.hasError('minlength') &&
+                !startsWithZero &&
+                !modalForm.get('phoneNo')?.hasError('pattern')
+              "
+            >
+              Min length is 10 digits
+            </mat-error>
+            <mat-error
+              *ngIf="
+                modalForm.get('phoneNo')?.hasError('maxlength') &&
+                !startsWithZero &&
+                !modalForm.get('phoneNo')?.hasError('pattern')
+              "
+            >
+              Max length is 12 digits
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div
+          *ngIf="modalData.actionButton === 'Send Email Invitation'"
+          class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mb-5"
+        >
+          <mat-form-field appearance="outline">
+            <mat-label class="mat-label-field"
+              >EUIN <span class="asterisk-color">*</span></mat-label
+            >
+            <mat-icon matPrefix class="form-field-image">
+              <img src="assets/images/userId.svg" />
+            </mat-icon>
+            <input
+              class="enable-form-field"
+              type="text"
+              placeholder="Input"
+              maxLength="7"
+              formControlName="euin"
+              matInput
+            />
+            <mat-error *ngIf="modalForm.get('euin')?.hasError('required')">
+              EUIN is required
+            </mat-error>
+            <mat-error *ngIf="modalForm.get('euin')?.hasError('pattern')">
+              Invalid pattern : Starts with 'E' followed by 6 numbers
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Assign/Reassign Rm -->
+
+      <div
+        class="row"
+        *ngIf="
+          modalData.actionButton === 'Assign RM' ||
+          modalData.actionButton === 'Reassign RM'
+        "
+      >
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+          <mat-form-field appearance="outline">
+            <mat-label class="mat-label-field"
+              >Client Name
+              <span class="asterisk-color">*</span>
+            </mat-label>
+            <mat-icon matPrefix class="form-field-image">
+              <img src="assets/images/userId.svg" />
+            </mat-icon>
+            <input
+              class="enable-form-field"
+              disabled
+              type="text"
+              matInput
+              value="{{ clientName }}"
+            />
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-lg-12 col-sm-12 col-md-12 col-xs-12"
+          *ngIf="modalData.actionButton === 'Reassign RM'"
+        >
+          <p class="existing-rm">
+            Existing RM:
+            <span class="existing-rm-name">
+              {{ modalData.assignedRMFirstName ?? "" }}
+              {{ modalData.assignedRMMiddleName ?? "" }}
+              {{ modalData.assignedRMLastName ?? "" }}</span
+            >
+          </p>
+        </div>
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+          <mat-form-field appearance="outline">
+            <mat-label class="mat-label-field"
+              >New RM <span class="asterisk-color">*</span></mat-label
+            >
+            <mat-icon matPrefix class="form-field-image">
+              <img src="assets/images/userId.svg" />
+            </mat-icon>
+            <mat-select
+              class="enable-form-field"
+              formControlName="newMappingUserId"
+              placeholder="Input"
+            >
+              <mat-option
+                *ngFor="let brokerAdminRms of filteredArray"
+                [value]="brokerAdminRms.memberUserId"
+              >
+                {{ brokerAdminRms.memberFirstName ?? "" }}
+                {{ brokerAdminRms.memberMiddleName ?? "" }}
+                {{ brokerAdminRms.memberLastName ?? "" }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="modalForm.get('newMappingUserId')?.hasError('required')"
+            >
+              New RM is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Assign/Reassign Client -->
+
+      <div
+        class="row"
+        *ngIf="
+          modalData.actionButton === 'Assign Client' ||
+          modalData.actionButton === 'Reassign Client'
+        "
+      >
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+          <mat-form-field appearance="outline">
+            <mat-label class="mat-label-field">Selected RM</mat-label>
+            <mat-icon matPrefix class="form-field-image">
+              <img src="assets/images/userId.svg" />
+            </mat-icon>
+            <input
+              class="enable-form-field"
+              disabled
+              type="text"
+              matInput
+              value="{{ rmName }}"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+          <mat-form-field appearance="outline">
+            <mat-label class="mat-label-field"
+              >Client Name/PAN <span class="asterisk-color">*</span></mat-label
+            >
+            <mat-icon matPrefix class="form-field-image">
+              <img src="assets/images/userId.svg" />
+            </mat-icon>
+            <mat-select
+              class="enable-form-field"
+              formControlName="clientUserId"
+              placeholder="Input"
+              (selectionChange)="getClientRmInfo($event.value)"
+            >
+              <mat-option
+                *ngFor="let brokerAdminClients of filteredArray"
+                [value]="brokerAdminClients.clientUserId"
+              >
+                {{ brokerAdminClients.clientFirstName ?? "" }}
+                {{ brokerAdminClients.clientMiddleName ?? "" }}
+                {{ brokerAdminClients.clientLastName ?? "" }}
+                - ({{ brokerAdminClients.panNo }})
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="modalForm.get('clientUserId')?.hasError('required')"
+            >
+              Client Name/PAN is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-lg-12 col-sm-12 col-md-12 col-xs-12"
+          *ngIf="showExistingRm"
+        >
+          <p class="existing-rm" *ngIf="existingRmDetails.rmUserId != null">
+            Exisiting RM:
+            <span class="existing-rm-name">
+              {{ existingRmDetails.rmFirstName ?? "" }}
+              {{ existingRmDetails.middleName ?? "" }}
+              {{ existingRmDetails.lastName ?? "" }}</span
+            >
+          </p>
+          <p class="existing-rm" *ngIf="!existingRmDetails.rmUserId">
+            Exisiting RM: <span class="existing-rm-name">Not Assigned</span>
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="col-lg-12 col-sm-12 col-md-12 col-xs-12"
+        *ngIf="
+          modalData.actionButton === 'Assign Client' ||
+          modalData.actionButton === 'Reassign Client' ||
+          modalData.actionButton === 'Assign RM' ||
+          modalData.actionButton === 'Reassign RM'
+        "
+      >
+        <mat-checkbox
+          color="primary"
+          class="checkbox mt-3"
+          formControlName="emailToClient"
+          >Send Email to the client</mat-checkbox
+        >
+      </div>
+    </mat-dialog-content>
+  </div>
+  <div class="footer">
+    <mat-dialog-actions>
+      <button id="discard-button" type="button" (click)="onClose()">
+        Back
+      </button>
+      <button id="submit-button" (click)="onSubmit()">
+        {{
+          modalData.actionButton ===
+          "Send Email Invitation Broker
+        Admin"
+            ? "Send Email Invitation"
+            : modalData.actionButton
+        }}
+      </button>
+    </mat-dialog-actions>
+  </div>
+</form>

@@ -1,0 +1,54 @@
+<nav
+  class="navbar nav-body"
+  [ngClass]="{
+    'navbar-expanded': isExpanded,
+    'navbar-not-expanded': !isExpanded,
+    tempClass: brokerAdminfirstTimeLogin
+  }"
+>
+  <div class="container-fluid">
+    <div class="adjust-display">
+      <button
+        mat-button
+        (click)="toggleSidebar()"
+        *ngIf="!brokerAdminfirstTimeLogin"
+      >
+        <img src="../../assets/images/toggle-button.svg" />
+      </button>
+      <img
+        *ngIf="brokerAdminfirstTimeLogin"
+        class="gemfin-logo"
+        src="../../assets/images/gemfin-logo.svg"
+      />
+      <span class="main-heading">{{ mainHeadingValue }}</span>
+    </div>
+
+    <div class="userInfo">
+      <div class="user-image userName">
+        {{ userFirstNameAlphabet }}{{ userLastNameAlphabet }}
+      </div>
+      <span class="userName">Hi, {{ userFirstName }}</span>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="arrow-color">keyboard_arrow_down</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu" class="user-menu">
+        <button
+          *ngIf="!brokerAdminfirstTimeLogin"
+          mat-menu-item
+          (click)="showProfile()"
+        >
+          <img src="../../assets/images/userId.svg" />
+          <span class="mat-menu-button-text margin-left">
+            {{ role === "CLIENT" ? "Change Password" : "Profile" }}
+          </span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <img src="../../assets/images/logout-icon.svg" />
+          <span class="mat-menu-button-text margin-left">Logout</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</nav>

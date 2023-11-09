@@ -1,0 +1,128 @@
+.image-center {
+  display: flex;
+  justify-content: center;
+}
+.viewIPD {
+  /* height: 48px; */
+  display: flex;
+  color: #ffffff;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  grid-gap: 8px;
+  gap: 8px;
+  /* box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.11); */
+  border-radius: 8px !important;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #56c596;
+}
+
+.uploadIPD {
+  /* height: 48px; */
+  display: flex;
+  color: #ffffff;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  grid-gap: 8px;
+  gap: 8px;
+  border: none !important;
+  background-color: white;
+  /* box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.11); */
+  border-radius: 8px !important;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #56c596;
+}
+
+.discars-button-IPD {
+  width: 100px;
+  height: 48px;
+  width: 120px;
+  height: 45px;
+  /* border: 1px solid #01529E; */
+  /* filter: drop-shadow(0px 8px 16px rgba(136,136,136,.5)); */
+  border-radius: 8px;
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  /* color: #01529e; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: 12px;
+  margin-bottom: 15px;
+
+  word-break: keep-all;
+  text-align: center;
+}
+
+.discard-button {
+  width: 178px;
+  height: 48px;
+  border: 1px solid #01529e;
+  /* filter: drop-shadow(0px 8px 16px rgba(136,136,136,.5)); */
+  border-radius: 8px;
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  /* color: #01529e; */
+  margin-left: 12px;
+  margin-bottom: 15px;
+}
+.button-allingment {
+  display: flex;
+  justify-content: center;
+}
+
+.heading-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-styling-riskprofile-result {
+  display: flex;
+  justify-content: flex-end;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.risk-profile-result-score {
+  justify-content: start;
+}
+.responsive {
+  width: 75%;
+  height: auto;
+}
+.divider {
+  border: 1px dashed #000000;
+  opacity: 0.25;
+  margin: 0 16px;
+}
+
+.enableViewIPD {
+  background-color: white;
+  border: 1px solid#56C596 !important;
+}
+.disableViewIPD {
+  background-color: #f2f2f2;
+  color: #999999;
+  border: 1px solid #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+  pointer-events: none;
+}

@@ -1,0 +1,66 @@
+<div class="container-fluid p-0">
+  <div class="row no-gutters page">
+    <div class="col-lg-6 d-none d-lg-block login-block">
+      <div class="bg-overlay">
+        <div
+          fxLayout="row wrap"
+          fxFlex
+          fxShow="false"
+          fxShow.gt-md
+          fxFill
+          fxLayoutAlign="center center"
+          class="bg-overlay wrap text-white"
+        ></div>
+      </div>
+    </div>
+    <div class="col-lg-6 login-block">
+      <div class="auth-content d-flex justify-content-center">
+        <div
+          class="row d-flex align-items-center justify-content-center flex-column"
+        >
+          <div class="text-center">
+            <img src="assets/images/gemfin-logo.svg" alt="logo" />
+          </div>
+          <div class="margin-top text-center">
+            <p class="login-heading">Generate OTP</p>
+          </div>
+          <div>
+            <p>
+              Generate OTP to verify the registered Email id <br />
+              and create your password
+            </p>
+          </div>
+          <form>
+            <div class="form-group auth-form-group mb-0 mt-2">
+              <div class="form-group auth-form-group mb-0">
+                <mat-form-field
+                  class="example-full-width login-form"
+                  appearance="outline"
+                >
+                  <mat-icon matPrefix class="form-field-image">
+                    <img src="assets/images/mail-icon.svg" />
+                  </mat-icon>
+                  <mat-label
+                    >E-mail <span class="asterisk-color">*</span></mat-label
+                  >
+                  <input
+                    type="email"
+                    matInput
+                    placeholder="E-mail"
+                    value="{{ emailId }}"
+                    [disabled]="true"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+            <div>
+              <button class="btn-sm loginbutton mt-2" (click)="submit()">
+                Generate OTP
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

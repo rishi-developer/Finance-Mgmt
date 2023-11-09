@@ -1,0 +1,37 @@
+<mat-card class="fund-list-mat-card">
+  <div class="row mt-2">
+    <p class="sub-heading">According to Risk Profile, below is curated list of funds that align with risk appetite of
+      your client. By clicking on proceed, email containing advice will be shared with client and transaction will be
+      initiated.</p>
+  </div>
+  <div class="row mt-2">
+    <h2 class="fund-list-heading">List of Funds</h2>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6" *ngFor="let adviceFund of this.adviceFundsList">
+      <mat-card class="fund-list-card">
+        <div class="row">
+          <h2 class="fund-name-text">{{adviceFund.fundName}}</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+            <p class="allocation-text">Allocation:<span class="text-color">{{adviceFund.allocationPercentage}}%</span></p>
+          </div>
+          <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+            <p class="amount-text">Amount:<span class="text-color">{{adviceFund.allocationAmount}}</span></p>
+          </div>
+        </div>
+
+      </mat-card>
+    </div>
+  </div>
+  <div class="form-buttons row mt-4">
+    <button mat-raised-button class="discard-button" routerLink="/advisory">
+      Discard
+    </button>
+    <button mat-raised-button class="submit-button" (click)="onSubmit()">
+      Proceed
+    </button>
+  </div>
+</mat-card>
+

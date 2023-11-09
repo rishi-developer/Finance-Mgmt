@@ -1,0 +1,44 @@
+.heading {
+    text-shadow: 2px 0 black;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: black;
+}
+
+.mat-tab-styling ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar{
+    height: 4px;
+    background-color: #01529E;
+}
+
+.mat-tab-styling ::ng-deep .mat-tab-list .mat-tab-label{
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #414141;
+}
+
+.mat-tab-styling ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active{
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
+  color: #01529E;
+}
+
+.mat-tab-styling ::ng-deep .mat-tab-body-wrapper{
+    margin-top: 23px;
+}
+
+::ng-deep.mat-tab-label-active{
+    opacity: 1.0!important;
+  }
+
+:host ::ng-deep .mobile-select-options .mat-select-value{
+    color: #01529E !important;
+  }
+
+
+

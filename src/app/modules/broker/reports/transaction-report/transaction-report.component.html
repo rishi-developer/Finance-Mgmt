@@ -1,0 +1,111 @@
+<mat-card class="transaction-report-card">
+  <div class="row">
+    <h2 class="heading">Transaction Report</h2>
+  </div>
+  <div class="row">
+    <h2 class="sub-heading">Report Setting</h2>
+  </div>
+  <form [formGroup]="modalForm">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+        <p class="input-field-heading">View Mode</p>
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-select formControlName="viewMode" placeholder="Select the view mode"
+            (selectionChange)="submitAction($event.value)">
+            <mat-option *ngFor="let viewMode of viewModeOptions" [value]="viewMode">
+              {{viewMode}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="modalForm.get('viewMode')?.hasError('required')">
+            View Mode is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+        <p class="input-field-heading">Investor</p>
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-select formControlName="clientId" placeholder="Select the investor">
+            <mat-option *ngFor="let client of clientsList" [value]="client.userId">
+              {{client.userId }} - {{client.message}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="modalForm.get('clientId')?.hasError('required')">
+            Select the investor is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+        <p class="input-field-heading">Data Source</p>
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-select formControlName="dataSource" placeholder="Select the data source">
+            <mat-option *ngFor="let dataSource of dataSourceOptions" [value]="dataSource">
+              {{dataSource}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="modalForm.get('dataSource')?.hasError('required')">
+            Data Source is required
+          </mat-error>
+        </mat-form-field>
+      </div> -->
+      <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+        <p class="input-field-heading">Report Duration</p>
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-select formControlName="reportDuration" placeholder="Select the duration">
+            <mat-option (click)="setValidation()" *ngFor="let  reportDuration of reportDurationOptions"
+              [value]="reportDuration">
+              {{reportDuration}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="modalForm.get('reportDuration')?.hasError('required')">
+            Report Duration is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngIf="this.modalForm.value.reportDuration=='Custom'">
+        <p class="input-field-heading">Start date</p>
+        <mat-form-field class="w-100" appearance="outline">
+          <input class="enable-input-fields" (mousedown)="picker.open();$event.preventDefault()" [max]="this.currentDate" readonly
+            matInput [matDatepicker]="picker" formControlName="startDate" placeholder="Select" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker (closed) = "modalForm.get('startDate')?.markAsTouched()"></mat-datepicker>
+          <mat-error *ngIf="modalForm.get('startDate')?.hasError('required')">
+            Start Date is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngIf="this.modalForm.value.reportDuration=='Custom'">
+        <p class="input-field-heading">End date</p>
+        <mat-form-field class="w-100" appearance="outline">
+          <input class="enable-input-fields" (mousedown)="picker2.open();$event.preventDefault()" [min]="this.modalForm.value.startDate"
+            [max]="this.currentDate" readonly matInput [matDatepicker]="picker2" formControlName="endDate"
+            placeholder="Select" />
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2 (closed) = "modalForm.get('endDate')?.markAsTouched()"></mat-datepicker>
+          <mat-error *ngIf="modalForm.get('endDate')?.hasError('required')">
+            End Date is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <mat-error *ngIf="dateRangeValidator(this.modalForm.value) && this.modalForm.value.reportDuration=='Custom'">
+        End Date must be greater then or equal to the Start Date
+      </mat-error>
+
+      <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6" *ngIf="this.modalForm.value.viewMode=='Email'">
+        <mat-checkbox class="email-heading mb-2">CC RM</mat-checkbox>
+        <mat-form-field class="w-100 mt-1" appearance="outline">
+          <input class="disable-input-field" matInput disabled value="RM Name">
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <div class="form-buttons row mt-4">
+      <button type="button" mat-raised-button class="discard-button" (click)="onReset()">
+        Reset
+      </button>
+      <button mat-raised-button class="submit-button" (click)="onSubmit()">
+        {{this.action}}
+      </button>
+    </div>
+  </form>
+</mat-card>

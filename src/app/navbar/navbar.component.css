@@ -1,0 +1,109 @@
+/* .user-drop {
+  width: 8rem;
+  border: 1px solid #C4C4C4;
+  border-radius: 4px;
+  height: 1.5rem;
+  padding: 7px 10px 24px;
+  margin-left: auto;
+  margin-right: 9px;
+} */
+
+/* .arrow-fix {
+  color: black;
+  margin-top: 0.3rem;
+  margin-left: 0.5rem;
+} */
+
+
+
+/* .text {
+  margin-top: 0.1rem;
+  margin-left: 1rem;
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+} */
+
+/* .container-fluid {
+  height: 3rem;
+} */
+
+.nav-body {
+  background: #FFFFFF;
+  box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  right: 0;
+  position: fixed;
+}
+.navbar-expanded{
+  left:190px;
+}
+.navbar-not-expanded{
+  left:80px;
+}
+.userName {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #1A1A1A;
+  justify-content: space-around;
+}
+
+.userInfo {
+  margin-left: auto;
+  min-width: fit-content;
+  flex-grow: inherit;
+  align-items: center;
+  display: flex;
+}
+
+.main-heading{
+  font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 150%;
+display: flex;
+align-items: center;
+color: #01529E;
+margin-left:4px;
+}
+
+.user-image{
+  background: #DAF1E7;
+  width: 48px;
+height: 48px;
+border-radius:50%;
+margin-right:12px;
+}
+
+.gemfin-logo{
+  width: 128.64px;
+height: 32px;
+margin-right: 25px;
+}
+
+.adjust-display {
+  display: flex;
+  align-items: center;
+}
+
+.margin-left{
+  margin-left:13px;
+}
+
+/* navbar changes, for onboarding a new broker first time */
+.tempClass{
+  position: initial !important;
+}

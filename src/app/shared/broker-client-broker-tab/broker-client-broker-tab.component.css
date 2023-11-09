@@ -1,0 +1,41 @@
+.client-id {
+    font-family: Epilogue;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    text-decoration-line: underline;
+    color: #01529E;
+    cursor: pointer;
+}
+
+.adjust-id {
+    padding-left: 1rem;
+}
+
+
+.search {
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+    width: 75%;
+
+}
+
+.search input:focus {
+    box-shadow: none;
+    border: 2px solid blue
+}
+
+.search {
+    position: absolute;
+    top: 20px;
+    left: 16px
+}
+
+
+
+.unselectable{
+   color: #7F7F7FE5;
+    cursor: not-allowed;
+}
+

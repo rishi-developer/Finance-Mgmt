@@ -1,0 +1,31 @@
+.update-password {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10%;
+}
+
+.update-password-close-icon {
+  display: flex;
+  margin-bottom: 6rem;
+  margin-left: 10rem;
+  /* float: right; */
+}
+::ng-deep .mat-dialog-container {
+  border-radius: 16px !important;
+}
+
+.comments-section {
+  display: flex !important;
+}
+
+::ng-deep .mat-form-field-infix {
+  width: 21rem;
+}
+
+.confirm-reject {
+  display: flex;
+  justify-content: center;
+}
+.action-button {
+  width: 5rem !important;
+}

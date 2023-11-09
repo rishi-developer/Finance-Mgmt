@@ -1,0 +1,85 @@
+<div class="row close-div">
+  <button type="button" class="close" (click)="onClose()" aria-label="Close">
+    <img src='../../../../../assets/images/close-icon.svg'>
+  </button>
+</div>
+<div class="row mt-4">
+  <mat-card-title class="mat-card-title header-styling">UCC Activation</mat-card-title>
+
+  <!-- If Prod  -->
+  <!-- <mat-card-subtitle class="mat-card-subtitle mt-2">Provide the below required details which are required to initiate
+    actions
+    through the platform. Download the form from the mentioned <a class="document-link" href="https://bsestarmf.in/index.aspx" target="_blank">Link.</a></mat-card-subtitle> -->
+
+  <!-- If Dev -->
+    <mat-card-subtitle class="mat-card-subtitle mt-2">Provide the below required details which are required to initiate
+      actions
+      through the platform. Download the form from the mentioned <a class="document-link" href="https://bsestarmfdemo.bseindia.com/Index.aspx" target="_blank">Link.</a></mat-card-subtitle>
+
+  <mat-card class="mt-3 table-card">
+    <form [formGroup]="modalForm">
+      <div class="new-table-styling" [ngClass]="{'table-responsive': mobile==true}">
+        <table mat-table [dataSource]="dataSource" class="w-100">
+
+          <!-- ID document Type 1 Column -->
+          <ng-container matColumnDef="idDocumentType">
+            <th mat-header-cell *matHeaderCellDef>ID document Type 1</th>
+            <td class="table-data" mat-cell *matCellDef="let element">
+              <p class="prefilled-ucc-text">Pre-filled UCC Form</p>
+              <span class="document-type">{{element.idDocumentType}}</span>
+            </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">
+              {{modalData.clientFirstName === null ? '' :
+              modalData.clientFirstName}} {{modalData.clientMiddleName === null ? '' :
+              modalData.clientMiddleName}} {{modalData.clientLastName === null ? '' : modalData.clientLastName}}
+            </td>
+          </ng-container>
+
+          <!-- Action Column -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-button>
+                <label for="fileUpload" class="upload-styling" id="discard-button"><img
+                    src="../../../../assets/images/upload-icon.svg" />
+                  Upload</label>
+                <input type="file" id="fileUpload" formControlName="attachmentFile" (change)="onChange($event)" />
+              </button>
+            </td>
+          </ng-container>
+
+          <!-- Uploaded File Column -->
+          <ng-container matColumnDef="uploadedFile">
+            <th mat-header-cell *matHeaderCellDef>Uploaded File</th>
+            <td mat-cell *matCellDef="let element">
+              <p *ngIf="
+              changeTriggered == true">{{file.name}}</p>
+              <p *ngIf="
+              changeTriggered == false">No file uploaded</p>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </form>
+  </mat-card>
+
+  <div class="disclaimer-text mt-4">
+    <p><span class="disclaimer-heading">Disclaimer:</span> Digital mode of activation, the member will scan and upload
+      the
+    </p>
+    <p>1. Upload .tiff format file only.</p>
+    <p>2. The size should be less than 4000KB.</p>
+  </div>
+  <div class="button-div mt-5">
+    <button mat-raised-button id="discard-button" (click)="onClose()">Discard</button>
+    <button mat-raised-button id="submit-button" [disabled]="!modalForm.valid" (click)="activateUcc()">Activate UCC</button>
+  </div>
+</div>

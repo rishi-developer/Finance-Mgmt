@@ -1,0 +1,210 @@
+<mat-card class="mat-card broker-card">
+  <div class="row">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item non-active-breadcrumb">
+          <a (click)="backRoute()">Home</a>
+        </li>
+        <li class="breadcrumb-item active-breadcrumb" aria-current="page">
+          Broker Onboarding
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="row">
+    <mat-card-title class="mat-card-title">Add New Broker</mat-card-title>
+    <mat-card-subtitle class="mat-card-subtitle"
+      >For onboarding a new broker admin of an organization, provide the
+      required details to proceed.</mat-card-subtitle
+    >
+  </div>
+
+  <form [formGroup]="modalForm">
+    <div class="row mt-2">
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-form-field appearance="outline">
+          <mat-label class="mat-label-field"
+            >Broker First Name <span class="asterisk-color">*</span></mat-label
+          >
+          <mat-icon matPrefix class="form-field-image">
+            <img src="assets/images/userId.svg" />
+          </mat-icon>
+          <input
+            class="enable-form-field"
+            type="text"
+            placeholder="Input"
+            formControlName="firstName"
+            matInput
+          />
+          <mat-error *ngIf="modalForm.get('firstName')?.hasError('required')">
+            Broker First Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-form-field appearance="outline">
+          <mat-label class="mat-label-field">Broker Middle Name</mat-label>
+          <mat-icon matPrefix class="form-field-image">
+            <img src="assets/images/userId.svg" />
+          </mat-icon>
+          <input
+            class="enable-form-field"
+            type="text"
+            placeholder="Input"
+            formControlName="middleName"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-form-field appearance="outline">
+          <mat-label class="mat-label-field">Broker Last Name </mat-label>
+          <mat-icon matPrefix class="form-field-image">
+            <img src="assets/images/userId.svg" />
+          </mat-icon>
+          <input
+            class="enable-form-field"
+            type="text"
+            placeholder="Input"
+            formControlName="lastName"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-form-field appearance="outline">
+          <mat-label class="mat-label-field"
+            >Email ID <span class="asterisk-color">*</span></mat-label
+          >
+          <mat-icon matPrefix class="form-field-image">
+            <img src="assets/images/mail-icon.svg" />
+          </mat-icon>
+          <input
+            class="enable-form-field"
+            type="email"
+            formControlName="email"
+            matInput
+            placeholder="Input"
+          />
+          <mat-error
+            *ngIf="
+              modalForm.get('email')?.hasError('email') ||
+              modalForm.get('email')?.hasError('pattern')
+            "
+          >
+            Enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="modalForm.get('email')?.hasError('required')">
+            Email ID is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-form-field appearance="outline">
+          <mat-label class="mat-label-field"
+            >Mobile Number <span class="asterisk-color">*</span></mat-label
+          >
+          <mat-icon matPrefix class="form-field-image">
+            <img src="assets/images/phone-icon.svg" />
+          </mat-icon>
+          <input
+            class="enable-form-field"
+            (keyup)="validatePhoneNumber($event)"
+            type="text"
+            placeholder="Input"
+            matInput
+            formControlName="phoneNo"
+          />
+          <mat-error
+            *ngIf="
+              modalForm.get('phoneNo')?.hasError('required') && !startsWithZero
+            "
+          >
+            Mobile Number is required
+          </mat-error>
+          <mat-error *ngIf="modalForm.get('phoneNo')?.hasError('pattern')">
+            Can only contain numbers
+          </mat-error>
+          <mat-error
+            *ngIf="
+              startsWithZero &&
+              !modalForm.controls['phoneNo'].hasError('pattern')
+            "
+          >
+            Cannot start with 0
+          </mat-error>
+          <mat-error
+            *ngIf="
+              modalForm.get('phoneNo')?.hasError('minlength') &&
+              !startsWithZero &&
+              !modalForm.get('phoneNo')?.hasError('pattern')
+            "
+          >
+            Min length is 10 digits
+          </mat-error>
+          <mat-error
+            *ngIf="
+              modalForm.get('phoneNo')?.hasError('maxlength') &&
+              !startsWithZero &&
+              !modalForm.get('phoneNo')?.hasError('pattern')
+            "
+          >
+            Max length is 12 digits
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+        <mat-form-field appearance="outline">
+          <mat-label class="mat-label-field"
+            >Organization Name <span class="asterisk-color">*</span></mat-label
+          >
+          <mat-icon matPrefix class="form-field-image">
+            <img src="assets/images/organization-icon.svg" />
+          </mat-icon>
+          <input
+            class="enable-form-field"
+            type="text"
+            placeholder="Input"
+            matInput
+            formControlName="organizationName"
+          />
+          <mat-error
+            *ngIf="modalForm.get('organizationName')?.hasError('required')"
+          >
+            Organization Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 mt-3">
+        <mat-checkbox
+          color="primary"
+          class="checkbox"
+          formControlName="hasRMFunctionality"
+          >Provide broker admin with RM functionality.</mat-checkbox
+        >
+      </div>
+    </div>
+
+    <div class="form-buttons row mt-5">
+      <button
+        type="button"
+        mat-raised-button
+        class="cancel-button"
+        (click)="backRoute()"
+      >
+        Cancel
+      </button>
+      <button
+        mat-raised-button
+        id="submit-button-add-broker"
+        (click)="onSubmit()"
+      >
+        Add New Broker
+      </button>
+    </div>
+  </form>
+</mat-card>

@@ -1,0 +1,77 @@
+<div class="clovek-font container-fluid mt-1">
+  <div class="display-flex-sb">
+    <div class="font-32 heading mb-1">
+      <b>Broker Details</b>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-12 col-sm-12 col-12 col-xs-12">
+      <h1>Profile</h1>
+
+      <mat-card class="profile-summary-mat-card">
+        <div class="row">
+          <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2">
+            <div mat-card-avatar class="profile-card-image"></div>
+          </div>
+
+          <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2 mt-2">
+            <mat-card-title class="profile-card-client-label">Broker Name</mat-card-title>
+            <mat-card-subtitle class="profile-card-client-name mt-1">{{this.viewDetail.name}}</mat-card-subtitle>
+          </div>
+
+          <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2 mt-2">
+            <mat-card-title class="profile-card-body-label">Broker ID</mat-card-title>
+            <mat-card-subtitle class="profile-card-data-body-label">{{this.brokerId}}</mat-card-subtitle>
+          </div>
+
+          <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4 mt-2">
+            <mat-card-title class="profile-card-body-label">Email ID</mat-card-title>
+            <mat-card-subtitle class="profile-card-data-body-label">{{this.viewDetail.email}}</mat-card-subtitle>
+          </div>
+
+          <div class="col-lg-1 col-sm-1 col-md-1 col-xs-1 mt-2">
+            <button class="profile-card-button">Broker</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="mat-tab-styling mt-4" *ngIf="this.mobile==false">
+    <mat-tab-group mat-align-tabs="left" animationDuration="0ms" class="demo-tab-group">
+
+
+      <mat-tab label="Advisory Client" class="mat-tab-2">
+        <ng-template matTabContent>
+          <app-advisory-client-broker-tab [category]=role></app-advisory-client-broker-tab>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Broker Client" class="mat-tab-2">
+        <ng-template matTabContent>
+          <app-broker-client-broker-tab [category]=role></app-broker-client-broker-tab>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <!-- Mobile View -->
+  <div *ngIf="this.mobile">
+    <div class="row mt-5 mb-4">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+        <mat-select class="mobile-select-options" [(ngModel)]="selectedValue">
+          <mat-option *ngFor="let selectedType of selectionTypes" [value]="selectedType">
+            {{selectedType}}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="row" *ngIf="selectedValue=='Advisory Client'">
+      <app-advisory-client-broker-tab [category]=role [selectedClientType]="selectedValue">
+      </app-advisory-client-broker-tab>
+    </div>
+    <div class="row" *ngIf="selectedValue=='Broker Client'">
+      <app-broker-client-broker-tab [category]=role [selectedClientType]="selectedValue"></app-broker-client-broker-tab>
+    </div>
+  </div>
+</div>

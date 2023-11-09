@@ -1,0 +1,104 @@
+.col-center {
+  display: flex;
+  justify-content: space-around;
+}
+
+.transaction-subheading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #000000;
+}
+
+.invite-modal-heading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 49px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.015em;
+  color: #01529E;
+}
+
+.transaction-heading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.03em;
+  color: #01529E;
+}
+
+
+.inactivity-error-heading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 49px;
+  letter-spacing: -0.015em;
+  color: #FF5D5C;
+}
+
+.invite-width {
+  width: 50%;
+}
+
+.transaction-order-details {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #000000;
+}
+
+.button-styling-1 {
+  width: 396px;
+  height: 51px;
+  background-color: #56C596;
+  box-shadow: 0px 4px 11px rgba(90, 69, 69, 0.29);
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #FFFFFF;
+  border-radius: 8px;
+}
+
+.invite-modal-subheading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.015em;
+  color: #000000;
+}
+
+.no-data-icon-image{
+  width: 120px;
+  height: 120px;
+}
+
+::ng-deep .confirmation-modal .mat-dialog-container {
+  background: #FAFAFA;
+  border-radius: 16px;
+}
+
+.client-email{
+  word-break: break-all;
+}

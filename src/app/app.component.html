@@ -1,0 +1,32 @@
+<app-loader-component></app-loader-component>
+<mat-sidenav-container class="sidenav-container" autosize>
+  <!-- <mat-sidenav *ngIf="isLoggedIn" #sidenav class="sidenav" mode="side" opened="true">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav> -->
+  <mat-sidenav
+    *ngIf="isLoggedIn && showSideBar"
+    #sidenav
+    class="sidenav"
+    [ngClass]="{
+      'sidenav-expanded': isExpanded,
+      'sidenav-not-expanded': !isExpanded
+    }"
+    mode="side"
+    opened="true"
+  >
+    <app-sidebar *ngIf="showSideBar"></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="sidenav-content" [ngClass]="{ 'logged-in': isLoggedIn }">
+      <app-navbar
+        class="nav-bar"
+        (sidenav)="sidenav.toggle()"
+        *ngIf="isLoggedIn"
+      >
+      </app-navbar>
+      <div [ngClass]="{ 'main-content dash-screen': isLoggedIn }">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

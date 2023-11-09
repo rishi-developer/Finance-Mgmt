@@ -1,0 +1,23 @@
+.terms-conditions {
+  color: #01529e;
+}
+
+.confirmation-div {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.success-img {
+  width: 102px;
+  display: flex;
+}
+
+.firstStepperForm {
+  width: 70%;
+  margin: auto;
+}
+
+.account-created-text {
+  font-weight: 600;
+}

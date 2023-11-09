@@ -1,0 +1,25 @@
+<div class="mat-tab-styling mt-4">
+  <mat-tab-group
+    mat-align-tabs="left"
+    animationDuration="0ms"
+    class="demo-tab-group"
+  >
+    <mat-tab label="List of Clients">
+      <ng-template matTabContent>
+        <app-list-of-clients></app-list-of-clients>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab *ngIf="hasRMFunctionality" label="List of RM" class="mat-tab-2">
+      <ng-template matTabContent>
+        <app-list-of-rm></app-list-of-rm>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab label="Request Raised" class="mat-tab-2">
+      <ng-template matTabContent>
+        <app-list-of-requests></app-list-of-requests>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>

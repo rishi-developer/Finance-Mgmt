@@ -1,0 +1,176 @@
+<div class="clovek-font container-fluid mt-1">
+  <div class="display-flex-sb">
+    <div class="font-32 heading mb-1">
+      <b>Portfolio</b>
+    </div>
+    <div>
+      <button (click)="changeTab()" class="button-styling-gen-advice">Generate Advice</button>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      <h1>Profile</h1>
+
+
+      <mat-card class="profile-summary-mat-card">
+        <div class="row">
+          <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2 mt-2">
+            <div mat-card-avatar class="profile-card-image"></div>
+          </div>
+
+          <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2 mt-2">
+              <mat-card-title class="profile-card-body-label">Client Name</mat-card-title>
+              <mat-card-subtitle class="profile-card-data-body-label">{{this.viewDetail.name}}</mat-card-subtitle>
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2 mt-2">
+            <mat-card-title class="profile-card-body-label">Client ID</mat-card-title>
+            <mat-card-subtitle class="profile-card-data-body-label">{{this.clientId}}</mat-card-subtitle>
+          </div>
+          <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2 mt-1">
+            <mat-card-title class="profile-card-body-label">PAN</mat-card-title>
+            <mat-card-subtitle class="profile-card-data-body-label">{{this.viewDetail.panNo}}</mat-card-subtitle>
+          </div>
+          <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2 mt-2" *ngIf="this.role=='admin' || this.role=='advisor'">
+            <mat-card-title class="profile-card-body-label">Broker Name</mat-card-title>
+            <mat-card-subtitle class="profile-card-data-body-label">{{this.viewDetail.brokerName}}</mat-card-subtitle>
+          </div>
+          <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2n
+           mt-2">
+            <button class="profile-card-button-advisor">Advisory  Client</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+
+    <div class="col-lg-12 col-sm-12 col-12 col-xs-12 my-3">
+      <h1>Summary</h1>
+      <mat-card class="profile-summary-mat-card">
+        <div class="row mt-3">
+          <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3">
+            <mat-card-header>
+              <div mat-card-avatar class="fund-value-image"></div>
+              <mat-card-subtitle class="summary-card-title">Portfolio value</mat-card-subtitle>
+              <mat-card-title class="summary-card-title-data">₹{{this.viewDetail.fundValue}}</mat-card-title>
+
+            </mat-card-header>
+          </div>
+
+          <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3">
+            <mat-card-header>
+              <div mat-card-avatar class="active-sip-image"></div>
+              <mat-card-subtitle class="summary-card-title">Active SIP’s</mat-card-subtitle>
+              <mat-card-title class="summary-card-title-data">{{this.viewDetail.activeSIP}}</mat-card-title>
+            </mat-card-header>
+          </div>
+          <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3">
+            <mat-card-header>
+              <div mat-card-avatar class="active-funds-image"></div>
+              <mat-card-subtitle class="summary-card-title">Active Funds</mat-card-subtitle>
+              <mat-card-title class="summary-card-title-data">{{this.viewDetail.activeFunds}}</mat-card-title>
+            </mat-card-header>
+          </div>
+
+           <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3">
+            <mat-card-header>
+              <div mat-card-avatar class="total-return-image"></div>
+              <mat-card-subtitle class="summary-card-title">Total Return</mat-card-subtitle>
+              <mat-card-title class="summary-card-title-data">₹{{this.viewDetail.totalReturn}}</mat-card-title>
+            </mat-card-header>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="mat-tab-styling mt-4" *ngIf="this.mobile==false">
+    <mat-tab-group [(selectedIndex)]="selectedTab" mat-align-tabs="left" animationDuration="0ms" class="demo-tab-group">
+
+      <mat-tab label="Profile">
+        <ng-template matTabContent>
+          <app-portfolio-profile-tab></app-portfolio-profile-tab>
+        </ng-template>
+      </mat-tab>
+
+      <mat-tab label="Recent Advice">
+        <ng-template matTabContent>
+          <app-recent-advice-table></app-recent-advice-table>
+        </ng-template>
+      </mat-tab>
+
+      <mat-tab label="Holding" class="mat-tab-2">
+        <ng-template matTabContent>
+          <app-advisor-client-holdings-table></app-advisor-client-holdings-table>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <!-- Mobile View -->
+
+  <div *ngIf="this.mobile">
+    <div class="row mt-5 mb-4">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+        <mat-select class="mobile-select-options" [(ngModel)]="selectedValue">
+          <mat-option *ngFor="let selectedType of selectionTypes" [value]="selectedType">
+            {{selectedType}}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <mat-divider class="mat-divider"></mat-divider>
+    </div>
+
+    <div class="row mt-3" *ngIf="selectedValue=='Profile'">
+      <app-portfolio-profile-tab [selectedButtonValue]="selectedValue"></app-portfolio-profile-tab>
+    </div>
+    <div class="row mt-3" *ngIf="selectedValue=='Recent Advice'">
+      <app-recent-advice-table [selectedButtonValue]="selectedValue"></app-recent-advice-table>
+    </div>
+    <div class="row mt-4" *ngIf="selectedValue=='Holding'">
+      <app-advisor-client-holdings-table [selectedButtonValue]="selectedValue"></app-advisor-client-holdings-table>
+    </div>
+  </div>

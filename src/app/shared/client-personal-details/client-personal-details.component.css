@@ -1,0 +1,8 @@
+.container {
+    padding-left: 2rem;
+    /* padding-top: 2rem; */
+    max-height: 50vh;
+}
+.mat-divider{
+    margin-left: -55%; 
+}

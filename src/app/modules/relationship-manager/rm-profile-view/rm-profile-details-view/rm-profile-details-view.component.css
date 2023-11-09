@@ -1,0 +1,38 @@
+.container{
+    padding-left: 2rem;
+    padding-top: 2rem;
+    margin-left: 0;
+    /* max-height: 20rem; */
+}
+
+.icons-ratio{
+    min-width: 5%;
+    margin-right: 5px;
+}
+
+.edit{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #56C596;
+}
+  .hand-cursor{
+    cursor: pointer;
+  }
+
+  .mat-form-field {
+    width: 90% !important;
+  }
+
+  .button-allingment{
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  .mat-divider{
+    margin-left: -55%;
+  }
+
+ 

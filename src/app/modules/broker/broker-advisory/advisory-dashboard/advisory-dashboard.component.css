@@ -1,0 +1,135 @@
+.advisory-heading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.sub-heading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #5C5C5C;
+}
+
+.input-field-heading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.disable-input-field {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #A6A6A6;
+}
+
+:host ::ng-deep .mat-select-placeholder {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.enable-input-field {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+}
+
+:host ::ng-deep ::placeholder {
+  color: #000000 !important;
+}
+
+.broker-advisory-mat-card {
+  background: #FDFCFC;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.11);
+  border-radius: 8px;
+  padding:2rem;
+}
+
+.enable-proceed-button {
+  width: 178px;
+  height: 48px;
+  background: #01529E;
+  box-shadow: 0px 8px 16px rgba(136, 136, 136, 0.5);
+  border-radius: 8px;
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #FFFFFF;
+}
+
+.disable-proceed-button {
+  width: 178px;
+  height: 48px;
+  background: #808080;
+  box-shadow: 0px 8px 16px rgba(136, 136, 136, 0.5);
+  border-radius: 8px;
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #FFFFFF;
+  cursor: default;
+}
+
+.generate-profile-text {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  text-decoration-line: underline;
+  color: #01529E;
+  cursor: pointer;
+}
+
+.risk-not-generated {
+  background: #FFFFFF;
+  border: 1px solid #FF5D5C;
+  border-radius: 8px;
+  height: 48px;
+}
+
+.mat-error-text {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  color: #FF5D5C;
+}
+
+.no-risk-profile {
+  padding-left: 8px;
+}

@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-12 col-center">
+    <img src="assets/images/warning_icon.svg" />
+  </div>
+  <div class="col-12 col-center pt-4">
+    <p>{{ data.title || "Are you sure?" }}</p>
+  </div>
+  <div class="col-12 col-center">
+    <button
+      type="submit"
+      mat-raised-button
+      id="yes_btn"
+      (click)="onClose(true)"
+    >
+      YES
+    </button>
+    <button (click)="onClose(false)" mat-raised-button id="no_btn">NO</button>
+  </div>
+</div>

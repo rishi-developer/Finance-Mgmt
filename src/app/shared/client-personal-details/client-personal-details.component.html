@@ -1,0 +1,80 @@
+<div class="container">
+    <div><span class="vertical-tab-heading">Personal Details</span></div>
+    <mat-divider class="mat-divider-profile mt-3"></mat-divider>
+    <h2 class="sub-heading mt-5"></h2>
+
+    <div class="row ">
+        <div></div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <span class="profile-details-labels">Name</span>
+            <span class="profile-details-data"> {{this.viewDetail.primaryHolderFirstName}} {{this.viewDetail.primaryHolderMiddleName}} {{this.viewDetail.primaryHolderLastName}}</span>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <span class="profile-details-labels">DOB</span>
+            <span class="profile-details-data">{{this.viewDetail.primaryHolderDOB}}</span>
+        </div>
+
+    </div>
+    <div class="row ">
+        <div></div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <span class="profile-details-labels">Gender</span>
+            <span class="profile-details-data">{{this.viewDetail.gender}}</span>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3" *ngIf="this.viewDetail.clientCode">
+            <span class="profile-details-labels">Client Code</span>
+            <span class="profile-details-data">{{this.viewDetail.clientCode}}</span>
+        </div>
+
+    </div>
+    <div class="row ">
+        <div></div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3" *ngIf="this.viewDetail.memberCode">
+            <span class="profile-details-labels">Member Code</span>
+            <span class="profile-details-data">{{this.viewDetail.memberCode}}</span>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3" *ngIf="this.viewDetail.bankBranch1">
+            <span class="profile-details-labels">Branch</span>
+            <span class="profile-details-data">{{ this.viewDetail.bankBranch1}}</span>
+        </div>
+
+    </div>
+    <div class="row ">
+        <div></div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <span class="profile-details-labels">PAN Card</span>
+            <span class="profile-details-data">{{this.viewDetail.primaryHolderPAN}}</span>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3" *ngIf="this.viewDetail.primaryHolderPANExempt">
+            <span class="profile-details-labels">PAN Exempt Status</span>
+            <span class="profile-details-data">{{this.viewDetail.primaryHolderPANExempt}}</span>
+        </div>
+
+    </div>
+
+    <div class="row ">
+        <div></div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3" *ngIf="this.viewDetail.occupationCode">
+            <span class="profile-details-labels">Occupational Code</span>
+            <span class="profile-details-data">{{this.viewDetail.occupationCode}}</span>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3" *ngIf="this.viewDetail.clientType">
+            <span class="profile-details-labels">Client Type</span>
+            <span class="profile-details-data">{{this.viewDetail.clientType}}</span>
+        </div>
+    
+    </div>
+    <div class="row ">
+        <div></div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3" *ngIf="this.viewDetail.holdingNature">
+            <span class="profile-details-labels">Holding Nature</span>
+            <span class="profile-details-data">{{this.viewDetail.holdingNature}}</span>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <span class="profile-details-labels">Status</span>
+            <span class="profile-details-data">{{this.viewDetail.gender}}</span>
+        </div>
+    
+    </div>
+
+</div>

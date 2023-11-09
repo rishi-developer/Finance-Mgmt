@@ -1,0 +1,54 @@
+.heading {
+    font-family: Epilogue;
+    font-style: normal;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.015em;
+    color: #000000;
+    text-shadow: 2px 0 black;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+
+.mat-tab-styling ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar{
+    height: 4px;
+    background-color: #01529E;
+}
+
+.mat-tab-styling ::ng-deep .mat-tab-list .mat-tab-label{
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #414141;
+
+}
+
+.mat-tab-styling ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active{
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
+  color: #01529E;
+}
+
+.mat-tab-styling ::ng-deep .mat-tab-body-wrapper{
+    margin-top: 23px;
+}
+.margin-styling{
+  margin-left:-0.4rem;
+}
+
+:host ::ng-deep .mobile-select-options .mat-select-value{
+  color: #01529E !important;
+}
+.profile-card-image{
+  background-image: url('../../../assets/images/def.svg');
+  background-size: cover;
+  height: 55px;
+  width: 55px;
+}

@@ -1,0 +1,131 @@
+<div class="container-fluid p-0">
+  <div class="row no-gutters page">
+    <div class="col-lg-6 d-none d-lg-block login-block">
+      <div class="bg-overlay">
+        <div
+          fxLayout="row wrap"
+          fxFlex
+          fxShow="false"
+          fxShow.gt-md
+          fxFill
+          fxLayoutAlign="center center"
+          class="bg-overlay wrap text-white"
+        ></div>
+      </div>
+    </div>
+    <div class="col-lg-6 login-block">
+      <div class="auth-content d-flex justify-content-center">
+        <div
+          class="row d-flex align-items-center justify-content-center flex-column"
+        >
+          <div class="text-center mt-2">
+            <img src="assets/images/gemfin-logo.svg" alt="logo" />
+          </div>
+          <div class="text-center margin-top">
+            <p class="login-heading">Welcome to Gemfin</p>
+          </div>
+          <div>
+            <p>
+              Please put your login credentials below in <br />
+              order to begin your journey.
+            </p>
+          </div>
+
+          <form [formGroup]="loginForm">
+            <div class="form-group auth-form-group mb-0">
+              <div class="form-group auth-form-group mb-0">
+                <mat-form-field
+                  class="example-full-width login-form"
+                  appearance="outline"
+                >
+                  <mat-icon matPrefix class="form-field-image">
+                    <img src="assets/images/mail-icon.svg" />
+                  </mat-icon>
+                  <mat-label
+                    >E-mail <span class="asterisk-color">*</span></mat-label
+                  >
+                  <input
+                    type="email"
+                    formControlName="email"
+                    matInput
+                    placeholder="E-mail"
+                  />
+                  <mat-error
+                    *ngIf="
+                      loginForm.get('email')?.hasError('email') ||
+                      loginForm.get('email')?.hasError('pattern')
+                    "
+                  >
+                    Please enter a valid email address
+                  </mat-error>
+                  <mat-error
+                    *ngIf="loginForm.get('email')?.hasError('required')"
+                  >
+                    Email is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form-group auth-form-group mb-2">
+              <div class="form-group auth-form-group mb-2">
+                <mat-form-field
+                  class="example-full-width login-form"
+                  appearance="outline"
+                >
+                  <mat-icon matPrefix class="form-field-image">
+                    <img src="assets/images/lock-icon.svg" />
+                  </mat-icon>
+                  <mat-label
+                    >Password <span class="asterisk-color">*</span></mat-label
+                  >
+                  <input
+                    [type]="confirmPassShow ? 'text' : 'password'"
+                    formControlName="password"
+                    (paste)="(false)"
+                    matInput
+                    placeholder="Password"
+                    autocomplete="on"
+                  />
+                  <mat-icon
+                    class="mat-icon password-visibility"
+                    matSuffix
+                    (click)="confirmPasswordToggle()"
+                  >
+                    <img
+                      *ngIf="confirmPassShow; else visibilityOff"
+                      src="assets/images/password-visibility-on.svg"
+                    />
+                    <ng-template #visibilityOff>
+                      <img src="assets/images/password-visibility-off.svg" />
+                    </ng-template>
+                  </mat-icon>
+                  <mat-error
+                    *ngIf="loginForm.get('password')?.hasError('required')"
+                  >
+                    Password is required
+                  </mat-error>
+
+                  <div class="password-show-icon"></div>
+                </mat-form-field>
+              </div>
+            </div>
+            <div>
+              <button
+                class="btn-sm loginbutton mat-raised-button"
+                (click)="login()"
+              >
+                Login
+              </button>
+            </div>
+            <div
+              class="to-new-page mt-3 float-start cursor-pointer"
+              (click)="forgotPassword()"
+            >
+              Forgot Password?
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

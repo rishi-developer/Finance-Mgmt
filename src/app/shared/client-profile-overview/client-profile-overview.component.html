@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="display-flex-sb">
+        <div><span class="vertical-tab-heading">Overview</span></div>
+        <div *ngIf="this.role!='CLIENT'" (click)="editClientDetails()" class="hand-cursor"><img class="icons-ratio"
+                src="../../../../../assets/images/edit-icon.svg" alt=""> <span class="edit">Edit</span></div>
+
+    </div>
+
+    <mat-divider class="mat-divider-profile mt-3"></mat-divider>
+    <h2 class="sub-heading mt-5">Summary</h2>
+
+    <div class="row ">
+        <div></div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <img class="icons-ratio" src="../../../../../assets/images/userId.svg" alt=""> <span
+                class="profile-details-labels">Assigned RM</span>
+            <span class="profile-details-data">{{element.rmFirstName}}
+                {{element.rmMiddleName}}{{element.rmLastName}}</span>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-3">
+            <img class="icons-ratio" src="../../../../../assets/images/pan-icon.svg" alt=""> <span
+                class="profile-details-labels">PAN.</span>
+            <span class="profile-details-data">{{this.viewDetail.primaryHolderPAN}}</span>
+        </div>
+
+    </div>
+    <div class="custom-separator">
+        <mat-divider class="mat-divider-separator mt-4"></mat-divider>
+    </div>
+
+
+    <h2 class="sub-heading mt-5">Account</h2>
+    <div class="row">
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 outer-data-container  mt-3">
+            <img class="icons-ratio" src="../../../../../assets/images/portfolio-value-icon.svg" alt="">
+            <div class="inner-data-container"><span class="profile-details-labels">Portfolio Value</span>
+                <span class="profile-details-data-overview">{{element.portfolioValue}}</span></div>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 outer-data-container  mt-3">
+            <img class="icons-ratio" src="../../../../../assets/images/active-SIP-icon.svg" alt="">
+            <div class="inner-data-container"> <span
+                class="profile-details-labels">Active Funds</span>
+            <span class="profile-details-data-overview">{{element.activeFunds}}</span></div> 
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 outer-data-container  mt-4">
+            <img class="icons-ratio" src="../../../../../assets/images/total-return-icon.svg" alt=""> 
+            <div class="inner-data-container"><span
+                class="profile-details-labels">Total Return</span>
+            <span class="profile-details-data-overview">{{element.totalReturn}}</span></div>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 outer-data-container  mt-4">
+            <img class="icons-ratio" src="../../../../../assets/images/active-funds-icon.svg" alt=""> 
+            <div class="inner-data-container"><span
+                class="profile-details-labels">Active SIP</span>
+            <span class="profile-details-data-overview">{{element.activeSIPs}}</span></div>
+            
+        </div>
+    </div>
+    
+</div>

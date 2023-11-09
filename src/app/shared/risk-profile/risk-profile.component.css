@@ -1,0 +1,140 @@
+.heading {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 150%;
+  color: #01529E;
+  /* color: #111212; */
+}
+
+.sub-heading-text {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #01529E;
+
+}
+
+.sub-heading-client-name {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+
+}
+
+.report-mat-card {
+  background: #FFFFFF;
+  box-shadow: 0px 8px 16px rgba(136, 136, 136, 0.2) !important;
+  border-radius: 12px !important;
+  height: 100%;
+}
+
+p {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #808080;
+  ;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  /* margin: 15px 0; */
+  color: #fafdff;
+  align-items: flex-start;
+  margin-left: 1.3rem;
+}
+
+.mat-radio-button {
+  margin-top: 10px;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  display: none !important;
+}
+
+:host ::ng-deep .mat-radio-outer-circle{
+  border-color: #E6F3FF !important;
+}
+
+:host ::ng-deep .mat-radio-button .mat-accent .mat-radio-checked  .mat-radio-outer-circle{
+  border-color: #E6F3FF !important;
+}
+
+:host ::ng-deep.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #01529E
+}
+
+.radio-label {
+  margin-top: 1.5rem;
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: #1A1A1A;
+  line-height: 150%;
+}
+
+
+
+.buttons-risk-allingment {
+  margin-top: 2rem;
+  display: flex;
+}
+
+
+
+.optionsclass {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  word-break: break-word;
+  color: #4D4D4D;;
+  white-space: wrap !important;
+
+}
+
+::ng-deep .mat-radio-label-content {
+  white-space: normal !important;
+}
+
+.discard-button {
+  width: 178px;
+  height: 48px;
+  border: 1px solid #56c596 !important;
+  filter: drop-shadow(0px 8px 16px rgba(136, 136, 136, .5));
+  border-radius: 8px;
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(86, 197, 150, 1);
+  margin-left: 12px;
+  margin-bottom: 15px;
+}
+
+.proceed-button {
+  width: 178px;
+  height: 48px;
+  background: rgba(86, 197, 150, 1);
+  box-shadow: 0px 4px 16px rgba(136, 136, 136, 0.35);
+  border-radius: 8px;
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #fff;
+  margin-left: 12px;
+}

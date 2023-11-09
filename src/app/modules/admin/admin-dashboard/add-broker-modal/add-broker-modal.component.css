@@ -1,0 +1,35 @@
+.heading {
+  font-family: Epilogue;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 49px;
+  color: #01529E;
+}
+
+.center-styling{
+  text-align:center;
+}
+
+.close{
+  border: none;
+  background: transparent;
+}
+
+.right-styling{
+  float:right;
+}
+
+.warning{
+  font-family: Epilogue;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 49px;
+  color: red;
+}
+.cursor-styling{
+  cursor:pointer;
+  margin: auto;
+  padding:10px;
+}

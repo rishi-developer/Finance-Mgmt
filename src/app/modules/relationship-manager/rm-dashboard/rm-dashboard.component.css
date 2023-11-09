@@ -1,0 +1,35 @@
+.total-assets-image {
+  background-image: url('../../../../assets/images/total-assets-icon.svg');
+  background-size: cover;
+  width: 59px;
+  height: 59px;
+}
+
+.clients-image {
+  background-image: url('../../../../assets/images/client-icon.svg');
+  background-size: cover;
+  width: 59px;
+  height: 59px;
+}
+
+.card-title {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #808080;
+}
+
+.card-subtitle {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  color: #1A1A1A;
+}

@@ -1,0 +1,39 @@
+.center-styling {
+  text-align: center;
+}
+
+.right-styling {
+  float: right;
+}
+
+.table-class {
+  height: 280px;
+  max-width: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column
+}
+
+.fundButton {
+  display: flex;
+  justify-content: center;
+}
+
+.classNav {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 25% !important;
+  width: 40% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.heading {
+  font-weight: 600;
+  font-size: 24px;
+}

@@ -1,0 +1,387 @@
+<div class="container">
+  <div class="display-flex-sb">
+    <div><span class="vertical-tab-heading">Details</span></div>
+    <div
+      *ngIf="BrokerAdminBoolean && !edit && !hasRmFunctionality"
+      (click)="editRMDetails()"
+      class="hand-cursor"
+    >
+      <img
+        class="icons-ratio"
+        src="../../../../../assets/images/edit-icon.svg"
+        alt=""
+      />
+      <span class="edit">Edit</span>
+    </div>
+  </div>
+
+  <!-- <div> <mat-divider class="mat-divider-profile my-3 "></mat-divider></div> -->
+  <!-- <hr> -->
+  <!-- <mat-divider class="mat-divider-profile mt-3"></mat-divider> -->
+  <mat-divider class="mat-divider-profile mt-3"></mat-divider>
+
+  <div class="mt-2" *ngIf="!this.edit">
+    <div class="row">
+      <div
+        class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-4"
+        *ngIf="hasRmFunctionality"
+      >
+        <span class="profile-details-labels">Name</span>
+        <span class="profile-details-data"
+          >{{ details.firstName }} {{ details.middleName }}
+          {{ details.lastName }}</span
+        >
+      </div>
+
+      <div
+        class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-4"
+        *ngIf="hasRmFunctionality"
+      >
+        <span class="profile-details-labels">Mobile No.</span>
+        <span class="profile-details-data">{{ details.phone }}</span>
+      </div>
+
+      <div
+        class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-4"
+        *ngIf="hasRmFunctionality"
+      >
+        <span class="profile-details-labels">PAN</span>
+        <span class="profile-details-data">{{ details.panNo }}</span>
+      </div>
+
+      <div
+        class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-4"
+        *ngIf="hasRmFunctionality"
+      >
+        <span class="profile-details-labels">Email ID</span>
+        <span class="profile-details-data">{{ details.email }}</span>
+      </div>
+
+      <div
+        class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-4"
+        *ngIf="hasRmFunctionality"
+      >
+        <span class="profile-details-labels">ARN</span>
+        <span class="profile-details-data">{{ details.arn }}</span>
+      </div>
+
+      <div
+        class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-4"
+        *ngIf="hasRmFunctionality"
+      >
+        <span class="profile-details-labels">RM functionality</span>
+        <span class="profile-details-data">{{
+          details.hasRmFunctionality === 'true'? 'Yes' : 'No'
+        }}</span>
+      </div>
+
+      
+
+      <!-- RM profile details -->
+
+      <div
+        class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-4"
+        *ngIf="!hasRmFunctionality"
+      >
+        <img
+          class="icons-ratio"
+          src="../../../../../assets/images/report-black-icon.svg"
+          alt=""
+        />
+        <span class="profile-details-labels">RM ID</span>
+        <span class="profile-details-data">{{ details.virtualRMId }}</span>
+      </div>
+
+      <div
+        class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-4"
+        *ngIf="!hasRmFunctionality"
+      >
+        <img
+          class="icons-ratio"
+          src="../../../../../assets/images/euin-pan-icon.svg"
+          alt=""
+        />
+        <span class="profile-details-labels">EUIN</span>
+        <span class="profile-details-data">{{ details.euin }}</span>
+      </div>
+
+      <div
+        class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-4"
+        *ngIf="!hasRmFunctionality"
+      >
+        <img
+          class="icons-ratio"
+          src="../../../../../assets/images/userId.svg"
+          alt=""
+        />
+        <span class="profile-details-labels">Name</span>
+        <span class="profile-details-data"
+          >{{ details.firstName }} {{ details.middleName }}
+          {{ details.lastName }}</span
+        >
+      </div>
+
+      <div
+        class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-4"
+        *ngIf="!hasRmFunctionality"
+      >
+        <img
+          class="icons-ratio"
+          src="../../../../../assets/images/phone-icon.svg"
+          alt=""
+        />
+        <span class="profile-details-labels">Mobile No.</span>
+        <span class="profile-details-data">{{ details.phone }}</span>
+      </div>
+
+      <div
+        class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-4"
+        *ngIf="!hasRmFunctionality"
+      >
+        <img
+          class="icons-ratio"
+          src="../../../../../assets/images/euin-pan-icon.svg"
+          alt=""
+        />
+        <span class="profile-details-labels">PAN</span>
+        <span class="profile-details-data">{{
+          details.panNo === null ? "N/A" : details.panNo
+        }}</span>
+      </div>
+
+      <div
+        class="col-lg-6 col-sm-6 col-xs-6 col-md-6 mt-4 mb-5"
+        *ngIf="!hasRmFunctionality"
+      >
+        <img
+          class="icons-ratio"
+          src="../../../../../assets/images/mail-icon.svg"
+          alt=""
+        />
+        <span class="profile-details-labels">Email ID</span>
+        <span class="profile-details-data">{{ details.email }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-container" *ngIf="this.edit">
+    <div class="scroll">
+      <form [formGroup]="modalForm">
+        <div class="mt-4">
+          <div class="row">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+              <mat-form-field appearance="outline">
+                <mat-label class="mat-label-field">RM ID</mat-label>
+                <mat-icon matPrefix class="form-field-image">
+                  <img src="../../../../../assets/images/ID-icon.svg" />
+                </mat-icon>
+                <input
+                  class="enable-form-field"
+                  type="text"
+                  formControlName="virtualRMId"
+                  matInput
+                  placeholder="RM ID"
+                />
+                <mat-error
+                  *ngIf="modalForm.get('virtualRMId')?.hasError('required')"
+                >
+                  RM ID is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+              <mat-form-field appearance="outline">
+                <mat-label class="mat-label-field">RM First Name</mat-label>
+                <mat-icon matPrefix class="form-field-image">
+                  <img src="../../../../assets/images/userId.svg" />
+                </mat-icon>
+                <input
+                  class="enable-form-field"
+                  type="text"
+                  placeholder="RM First Name"
+                  formControlName="firstName"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="modalForm.get('firstName')?.hasError('required')"
+                >
+                  RM First Name is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+              <mat-form-field appearance="outline">
+                <mat-label class="mat-label-field">RM Middle Name</mat-label>
+                <mat-icon matPrefix class="form-field-image">
+                  <img src="../../../../assets/images/userId.svg" />
+                </mat-icon>
+                <input
+                  type="text"
+                  formControlName="middleName"
+                  matInput
+                  placeholder="RM Middle Name"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+              <mat-form-field appearance="outline">
+                <mat-label class="mat-label-field">RM Last Name</mat-label>
+                <mat-icon matPrefix class="form-field-image">
+                  <img src="../../../../assets/images/userId.svg" />
+                </mat-icon>
+                <input
+                  formControlName="lastName"
+                  type="text"
+                  matInput
+                  placeholder="RM Last Name"
+                />
+                <!-- <mat-error *ngIf="modalForm.get('lastName')?.hasError('required')">
+                                        RM Last Name is required
+                                    </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+              <mat-form-field appearance="outline">
+                <mat-label class="mat-label-field">EUIN</mat-label>
+                <mat-icon matPrefix class="form-field-image">
+                  <img src="../../../../assets/images/pan-icon.svg" />
+                </mat-icon>
+                <input
+                  formControlName="euin"
+                  type="text"
+                  matInput
+                  placeholder="EUIN"
+                  maxLength="7"
+                />
+                <mat-error *ngIf="modalForm.get('euin')?.hasError('required')">
+                  EUIN is required
+                </mat-error>
+                <mat-error *ngIf="modalForm.get('euin')?.hasError('pattern')">
+                  Invalid pattern : Starts with 'E' followed by 6 numbers
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+              <mat-form-field appearance="outline">
+                <mat-label class="mat-label-field">PAN</mat-label>
+                <mat-icon matPrefix class="form-field-image">
+                  <img src="../../../../assets/images/pan-icon.svg" />
+                </mat-icon>
+                <input
+                  formControlName="panNo"
+                  type="text"
+                  matInput
+                  placeholder="PAN"
+                />
+                <mat-error *ngIf="modalForm.get('panNo')?.hasError('required')">
+                  PAN No. is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+              <mat-form-field appearance="outline">
+                <mat-label class="mat-label-field">Mobile No.</mat-label>
+                <mat-icon matPrefix class="form-field-image">
+                  <img src="../../../../assets/images/phone-icon.svg" />
+                </mat-icon>
+                <input
+                  (keyup)="validatePhoneNumber($event)"
+                  type="text"
+                  placeholder="Input"
+                  matInput
+                  formControlName="phone"
+                />
+                <mat-error
+                  *ngIf="
+                    modalForm.get('phone')?.hasError('required') &&
+                    !startsWithZero
+                  "
+                >
+                  Mobile Number is required
+                </mat-error>
+                <mat-error *ngIf="modalForm.get('phone')?.hasError('pattern')">
+                  Can only contain numbers
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    startsWithZero &&
+                    !modalForm.controls['phone'].hasError('pattern')
+                  "
+                >
+                  Cannot start with 0
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    modalForm.get('phone')?.hasError('minlength') &&
+                    !startsWithZero &&
+                    !modalForm.get('phone')?.hasError('pattern')
+                  "
+                >
+                  Min length is 10 digits
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    modalForm.get('phone')?.hasError('maxlength') &&
+                    !startsWithZero &&
+                    !modalForm.get('phone')?.hasError('pattern')
+                  "
+                >
+                  Max length is 12 digits
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+              <mat-form-field appearance="outline">
+                <mat-label class="mat-label-field">Email ID</mat-label>
+                <mat-icon matPrefix class="form-field-image">
+                  <img src="../../../../assets/images/mail-icon.svg" />
+                </mat-icon>
+                <input
+                  formControlName="email"
+                  type="email"
+                  matInput
+                  placeholder="Email ID"
+                />
+                <mat-error *ngIf="modalForm.get('email')?.hasError('required')">
+                  Email ID is required
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    modalForm.controls['email'].hasError('email') ||
+                    modalForm.get('email')?.hasError('pattern')
+                  "
+                >
+                  Enter a valid email address
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex button-allingment">
+          <button (click)="backToRMDetails()" id="discard-button">Back</button>
+          <button (click)="submit()" id="submit-button">Update Details</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
