@@ -1,0 +1,1220 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Epilogue");
+@import url("https://fonts.googleapis.com/css2?family=Poppins");
+@import "primeng/resources/primeng.min.css";
+@import "primeng/resources/themes/nova/theme.css";
+@import "styles/toastr.css";
+@import "styles/forgetPassword.css";
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.clovek-font {
+  font-family: Epilogue;
+  font-style: normal;
+}
+
+.app-background {
+  background-color: #f5f6f8;
+}
+
+.font-10 {
+  font-size: 10px;
+}
+
+.font-12 {
+  font-size: 12px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.font-22 {
+  font-size: 22px;
+}
+
+.font-24 {
+  font-size: 24px;
+}
+
+.font-26 {
+  font-size: 26px;
+}
+
+.font-28 {
+  font-size: 28px;
+}
+
+.font-30 {
+  font-size: 30px;
+}
+
+.font-32 {
+  font-size: 32px;
+}
+
+.width-100-percent {
+  width: 100%;
+}
+
+.display-flex-sb {
+  display: flex;
+  justify-content: space-between;
+}
+
+.display-flex-se {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.display-flex-sa {
+  display: flex;
+  justify-content: space-around;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.no_record {
+  height: 300px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: #c4c4c4;
+}
+/* .mat-icon {
+  padding-right: 30px;
+} */
+.center-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .mat-select-panel-wrap {
+  position: relative;
+  top: 30px;
+} */
+
+.table-styling .mat-row:hover {
+  background: #e5ebf5;
+}
+
+.table-styling .mat-header-cell {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  height: 62px;
+  color: #000000;
+  background: #e5ebf5;
+  word-break: break-word;
+}
+
+.table-styling .mat-row {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #000000;
+  background: #f0f4fa;
+  height: 62px;
+  word-break: break-word;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  padding-right: 10px !important;
+}
+
+.table-data-styling {
+  font-size: 14px;
+}
+
+.my-expansion-panel-header,
+.my-expansion-panel-header.mat-expanded,
+.my-expansion-panel-header.mat-expanded:hover,
+.my-expansion-panel-header:hover,
+.my-expansion-panel-header.mat-expanded:focus,
+.my-expansion-panel-header.mat-expanded:focus:not([aria-disabled="true"]),
+.mat-expansion-panel
+  .my-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled="true"]),
+.mat-expansion-panel
+  .my-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled="true"]),
+.mat-expansion-panel
+  .my-expansion-panel-header.cdk-program-focused:not([aria-disabled="true"]),
+.mat-expansion-panel:not(.mat-expanded)
+  .my-expansion-panel-header:hover:not([aria-disabled="true"]),
+.my-expansion-panel-header.mat-expanded:hover:not([aria-disabled="true"]) {
+  background-color: #e5ebf5;
+  padding: 38px 24px !important;
+  border-radius: 8px 8px 0px 0px;
+}
+
+:host ::ng-deep .mat-expansion-panel-content {
+  background: #f0f4fa;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.expansion-panel-heading {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
+  color: #01529e;
+}
+
+.expansion-heading {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.expansion-heading-data {
+  /* Caption */
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #000000;
+  word-break: break-word;
+}
+
+.expansion-main-heading {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #000000;
+}
+
+.button-styling {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150% !important;
+  display: flex !important;
+  align-items: center;
+  text-align: center !important;
+  color: #ffffff;
+  background: #01529e;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+}
+
+.disable-button-styling {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  background: grey;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: default !important;
+}
+.headerTable {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.profile-card-button {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #01529e;
+  background: rgba(1, 82, 158, 0.15);
+  border: 1px solid #01529e;
+  border-radius: 7px;
+  padding: 8px 12px 8px 12px;
+  cursor: default !important;
+}
+
+.card-btn {
+  background: rgba(1, 82, 158, 0.15);
+  color: #01529e;
+  border: 1px solid #01529e;
+  border-radius: 7px;
+  height: 2rem;
+  font-family: Epilogue;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  margin-top: -1rem;
+  cursor: default !important;
+}
+
+.pending-status {
+  color: #ffa300;
+  background: rgba(255, 163, 0, 0.15);
+  border: 1px solid #ffa300;
+  border-radius: 16px;
+  font-family: Epilogue;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  height: 40px;
+  border-radius: 8px;
+  width: 152px;
+  font-size: 16px;
+}
+
+.executed-status {
+  font-family: Epilogue;
+  background: rgba(109, 182, 36, 0.15);
+  border: 1px solid #6db624;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  height: 40px;
+  border-radius: 8px;
+  width: 152px !important;
+  color: #6db624;
+  font-size: 16px;
+}
+
+.adviced-status {
+  background: rgba(255, 163, 0, 0.15);
+  border: 1px solid #ffa300;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 13px;
+  height: 25px;
+
+  width: 100px;
+  color: #ffa300;
+  font-size: 12px;
+  font-family: Epilogue;
+}
+
+.disabled-pending-status {
+  color: #7f7f7f;
+  background: rgba(127, 127, 127, 0.15);
+  border: 1px solid #7f7f7f;
+  font-family: Epilogue;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  height: 40px;
+  border-radius: 8px;
+  width: 152px;
+  font-size: 16px;
+}
+
+.disable-executed-status {
+  color: #7f7f7f;
+  background: rgba(127, 127, 127, 0.15);
+  border: 1px solid #7f7f7f;
+  font-family: Epilogue;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  height: 40px;
+  border-radius: 8px;
+  width: 152px !important;
+  font-size: 16px;
+}
+
+.mobile-mat-card-title {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.mobile-mat-card-subtitle {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #000000;
+}
+
+.mobile-client-id-color {
+  color: #01529e;
+}
+
+.mobile-mat-card-heading {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #000000;
+}
+
+.mobile-heading {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #000000;
+}
+
+.mobile-select-options {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #01529e;
+  border: 1px solid #01529e;
+  border-radius: 8px;
+  justify-content: center;
+  padding: 8px 16px;
+  width: 193px !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mat-divider {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.search-box {
+  margin-left: 1.5rem;
+}
+
+.margin-left-styling {
+  margin-left: 2px;
+}
+
+.sidenav-not-expanded {
+  width: 80px;
+}
+
+.sidenav {
+  background: #ffffff;
+  box-shadow: 0px 8px 16px rgba(136, 136, 136, 0.2);
+  position: fixed !important;
+}
+
+.sidenav-expanded {
+  width: 216px;
+}
+
+.sidenav-content {
+  overflow: hidden;
+  padding: 0;
+}
+
+.logged-in.sidenav-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* padding-bottom: 2rem; */
+}
+
+hr.divider {
+  border: 1px solid #e3e1e1;
+  margin: auto;
+}
+
+.profile-card-body-label {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #000000;
+  word-break: break-word;
+}
+
+.profile-card-data-body-label {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  color: #272738;
+  word-break: break-word;
+}
+
+.profile-card-client-label {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: #000000;
+  word-break: break-word;
+}
+
+.profile-card-client-name {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #272738;
+  word-break: break-word;
+}
+
+.summary-card-title {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  word-break: break-word;
+  color: #000000;
+  word-break: break-word;
+}
+
+.summary-card-title-data {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  word-break: break-word;
+
+  display: flex;
+  align-items: flex-end;
+  word-break: break-word;
+  color: #111111;
+}
+
+.profile-summary-mat-card {
+  background: #ffffff;
+  box-shadow: 0px 8px 16px rgba(136, 136, 136, 0.2) !important;
+  border-radius: 12px !important;
+}
+
+.helper-text {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.helper-text-transaction {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  color: black;
+}
+.mat-select-panel-wrap .mat-select-panel {
+  position: initial;
+  top: 45px;
+  min-width: calc(100% + 20px) !important;
+  transform: translateX(6px) !important;
+}
+
+.submit-button {
+  width: 178px;
+  height: 48px;
+  background: #01529e;
+  box-shadow: 0px 8px 16px rgba(136, 136, 136, 0.5) !important;
+  border-radius: 8px !important;
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150% !important;
+  color: #ffffff;
+  margin-left: 12px !important;
+}
+#submit-button[disabled] {
+  background: #b3b3b3;
+}
+
+.discard-button {
+  width: 178px;
+  height: 48px;
+  border: 1px solid #01529e !important;
+  filter: drop-shadow(0px 8px 16px rgba(136, 136, 136, 0.5));
+  border-radius: 8px !important;
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150% !important;
+  color: #01529e;
+  margin-left: 12px !important;
+  margin-bottom: 15px !important;
+}
+
+.mat-tab-label-active {
+  opacity: 1 !important;
+}
+
+/* new theme css  */
+
+.mat-card {
+  background: #fdfcfc;
+  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.11) !important;
+  border-radius: 8px !important;
+}
+
+.onboarding-card {
+  background: #fdfcfc;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.11) !important;
+  border-radius: 8px !important;
+}
+
+#submit-button {
+  padding: 8px 8px;
+  gap: 8px;
+  color: #ffffff;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  border: none;
+  background: #56c596;
+  box-shadow: 0px 4px 16px rgba(136, 136, 136, 0.45);
+  border-radius: 8px;
+  margin-left: 11px;
+  /* height: 48px; */
+}
+
+#discard-button {
+  /* height: 48px; */
+  display: flex;
+  color: #ffffff;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 8px;
+  border: 1px solid#56C596 !important;
+  background-color: white;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.11);
+  border-radius: 8px !important;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #56c596;
+}
+
+.asterisk-color {
+  color: #f44336;
+  font-size: 12px;
+}
+
+.breadcrumb {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.active-breadcrumb {
+  color: #4d4d4d;
+  cursor: default;
+}
+
+.non-active-breadcrumb {
+  color: #808080;
+  cursor: pointer;
+}
+.margin-top {
+  margin-top: 2.5rem;
+}
+.search-filter {
+  float: right;
+}
+
+.mat-menu-panel.user-menu {
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.21);
+  border-radius: 8px;
+  width: 189px !important;
+}
+
+.new-table-styling .mat-header-cell {
+  background: #e6f3ff;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: capitalize;
+  color: #1a1a1a;
+}
+
+.new-table-styling .mat-row {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  padding-right: 10px !important;
+}
+
+.mat-label-field {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+  color: #4d4d4d;
+}
+
+.search-styling {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  border: 1px solid #e6e6e6;
+}
+
+.margin-changes {
+  margin-left: 7px;
+  text-wrap: wrap;
+}
+
+.filter-div {
+  width: 88px;
+  border-radius: 6px;
+  cursor: default;
+}
+
+.search-div {
+  width: 288px;
+  border-radius: 10px;
+  margin-right: 8px;
+}
+
+.search-icon {
+  color: #b3b3b3;
+}
+.search-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #4d4d4d;
+  margin-left: 8px;
+}
+
+.mat-card-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #1a1a1a;
+}
+.mat-card-subtitle {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #4d4d4d;
+}
+
+.enable-form-field {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  /* line-height: 24px; */
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.5px;
+  color: #1a1a1a;
+}
+
+.loginbutton {
+  width: 100%;
+  height: 45px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  background-color: #56c596;
+  color: white;
+  box-shadow: 0px 4px 11px rgba(67, 67, 67, 0.29);
+  border-radius: 8px;
+  border: none;
+}
+
+.form-field-image {
+  margin-right: 10px;
+  margin-bottom: 25px;
+}
+
+.mat-checkbox-layout {
+  white-space: normal !important;
+}
+
+.mat-checkbox-inner-container {
+  margin-top: 4px !important;
+}
+
+.checkbox {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #4d4d4d;
+}
+
+.to-new-page {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #4d4d4d;
+}
+
+.mat-menu-item-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #1a1a1a;
+}
+
+.highlight-router-link {
+  color: #01529e;
+  text-decoration: none;
+  cursor: pointer;
+  color: #01529e;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.login-heading {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.auth-content {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+}
+
+.login-block {
+  padding: 0px;
+}
+
+.wrap {
+  height: 100%;
+  width: 100%;
+  flex-flow: row wrap;
+  box-sizing: border-box;
+  place-content: center;
+  align-items: center;
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.login-form {
+  width: 100%;
+}
+
+.mat-card-profile {
+  background: #ffffff !important;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.11) !important;
+  border-radius: 8px !important;
+}
+
+.profile-card-client-name-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 150%;
+}
+
+.profile-card-client-info-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: #808080;
+  margin-left: 0.5rem;
+}
+
+.client-profile-heading-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  color: #4d4d4d;
+}
+
+.vertical-tab-heading {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
+}
+
+.profile-details-labels {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #808080;
+}
+
+.profile-details-data {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #4d4d4d;
+  word-break: break-word;
+}
+
+.mat-divider-profile {
+  border: 1px solid #d9d9d9;
+}
+
+.mat-divider-separator {
+  border: 1px solid #d9d9d9;
+}
+.reports-sub-heading {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #4d4d4d;
+}
+.reports-divider {
+  border: 1px dashed #000000;
+  opacity: 0.25;
+}
+
+.mat-step-label {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #1a1a1a;
+}
+
+.mat-menu-button-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  align-items: center;
+  text-align: center;
+  color: #1a1a1a;
+}
+.table-card {
+  padding: 0px !important;
+}
+.close {
+  border: none;
+  background: transparent;
+  float: right;
+}
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Right Modal styling */
+
+.header {
+  padding: 1rem;
+  background: #fafdff;
+  background-clip: padding-box;
+  box-shadow: 0px -3px 10px;
+}
+
+.footer {
+  padding: 1rem;
+  background: #fafdff;
+  background-clip: padding-box;
+  box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.11);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.form-container {
+  padding: 2rem;
+}
+
+.padding-changes {
+  padding-left: 1rem;
+}
+
+/* Mat chips in table  */
+
+.mat-chip-styling {
+  width: 120px;
+  height: 36px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #4d4d4d !important;
+  border-radius: 24px;
+  justify-content: center;
+}
+
+.invite-sent {
+  background: #e6f3ff !important;
+  border: 1px solid #01529e;
+}
+
+.active {
+  background: #f2fbea !important;
+  border: 1px solid #6db624;
+}
+
+.expired {
+  background: #fff6e5 !important;
+  border: 1px solid #ffa300;
+}
+
+.inactive {
+  background: #fbeae9 !important;
+  border: 1px solid #b3261e;
+}
+
+.sub-heading-text-transactions {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  margin-left: 10px;
+}
+
+.search-button {
+  margin-top: 5px;
+  font-size: 14px;
+  height: 50px;
+  background: white;
+  border-radius: 0px 4px 4px 0px;
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  border-color: #56c596;
+  border: 2px solid;
+  color: #56c596;
+}
+
+.calendar-icon {
+  vertical-align: initial;
+}
+
+/* scrollbar styling */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #80868b;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #80868b;
+}
+
+/* Changes for all the calendar color and text globally*/
+.mat-calendar-body-selected {
+  background-color: #01529e;
+  color: #fff;
+  font-family: "Poppins";
+  font-style: normal;
+}
+/* changes for hover color */
+.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
+  > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(
+    .mat-calendar-body-comparison-identical
+  ) {
+  background-color: #e6f3ff;
+}
+
+.mat-tab-styling .mat-tab-group.mat-primary .mat-ink-bar {
+  height: 4px;
+  background-color: #56c596;
+  border-radius: 5px;
+}
+
+.mat-tab-styling .mat-tab-list .mat-tab-label {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #414141;
+}
+
+.mat-tab-styling .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #4d4d4d;
+}
+
+.mat-tab-styling .mat-tab-body-wrapper {
+  margin-top: 23px;
+}
+
+.position-fix {
+  position: sticky;
+  left: 0;
+}
+
+.bg-overlay {
+  background: url("assets/images/gemfin-final-forget-password.svg") no-repeat;
+  background-repeat: no-repeat, no-repeat;
+  background-position: left, right;
+  object-fit: fill;
+  background-size: cover;
+  height: 100vh;
+}
+
+.mat-select-arrow {
+  border-left: 15px solid transparent !important;
+  border-right: none !important;
+  border-top: 15px solid transparent !important;
+  border-image-source: url("./assets/images/select-icon.svg") !important;
+  border-image-repeat: stretch !important;
+}
+
+.mat-stepper-horizontal-line {
+  min-width: 27% !important;
+  flex: none !important;
+  margin: 0 px -24px !important;
+}
+
+.mat-horizontal-stepper-header-container {
+  display: flex;
+  justify-content: center;
+}
